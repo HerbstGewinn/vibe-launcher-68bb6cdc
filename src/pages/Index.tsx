@@ -10,6 +10,7 @@ import FeatureHighlights from '@/components/FeatureHighlights';
 import StatsSection from '@/components/StatsSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import VideoTutorial from '@/components/VideoTutorial';
 import { toast } from 'sonner';
 
 enum AppState {
@@ -63,6 +64,9 @@ const Index = () => {
         {appState === AppState.INITIAL && (
           <>
             <Hero />
+            
+            {/* Video Tutorial Section */}
+            <VideoTutorial className="mt-12" />
             
             <div className="mt-8 px-4">
               <LaunchForm 

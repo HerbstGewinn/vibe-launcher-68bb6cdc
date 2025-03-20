@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import Hero from '@/components/Hero';
-import VideoTutorial from '@/components/VideoTutorial';
 import LaunchForm from '@/components/LaunchForm';
 import StrategySteps from '@/components/StrategySteps';
 import SignUpForm from '@/components/SignUpForm';
@@ -64,9 +63,6 @@ const Index = () => {
         {appState === AppState.INITIAL && (
           <>
             <Hero />
-            
-            {/* Video Tutorial - Added here */}
-            <VideoTutorial className="mt-12" />
             
             <div className="mt-8 px-4">
               <LaunchForm 

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -402,7 +403,39 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
                 >
                   {isCompleted ? (
                     <CheckCircle2 className="h-5 w-5" />
-                  ) : step.icon || step.id}
+                  ) : (
+                    <svg 
+                      className="h-5 w-5" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {step.id === 1 && <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 1 && <path d="M3.6 9H20.4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 1 && <path d="M3.6 15H20.4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 1 && <path d="M11.5 3C9.9 7.4 9.9 16.6 11.5 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 1 && <path d="M12.5 3C14.1 7.4 14.1 16.6 12.5 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      
+                      {step.id === 2 && <path d="M15 8H15.01M9 8H9.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 2 && <path d="M12 3v2m0 0v2m0-2h-2m2 0h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 2 && <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 2 && <path d="M9 14l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      
+                      {step.id === 3 && <path d="M16 10c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 3 && <path d="M5 18.5C5 16.57 6.57 15 8.5 15h7c1.93 0 3.5 1.57 3.5 3.5S17.43 22 15.5 22h-7C6.57 22 5 20.43 5 18.5z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 3 && <path d="M17.41 6.59a4 4 0 0 0-5.66 0l-.31.31a.996.996 0 0 0 0 1.4c.39.39 1.01.39 1.4 0l.31-.31a2.5 2.5 0 0 1 3.54 0c.39.39 1.01.39 1.4 0 .38-.38.38-1.02 0-1.4z" fill="currentColor"/>}
+                      
+                      {step.id === 4 && <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 4 && <path d="M9.5 10.5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 4 && <path d="M9.5 13.5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      
+                      {step.id === 5 && <path d="M21 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 5 && <path d="M14 19h3m3 0h-3m0 0v-3m0 3v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 5 && <path d="M16 8h.01M8 8h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 5 && <path d="M12 13l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                      {step.id === 5 && <path d="M12 13l-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>}
+                    </svg>
+                  )}
                 </motion.div>
                 
                 <div className="flex-1">

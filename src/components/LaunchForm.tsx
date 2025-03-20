@@ -84,11 +84,11 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
           <div className="relative">
             <Input
               id="projectUrl"
-              type="text"
+              type="url"
               value={projectUrl}
               onChange={(e) => setProjectUrl(e.target.value)}
               placeholder="https://yourproject.com"
-              className="w-full bg-space-light/70 h-12 px-4 py-3 rounded-lg border border-slate-700/70 focus:outline-none input-glow text-white placeholder:text-slate-500"
+              className="w-full bg-space-light/70 h-12 pl-10 pr-4 py-3 rounded-lg border border-slate-700/70 focus:outline-none input-glow text-white placeholder:text-slate-500"
               required
             />
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -109,12 +109,6 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
                 </svg>
               </div>
             </div>
-            <Input
-              type="text"
-              value={projectUrl}
-              className="w-full pl-10"
-              hidden
-            />
           </div>
         </div>
         
@@ -147,15 +141,14 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
             fullWidth 
             glow 
             isLoading={isSubmitting}
-            className="group relative overflow-hidden h-14 bg-gradient-to-r from-neon/90 to-neon/70 rounded-lg text-space shadow-lg shadow-neon/20 hover:shadow-neon/30 transition-all duration-300"
+            className="group relative overflow-hidden h-14 bg-gradient-to-r from-neon/90 to-neon/70 rounded-lg text-space shadow-lg shadow-neon/20 hover:shadow-neon/30 transition-all duration-300 flex items-center justify-center"
           >
-            <span className="relative z-10 font-semibold">
+            <span className="relative z-10 font-semibold mr-2">
               Start Your Journey
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-neon to-[#00d8ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1 relative z-10"
+              className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

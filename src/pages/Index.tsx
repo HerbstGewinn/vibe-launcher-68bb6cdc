@@ -10,17 +10,22 @@ import StatsSection from '@/components/StatsSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
+
 enum AppState {
   INITIAL,
   STRATEGY,
   SIGNUP,
 }
+
 const Index = () => {
   const [appState, setAppState] = useState<AppState>(AppState.INITIAL);
   const [projectData, setProjectData] = useState<{
     projectUrl: string;
     description: string;
   } | null>(null);
+  const navigate = useNavigate();
+
   const handleFormSubmit = (data: {
     projectUrl: string;
     description: string;
@@ -39,7 +44,9 @@ const Index = () => {
       behavior: 'smooth'
     });
   };
+
   const handleStrategyComplete = () => {
+    // Option 1: Go to signup form
     setAppState(AppState.SIGNUP);
 
     // Show toast notification
@@ -52,7 +59,11 @@ const Index = () => {
       top: 0,
       behavior: 'smooth'
     });
+    
+    // Option 2: Could also redirect to dashboard
+    // navigate('/dashboard');
   };
+
   return <div className="relative min-h-screen">
       {/* Background particles */}
       <Particles quantity={40} className="pointer-events-none" />
@@ -104,4 +115,5 @@ const Index = () => {
       <Footer />
     </div>;
 };
+
 export default Index;

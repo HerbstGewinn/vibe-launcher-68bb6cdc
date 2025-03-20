@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -327,6 +326,10 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
   const handleCheckSEO = () => {
     navigate('/signin');
   };
+  
+  const goToDashboard = () => {
+    navigate('/dashboard');
+  };
 
   return (
     <div className={cn('max-w-4xl mx-auto px-4', className)}>
@@ -556,9 +559,14 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
             You've successfully completed your launch strategy. You're on your way to building a successful product with engaged users.
             Ready to take your launch to the next level?
           </p>
-          <Button glow size="lg" onClick={onComplete}>
-            Continue Your Journey <Rocket className="ml-2 h-4 w-4" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button glow size="lg" onClick={onComplete}>
+              Continue Your Journey <Rocket className="ml-2 h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="lg" onClick={goToDashboard}>
+              View Dashboard
+            </Button>
+          </div>
         </motion.div>
       )}
     </div>

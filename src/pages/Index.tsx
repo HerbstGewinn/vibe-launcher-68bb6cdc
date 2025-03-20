@@ -76,11 +76,11 @@ const Index = () => {
       <Navbar />
       
       {/* Main content */}
-      <main className="relative pb-20 pt-20 md:pt-24">
+      <main className="relative pb-20 pt-16 md:pt-20">
         {appState === AppState.INITIAL && <>
             <Hero />
             
-            <div className="mt-0 sm:mt-4 md:mt-8 px-4">
+            <div className="mt-0 px-4">
               <LaunchForm className="animate-fade-in" onSubmit={handleFormSubmit} />
             </div>
             

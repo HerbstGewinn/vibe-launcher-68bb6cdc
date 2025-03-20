@@ -28,7 +28,7 @@ const Hero = ({
   };
 
   return (
-    <section className={cn('relative min-h-[600px] overflow-hidden', className)}>
+    <section className={cn('relative min-h-[600px] md:min-h-[650px] overflow-hidden', className)}>
       <LampContainer className="w-full">
         <motion.div 
           initial={{
@@ -110,7 +110,7 @@ const Hero = ({
               delay: 1,
               duration: 0.5
             }} 
-            className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center items-center"
+            className="flex flex-row gap-3 justify-center items-center"
           >
             <Button size="lg" glow>Get Started</Button>
             <Button variant="outline" size="lg">

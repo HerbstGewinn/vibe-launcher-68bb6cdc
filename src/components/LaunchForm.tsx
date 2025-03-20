@@ -135,7 +135,7 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="w-full"
+            className="w-full max-w-md mx-auto"
           >
             <Button 
               type="submit" 
@@ -144,7 +144,7 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
               isLoading={isSubmitting}
               className="group relative overflow-hidden h-14 bg-gradient-to-br from-neon via-neon/90 to-neon/70 rounded-lg text-space font-semibold shadow-lg shadow-neon/20 hover:shadow-neon/30 transition-all duration-300"
             >
-              <span className="flex items-center justify-center gap-2">
+              <span className="flex items-center justify-center gap-2 w-full">
                 Start Your Journey
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

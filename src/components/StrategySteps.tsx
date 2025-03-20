@@ -3,14 +3,27 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import Button from './Button';
-import { CheckCircle2, ChevronDown, ChevronUp, Trophy } from 'lucide-react';
+import { CheckCircle2, ChevronDown, ChevronUp, Trophy, Globe, Server, Users, MessageSquare, LineChart, Rocket } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface Step {
   id: number;
   title: string;
   description: string;
   actionItems: string[];
+  icon: React.ReactNode;
+  tools: {
+    name: string;
+    description: string;
+    linkText?: string;
+    link?: string;
+  }[];
+  resources: {
+    title: string;
+    description: string;
+    link?: string;
+  }[];
 }
 
 interface StrategyStepsProps {
@@ -29,52 +42,222 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
   const steps: Step[] = [
     {
       id: 1,
-      title: "Define Your Product Vision",
-      description: "Clarify what makes your product unique and valuable.",
+      title: "Get a Domain, Deploy your project",
+      description: "Secure your online identity and make your project accessible to the world.",
+      icon: <Globe className="h-6 w-6 text-neon" />,
       actionItems: [
-        "Define your core value proposition",
-        "Identify your target audience",
-        "Outline key features & benefits"
+        "Register a domain name that matches your brand",
+        "Set up hosting with a reliable provider",
+        "Deploy your project with continuous integration",
+        "Configure custom domain and SSL certificate"
+      ],
+      tools: [
+        {
+          name: "Namecheap",
+          description: "Affordable domain registration with free privacy protection",
+          linkText: "Search domains",
+          link: "https://www.namecheap.com"
+        },
+        {
+          name: "Vercel",
+          description: "One-click deployment platform optimized for frontend projects",
+          linkText: "Deploy now",
+          link: "https://vercel.com"
+        },
+        {
+          name: "Netlify",
+          description: "All-in-one platform for automating modern web projects",
+          linkText: "Start free",
+          link: "https://netlify.com"
+        }
+      ],
+      resources: [
+        {
+          title: "Domain Name Guide",
+          description: "How to choose the perfect domain for your project",
+          link: "#"
+        },
+        {
+          title: "Deployment Checklist",
+          description: "Essential steps before launching your project",
+          link: "#"
+        }
       ]
     },
     {
       id: 2,
       title: "Optimize Your Landing Page",
       description: "Create a compelling online presence that converts visitors.",
+      icon: <Server className="h-6 w-6 text-neon" />,
       actionItems: [
         "Craft clear, benefit-focused headlines",
         "Add strong calls-to-action",
-        "Include social proof elements"
+        "Include social proof elements",
+        "Optimize page loading speed"
+      ],
+      tools: [
+        {
+          name: "Lighthouse",
+          description: "Performance, accessibility, and SEO auditing tool",
+          linkText: "Learn more",
+          link: "https://developers.google.com/web/tools/lighthouse"
+        },
+        {
+          name: "Hotjar",
+          description: "Visualize user behavior with heatmaps and recordings",
+          linkText: "Get started",
+          link: "https://www.hotjar.com"
+        },
+        {
+          name: "Unbounce",
+          description: "Landing page builder with A/B testing capabilities",
+          linkText: "Try it",
+          link: "https://unbounce.com"
+        }
+      ],
+      resources: [
+        {
+          title: "Landing Page Conversion Guide",
+          description: "Proven strategies to increase conversion rates",
+          link: "#"
+        },
+        {
+          title: "CTA Optimization Tactics",
+          description: "Psychology-backed approaches to improve click-through rates",
+          link: "#"
+        }
       ]
     },
     {
       id: 3,
       title: "Build an Acquisition Strategy",
       description: "Establish channels to attract your first users.",
+      icon: <Users className="h-6 w-6 text-neon" />,
       actionItems: [
         "Set up analytics tracking",
         "Implement SEO best practices",
-        "Plan content marketing strategy"
+        "Plan content marketing strategy",
+        "Identify key distribution channels"
+      ],
+      tools: [
+        {
+          name: "Google Analytics",
+          description: "Free web analytics service to track website traffic",
+          linkText: "Set up",
+          link: "https://analytics.google.com"
+        },
+        {
+          name: "Ahrefs",
+          description: "SEO tool for competitive analysis and keyword research",
+          linkText: "Try it",
+          link: "https://ahrefs.com"
+        },
+        {
+          name: "Buffer",
+          description: "Social media management platform for scheduling posts",
+          linkText: "Get started",
+          link: "https://buffer.com"
+        }
+      ],
+      resources: [
+        {
+          title: "Customer Acquisition Playbook",
+          description: "Channel-specific strategies to find your first 100 users",
+          link: "#"
+        },
+        {
+          title: "SEO Fundamentals Guide",
+          description: "Technical and content optimization for search engines",
+          link: "#"
+        }
       ]
     },
     {
       id: 4,
       title: "Launch & Gather Feedback",
       description: "Release your product and start collecting insights.",
+      icon: <MessageSquare className="h-6 w-6 text-neon" />,
       actionItems: [
         "Create a pre-launch checklist",
         "Set up feedback collection tools",
-        "Plan your launch announcement"
+        "Plan your launch announcement",
+        "Establish a customer support workflow"
+      ],
+      tools: [
+        {
+          name: "Typeform",
+          description: "Beautiful, conversational forms and surveys",
+          linkText: "Create form",
+          link: "https://www.typeform.com"
+        },
+        {
+          name: "Intercom",
+          description: "Customer messaging platform with live chat",
+          linkText: "Start free",
+          link: "https://www.intercom.com"
+        },
+        {
+          name: "Product Hunt",
+          description: "Platform to launch new products to an engaged community",
+          linkText: "Submit product",
+          link: "https://www.producthunt.com"
+        }
+      ],
+      resources: [
+        {
+          title: "Product Launch Framework",
+          description: "Step-by-step guide to a successful product launch",
+          link: "#"
+        },
+        {
+          title: "User Feedback Templates",
+          description: "Effective questions to ask your early users",
+          link: "#"
+        }
       ]
     },
     {
       id: 5,
       title: "Iterate & Grow",
       description: "Use feedback to improve and expand your user base.",
+      icon: <LineChart className="h-6 w-6 text-neon" />,
       actionItems: [
         "Analyze user feedback patterns",
         "Prioritize improvements",
-        "Implement referral mechanisms"
+        "Implement referral mechanisms",
+        "Set up retention analytics"
+      ],
+      tools: [
+        {
+          name: "Mixpanel",
+          description: "User analytics platform for tracking behavioral data",
+          linkText: "Get started",
+          link: "https://mixpanel.com"
+        },
+        {
+          name: "Trello",
+          description: "Visual collaboration tool for organizing work",
+          linkText: "Try it",
+          link: "https://trello.com"
+        },
+        {
+          name: "ReferralCandy",
+          description: "Referral marketing software to acquire customers",
+          linkText: "Learn more",
+          link: "https://www.referralcandy.com"
+        }
+      ],
+      resources: [
+        {
+          title: "Product Iteration Framework",
+          description: "Methodologies for continuous improvement",
+          link: "#"
+        },
+        {
+          title: "Growth Metrics Guide",
+          description: "Key metrics to track for sustainable growth",
+          link: "#"
+        }
       ]
     }
   ];
@@ -173,14 +356,7 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
           <span>Progress</span>
           <span>{Math.round(calculateProgress())}%</span>
         </div>
-        <div className="h-2 bg-space-light rounded-full overflow-hidden">
-          <motion.div 
-            className="h-full bg-neon rounded-full"
-            initial={{ width: '0%' }}
-            animate={{ width: `${calculateProgress()}%` }}
-            transition={{ duration: 0.5 }}
-          ></motion.div>
-        </div>
+        <Progress value={calculateProgress()} className="h-2" />
       </div>
       
       {/* Steps */}
@@ -217,7 +393,7 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
                 >
                   {isCompleted ? (
                     <CheckCircle2 className="h-5 w-5" />
-                  ) : step.id}
+                  ) : step.icon || step.id}
                 </motion.div>
                 
                 <div className="flex-1">
@@ -232,7 +408,7 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
               </div>
               
               <motion.div
-                className="mt-4 pl-14 space-y-2"
+                className="mt-4 pl-14 space-y-4"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ 
                   height: isExpanded ? 'auto' : 0,
@@ -240,50 +416,103 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
                 }}
                 transition={{ duration: 0.3 }}
               >
-                {step.actionItems.map((action, idx) => {
-                  const actionKey = `${step.id}-${action}`;
-                  const isActionCompleted = actions[actionKey];
-                  
-                  return (
-                    <motion.div 
-                      key={idx} 
-                      className={cn(
-                        'flex items-center gap-3 p-3 rounded-lg transition-all duration-300',
-                        isActionCompleted ? 'bg-green-500/10' : 'bg-slate-800/50 hover:bg-slate-700/30'
-                      )}
-                      whileHover={{ scale: 1.02 }}
-                      onClick={() => handleActionToggle(step.id, action)}
-                    >
+                {/* Action Items */}
+                <div className="space-y-2">
+                  <h4 className="font-medium text-sm text-slate-300 mb-2">ACTION ITEMS:</h4>
+                  {step.actionItems.map((action, idx) => {
+                    const actionKey = `${step.id}-${action}`;
+                    const isActionCompleted = actions[actionKey];
+                    
+                    return (
                       <motion.div 
+                        key={idx} 
                         className={cn(
-                          'h-5 w-5 rounded border flex items-center justify-center cursor-pointer transition-all duration-300',
-                          isActionCompleted ? 'bg-green-500 border-green-500' : 'border-slate-500'
+                          'flex items-center gap-3 p-3 rounded-lg transition-all duration-300',
+                          isActionCompleted ? 'bg-green-500/10' : 'bg-slate-800/50 hover:bg-slate-700/30'
                         )}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        onClick={() => handleActionToggle(step.id, action)}
                       >
-                        {isActionCompleted && (
-                          <motion.svg 
-                            className="h-3 w-3 text-white" 
-                            viewBox="0 0 20 20" 
-                            fill="currentColor"
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </motion.svg>
-                        )}
+                        <motion.div 
+                          className={cn(
+                            'h-5 w-5 rounded border flex items-center justify-center cursor-pointer transition-all duration-300',
+                            isActionCompleted ? 'bg-green-500 border-green-500' : 'border-slate-500'
+                          )}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          {isActionCompleted && (
+                            <motion.svg 
+                              className="h-3 w-3 text-white" 
+                              viewBox="0 0 20 20" 
+                              fill="currentColor"
+                              initial={{ opacity: 0, scale: 0.5 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </motion.svg>
+                          )}
+                        </motion.div>
+                        <span className={cn(
+                          'flex-1 text-sm font-medium cursor-pointer',
+                          isActionCompleted && 'text-green-400'
+                        )}>
+                          {action}
+                        </span>
                       </motion.div>
-                      <span className={cn(
-                        'flex-1 text-sm font-medium cursor-pointer',
-                        isActionCompleted && 'text-green-400'
-                      )}>
-                        {action}
-                      </span>
-                    </motion.div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
+                
+                {/* Recommended Tools */}
+                <div className="mt-6">
+                  <h4 className="font-medium text-sm text-slate-300 mb-3">RECOMMENDED TOOLS:</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {step.tools.map((tool, idx) => (
+                      <Card key={idx} className="bg-space-light/70 border-slate-700/50 hover:border-neon/50 transition-all duration-300">
+                        <CardContent className="p-4">
+                          <h5 className="font-medium text-neon mb-1">{tool.name}</h5>
+                          <p className="text-xs text-slate-300 mb-2">{tool.description}</p>
+                          {tool.link && (
+                            <a
+                              href={tool.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs font-medium text-neon hover:text-neon/80 transition-colors inline-flex items-center gap-1"
+                            >
+                              {tool.linkText || "View tool"} 
+                              <svg className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                              </svg>
+                            </a>
+                          )}
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Helpful Resources */}
+                <div className="mt-4">
+                  <h4 className="font-medium text-sm text-slate-300 mb-3">HELPFUL RESOURCES:</h4>
+                  <div className="space-y-2">
+                    {step.resources.map((resource, idx) => (
+                      <div key={idx} className="bg-space-light/40 p-3 rounded-lg border border-slate-700/30">
+                        <h5 className="font-medium text-white text-sm mb-1">{resource.title}</h5>
+                        <p className="text-xs text-slate-300 mb-2">{resource.description}</p>
+                        {resource.link && (
+                          <a
+                            href={resource.link}
+                            className="text-xs font-medium text-neon hover:underline"
+                          >
+                            View resource →
+                          </a>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           );
@@ -309,7 +538,7 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
             Ready to take your launch to the next level?
           </p>
           <Button glow size="lg" onClick={onComplete}>
-            Continue Your Journey
+            Continue Your Journey <Rocket className="ml-2 h-4 w-4" />
           </Button>
         </motion.div>
       )}

@@ -1,7 +1,9 @@
 
 import React from 'react';
-import Lamp from './Lamp';
+import { motion } from 'framer-motion';
+import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
+import Button from './Button';
 
 interface HeroProps {
   className?: string;
@@ -9,22 +11,47 @@ interface HeroProps {
 
 const Hero = ({ className }: HeroProps) => {
   return (
-    <section className={cn('relative min-h-[60vh] flex flex-col items-center justify-center overflow-hidden py-20', className)}>
-      <Lamp size="lg" className="mb-8" />
-      
-      <div className="relative z-10 text-center px-4 animate-fade-in">
-        <span className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
-          VIBELAUNCH.IO
-        </span>
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
-          From <span className="text-neon">Vibe Coding</span> to <span className="text-neon">1000 Users</span>
-        </h1>
-        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-          Launch your project and transform it into a product people love. Our strategic approach helps you build traction and grow your user base.
-        </p>
-      </div>
-      
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(10,255,255,0.1),transparent)]"></div>
+    <section className={cn('relative min-h-[90vh] overflow-hidden', className)}>
+      <LampContainer className="w-full min-h-[85vh]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}
+          className="relative z-10 text-center px-4 animate-fade-in"
+        >
+          <span className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
+            VIBELAUNCH.IO
+          </span>
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold mb-4 tracking-tight bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent"
+            initial={{ opacity: 0.5, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+          >
+            From <span className="text-neon">Vibe Coding</span> to <span className="text-neon">1000 Users</span>
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            Launch your project and transform it into a product people love. Our strategic approach helps you build traction and grow your user base.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+          >
+            <Button size="lg" glow>Get Started</Button>
+          </motion.div>
+        </motion.div>
+      </LampContainer>
     </section>
   );
 };

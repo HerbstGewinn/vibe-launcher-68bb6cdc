@@ -42,24 +42,26 @@ const Button = ({
   const glowEffect = glow ? 'shadow-neon hover:shadow-neon-lg transition-shadow duration-300' : '';
   const widthClass = fullWidth ? 'w-full' : '';
 
-  const commonProps = {
-    className: cn(
-      'inline-flex items-center justify-center font-medium relative overflow-hidden',
-      variants[variant],
-      sizes[size],
-      widthClass,
-      glowEffect,
-      isLoading && 'opacity-70 cursor-not-allowed',
-      className
-    ),
-    disabled: isLoading || props.disabled,
-    ...props,
-  };
+  // Separate props based on the component type
+  if (Component === 'a') {
+    // For anchor elements
+    const { disabled, ...restProps } = props;
+    const anchorProps = {
+      className: cn(
+        'inline-flex items-center justify-center font-medium relative overflow-hidden',
+        variants[variant],
+        sizes[size],
+        widthClass,
+        glowEffect,
+        isLoading && 'opacity-70 cursor-not-allowed',
+        className
+      ),
+      href,
+      ...restProps
+    };
 
-  // If Component is an anchor tag, add the href prop
-  if (Component === 'a' && href) {
     return (
-      <Component href={href} {...commonProps}>
+      <Component {...anchorProps}>
         {isLoading && (
           <span className="absolute inset-0 flex items-center justify-center">
             <svg className="animate-spin h-5 w-5 text-current" viewBox="0 0 24 24">
@@ -86,8 +88,21 @@ const Button = ({
     );
   }
 
+  // For button elements
   return (
-    <Component {...commonProps}>
+    <Component
+      className={cn(
+        'inline-flex items-center justify-center font-medium relative overflow-hidden',
+        variants[variant],
+        sizes[size],
+        widthClass,
+        glowEffect,
+        isLoading && 'opacity-70 cursor-not-allowed',
+        className
+      )}
+      disabled={isLoading || props.disabled}
+      {...props}
+    >
       {isLoading && (
         <span className="absolute inset-0 flex items-center justify-center">
           <svg className="animate-spin h-5 w-5 text-current" viewBox="0 0 24 24">

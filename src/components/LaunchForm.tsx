@@ -135,7 +135,7 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="w-full max-w-md mx-auto"
+            className="w-full"
           >
             <Button 
               type="submit" 

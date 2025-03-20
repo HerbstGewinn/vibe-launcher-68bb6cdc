@@ -130,37 +130,40 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
           />
         </div>
         
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ duration: 0.2 }}
-          className="pt-4"
-        >
-          <Button 
-            type="submit" 
-            fullWidth 
-            glow 
-            isLoading={isSubmitting}
-            className="group relative overflow-hidden h-14 bg-gradient-to-r from-neon/90 to-neon/70 rounded-lg text-space shadow-lg shadow-neon/20 hover:shadow-neon/30 transition-all duration-300 flex items-center justify-center"
+        <div className="flex justify-center pt-4">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="w-full"
           >
-            <span className="relative z-10 font-semibold mr-2">
-              Start Your Journey
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <Button 
+              type="submit" 
+              fullWidth 
+              glow 
+              isLoading={isSubmitting}
+              className="group relative overflow-hidden h-14 bg-gradient-to-br from-neon via-neon/90 to-neon/70 rounded-lg text-space font-semibold shadow-lg shadow-neon/20 hover:shadow-neon/30 transition-all duration-300"
             >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </Button>
-        </motion.div>
+              <span className="flex items-center justify-center gap-2">
+                Start Your Journey
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-neon/10 to-cyan-400/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Button>
+          </motion.div>
+        </div>
       </form>
     </motion.div>
   );

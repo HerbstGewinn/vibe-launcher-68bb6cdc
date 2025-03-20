@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Hero from '@/components/Hero';
 import LaunchForm from '@/components/LaunchForm';
@@ -75,15 +76,15 @@ const Index = () => {
       <Navbar />
       
       {/* Main content */}
-      <main className="relative pb-20 pt-24">
+      <main className="relative pb-20 pt-20 md:pt-24">
         {appState === AppState.INITIAL && <>
             <Hero />
             
-            <div className="mt-8 px-4">
+            <div className="mt-0 sm:mt-4 md:mt-8 px-4">
               <LaunchForm className="animate-fade-in" onSubmit={handleFormSubmit} />
             </div>
             
-            <FeatureHighlights className="mt-20" />
+            <FeatureHighlights className="mt-16 md:mt-20" />
             
             <StatsSection />
             

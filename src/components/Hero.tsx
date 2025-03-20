@@ -1,12 +1,15 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
 import Button from './Button';
 import { ChevronDown } from 'lucide-react';
+
 interface HeroProps {
   className?: string;
 }
+
 const Hero = ({
   className
 }: HeroProps) => {
@@ -23,8 +26,9 @@ const Hero = ({
       });
     }
   };
-  return <section className={cn('relative min-h-[90vh] overflow-hidden', className)}>
-      <LampContainer className="w-full min-h-[85vh]">
+
+  return <section className={cn('relative min-h-[80vh] md:min-h-[90vh] overflow-hidden', className)}>
+      <LampContainer className="w-full min-h-[75vh] md:min-h-[85vh]">
         <motion.div initial={{
         opacity: 0,
         y: 20
@@ -61,7 +65,7 @@ const Hero = ({
         }}>
             From <span className="text-neon">Vibe Coding</span> to <span className="text-neon">1000 Users</span>
           </motion.h1>
-          <motion.p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8" initial={{
+          <motion.p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-6 md:mb-8" initial={{
           opacity: 0
         }} whileInView={{
           opacity: 1
@@ -81,7 +85,7 @@ const Hero = ({
         }} transition={{
           delay: 1,
           duration: 0.5
-        }} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        }} className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
             <Button size="lg" glow>Get Started</Button>
             <Button variant="outline" size="lg">
               Learn More
@@ -94,4 +98,5 @@ const Hero = ({
       <div id="content-section"></div>
     </section>;
 };
+
 export default Hero;

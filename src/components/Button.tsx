@@ -2,16 +2,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-type ButtonAsButtonProps = {
-  as?: 'button';
-  href?: never;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
-type ButtonAsAnchorProps = {
-  as: 'a';
-  href: string;
-} & React.AnchorHTMLAttributes<HTMLAnchorElement>;
-
 type ButtonBaseProps = {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
   size?: 'sm' | 'md' | 'lg';
@@ -19,21 +9,33 @@ type ButtonBaseProps = {
   fullWidth?: boolean;
   glow?: boolean;
   children: React.ReactNode;
+  className?: string;
 };
 
-export type ButtonProps = ButtonBaseProps & (ButtonAsButtonProps | ButtonAsAnchorProps);
+type ButtonAsButtonProps = ButtonBaseProps & {
+  as?: 'button';
+  href?: never;
+} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps>;
 
-const Button = ({
-  className,
-  variant = 'primary',
-  size = 'md',
-  isLoading = false,
-  fullWidth = false,
-  glow = false,
-  as: Component = 'button',
-  children,
-  ...props
-}: ButtonProps) => {
+type ButtonAsAnchorProps = ButtonBaseProps & {
+  as: 'a';
+  href: string;
+} & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps>;
+
+export type ButtonProps = ButtonAsButtonProps | ButtonAsAnchorProps;
+
+const Button = (props: ButtonProps) => {
+  const {
+    className,
+    variant = 'primary',
+    size = 'md',
+    isLoading = false,
+    fullWidth = false,
+    glow = false,
+    children,
+    ...rest
+  } = props;
+
   const variants = {
     primary: 'bg-neon text-space font-medium hover:bg-neon/90 transition-all',
     secondary: 'bg-secondary text-primary-foreground hover:bg-secondary/80 transition-all',
@@ -81,11 +83,11 @@ const Button = ({
     </span>
   );
 
-  if (Component === 'a') {
+  if ('as' in props && props.as === 'a') {
     return (
       <a
         className={baseClasses}
-        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+        {...(rest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {isLoading && <LoadingSpinner />}
         <span className={cn(isLoading && 'opacity-0')}>
@@ -98,8 +100,8 @@ const Button = ({
   return (
     <button
       className={baseClasses}
-      disabled={isLoading || (props as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled}
-      {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+      disabled={isLoading || ('disabled' in rest && rest.disabled)}
+      {...(rest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {isLoading && <LoadingSpinner />}
       <span className={cn(isLoading && 'opacity-0')}>

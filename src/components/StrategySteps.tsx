@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import Button from './Button';
-import { CheckCircle2, ChevronDown, ChevronUp, Trophy, Globe, Server, Users, MessageSquare, LineChart, Rocket } from 'lucide-react';
+import { CheckCircle2, ChevronDown, ChevronUp, Trophy, Globe, LineChart, Users, MessageSquare, FileSearch, Rocket } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
 
 interface Step {
   id: number;
@@ -38,6 +39,7 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
   const [actions, setActions] = useState<{[key: string]: boolean}>({});
   const [expandedSteps, setExpandedSteps] = useState<number[]>([1]);
   const [streakCount, setStreakCount] = useState(0);
+  const navigate = useNavigate();
   
   const steps: Step[] = [
     {
@@ -86,45 +88,45 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
     },
     {
       id: 2,
-      title: "Optimize Your Landing Page",
-      description: "Create a compelling online presence that converts visitors.",
-      icon: <Server className="h-6 w-6 text-neon" />,
+      title: "Get indexed by Google",
+      description: "Ensure your site is discoverable by search engines to attract organic traffic.",
+      icon: <FileSearch className="h-6 w-6 text-neon" />,
       actionItems: [
-        "Craft clear, benefit-focused headlines",
-        "Add strong calls-to-action",
-        "Include social proof elements",
-        "Optimize page loading speed"
+        "Create and submit a sitemap.xml file",
+        "Set up Google Search Console for your domain",
+        "Configure Google Analytics for tracking",
+        "Implement basic on-page SEO optimizations"
       ],
       tools: [
         {
-          name: "Lighthouse",
-          description: "Performance, accessibility, and SEO auditing tool",
-          linkText: "Learn more",
-          link: "https://developers.google.com/web/tools/lighthouse"
+          name: "Google Search Console",
+          description: "Free tool to monitor and maintain your site's presence in search results",
+          linkText: "Add property",
+          link: "https://search.google.com/search-console"
         },
         {
-          name: "Hotjar",
-          description: "Visualize user behavior with heatmaps and recordings",
-          linkText: "Get started",
-          link: "https://www.hotjar.com"
+          name: "Google Analytics",
+          description: "Track user interaction and traffic sources for your website",
+          linkText: "Set up",
+          link: "https://analytics.google.com"
         },
         {
-          name: "Unbounce",
-          description: "Landing page builder with A/B testing capabilities",
-          linkText: "Try it",
-          link: "https://unbounce.com"
+          name: "XML Sitemaps",
+          description: "Free sitemap generator to help search engines crawl your site",
+          linkText: "Generate sitemap",
+          link: "https://www.xml-sitemaps.com"
         }
       ],
       resources: [
         {
-          title: "Landing Page Conversion Guide",
-          description: "Proven strategies to increase conversion rates",
+          title: "Google Indexing Guide",
+          description: "Step-by-step process to get your site indexed quickly",
           link: "#"
         },
         {
-          title: "CTA Optimization Tactics",
-          description: "Psychology-backed approaches to improve click-through rates",
-          link: "#"
+          title: "SEO Starter Guide",
+          description: "Google's official guide to search engine optimization",
+          link: "https://developers.google.com/search/docs/beginner/seo-starter-guide"
         }
       ]
     },
@@ -322,6 +324,10 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
     );
   };
 
+  const handleCheckSEO = () => {
+    navigate('/signin');
+  };
+
   return (
     <div className={cn('max-w-4xl mx-auto px-4', className)}>
       <div className="text-center mb-12 animate-fade-in">
@@ -464,6 +470,19 @@ const StrategySteps = ({ className, onComplete, projectUrl }: StrategyStepsProps
                     );
                   })}
                 </div>
+                
+                {/* Special SEO Check button for step 2 */}
+                {step.id === 2 && (
+                  <div className="mt-4 pl-8">
+                    <Button 
+                      onClick={handleCheckSEO}
+                      className="px-6 py-2 w-full md:w-auto"
+                      glow
+                    >
+                      Check your SEO
+                    </Button>
+                  </div>
+                )}
                 
                 {/* Recommended Tools */}
                 <div className="mt-6">

@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
 import LaunchForm from '@/components/LaunchForm';
 import StrategySteps from '@/components/StrategySteps';
@@ -9,6 +8,8 @@ import Particles from '@/components/Particles';
 import SuccessStories from '@/components/SuccessStories';
 import FeatureHighlights from '@/components/FeatureHighlights';
 import StatsSection from '@/components/StatsSection';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { toast } from 'sonner';
 
 enum AppState {
@@ -54,26 +55,11 @@ const Index = () => {
       {/* Radial gradient background */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.05),transparent_50%)]"></div>
       
-      {/* Navigation links */}
-      <nav className="absolute top-0 right-0 z-50 px-6 py-4">
-        <ul className="flex space-x-6">
-          <li>
-            <Link to="/" className="text-slate-300 hover:text-neon transition-colors">Home</Link>
-          </li>
-          <li>
-            <Link to="/about" className="text-slate-300 hover:text-neon transition-colors">About</Link>
-          </li>
-          <li>
-            <Link to="/pricing" className="text-slate-300 hover:text-neon transition-colors">Pricing</Link>
-          </li>
-          <li>
-            <Link to="/integrations" className="text-slate-300 hover:text-neon transition-colors">Integrations</Link>
-          </li>
-        </ul>
-      </nav>
+      {/* Navigation */}
+      <Navbar />
       
       {/* Main content */}
-      <main className="relative pb-20">
+      <main className="relative pb-20 pt-24">
         {appState === AppState.INITIAL && (
           <>
             <Hero />
@@ -152,23 +138,7 @@ const Index = () => {
       </main>
       
       {/* Footer */}
-      <footer className="py-8 border-t border-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-neon font-semibold">Vibelaunch.io</p>
-              <p className="text-slate-500 text-xs">© {new Date().getFullYear()} All rights reserved.</p>
-            </div>
-            
-            <div className="flex space-x-6">
-              <Link to="/" className="text-slate-300 hover:text-neon transition-colors">Home</Link>
-              <Link to="/about" className="text-slate-300 hover:text-neon transition-colors">About</Link>
-              <Link to="/pricing" className="text-slate-300 hover:text-neon transition-colors">Pricing</Link>
-              <Link to="/integrations" className="text-slate-300 hover:text-neon transition-colors">Integrations</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

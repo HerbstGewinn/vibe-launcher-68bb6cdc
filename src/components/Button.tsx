@@ -15,12 +15,12 @@ type ButtonBaseProps = {
 type ButtonAsButtonProps = ButtonBaseProps & {
   as?: 'button';
   href?: never;
-} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps>;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 type ButtonAsAnchorProps = ButtonBaseProps & {
   as: 'a';
   href: string;
-} & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps>;
+} & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export type ButtonProps = ButtonAsButtonProps | ButtonAsAnchorProps;
 
@@ -84,10 +84,11 @@ const Button = (props: ButtonProps) => {
   );
 
   if ('as' in props && props.as === 'a') {
+    const { as, ...anchorProps } = props;
     return (
       <a
         className={baseClasses}
-        {...(rest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+        {...anchorProps as React.AnchorHTMLAttributes<HTMLAnchorElement>}
       >
         {isLoading && <LoadingSpinner />}
         <span className={cn(isLoading && 'opacity-0')}>
@@ -97,11 +98,12 @@ const Button = (props: ButtonProps) => {
     );
   }
 
+  const { as, ...buttonProps } = props;
   return (
     <button
       className={baseClasses}
-      disabled={isLoading || ('disabled' in rest && rest.disabled)}
-      {...(rest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+      disabled={isLoading || ('disabled' in buttonProps && buttonProps.disabled)}
+      {...buttonProps as React.ButtonHTMLAttributes<HTMLButtonElement>}
     >
       {isLoading && <LoadingSpinner />}
       <span className={cn(isLoading && 'opacity-0')}>

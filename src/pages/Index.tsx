@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Hero from '@/components/Hero';
 import LaunchForm from '@/components/LaunchForm';
@@ -11,44 +10,50 @@ import StatsSection from '@/components/StatsSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { toast } from 'sonner';
-
 enum AppState {
   INITIAL,
   STRATEGY,
-  SIGNUP
+  SIGNUP,
 }
-
 const Index = () => {
   const [appState, setAppState] = useState<AppState>(AppState.INITIAL);
-  const [projectData, setProjectData] = useState<{ projectUrl: string; description: string } | null>(null);
-
-  const handleFormSubmit = (data: { projectUrl: string; description: string }) => {
+  const [projectData, setProjectData] = useState<{
+    projectUrl: string;
+    description: string;
+  } | null>(null);
+  const handleFormSubmit = (data: {
+    projectUrl: string;
+    description: string;
+  }) => {
     setProjectData(data);
     setAppState(AppState.STRATEGY);
-    
+
     // Show toast notification
     toast.success('Strategy generated successfully!', {
-      description: 'Follow these steps to launch your project.',
+      description: 'Follow these steps to launch your project.'
     });
-    
-    // Scroll to top smoothly
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
+    // Scroll to top smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
   const handleStrategyComplete = () => {
     setAppState(AppState.SIGNUP);
-    
+
     // Show toast notification
     toast.success('All steps completed!', {
-      description: 'Create an account to save your progress.',
+      description: 'Create an account to save your progress.'
     });
-    
-    // Scroll to top smoothly
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
-  return (
-    <div className="relative min-h-screen">
+    // Scroll to top smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  return <div className="relative min-h-screen">
       {/* Background particles */}
       <Particles quantity={40} className="pointer-events-none" />
       
@@ -60,15 +65,11 @@ const Index = () => {
       
       {/* Main content */}
       <main className="relative pb-20 pt-24">
-        {appState === AppState.INITIAL && (
-          <>
+        {appState === AppState.INITIAL && <>
             <Hero />
             
             <div className="mt-8 px-4">
-              <LaunchForm 
-                className="animate-fade-in" 
-                onSubmit={handleFormSubmit} 
-              />
+              <LaunchForm className="animate-fade-in" onSubmit={handleFormSubmit} />
             </div>
             
             <FeatureHighlights className="mt-20" />
@@ -77,51 +78,14 @@ const Index = () => {
             
             <SuccessStories />
             
-            <div className="mt-20 text-center">
-              <div className="max-w-2xl mx-auto px-4">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">How Vibelaunch Works</h2>
-                
-                <div className="grid md:grid-cols-3 gap-8">
-                  <div className="frost-container p-6">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-neon/10 border border-neon/30 mb-4 mx-auto">
-                      <span className="text-neon font-medium">1</span>
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">Enter Your Project</h3>
-                    <p className="text-slate-300 text-sm">Add your project URL and brief description to get started.</p>
-                  </div>
-                  
-                  <div className="frost-container p-6">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-neon/10 border border-neon/30 mb-4 mx-auto">
-                      <span className="text-neon font-medium">2</span>
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">Follow Your Strategy</h3>
-                    <p className="text-slate-300 text-sm">Complete personalized steps to optimize your launch process.</p>
-                  </div>
-                  
-                  <div className="frost-container p-6">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-neon/10 border border-neon/30 mb-4 mx-auto">
-                      <span className="text-neon font-medium">3</span>
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">Grow Your Users</h3>
-                    <p className="text-slate-300 text-sm">Implement effective tactics to attract and retain your first 1000 users.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
+            
+          </>}
         
-        {appState === AppState.STRATEGY && projectData && (
-          <div className="pt-16">
-            <StrategySteps 
-              projectUrl={projectData.projectUrl} 
-              onComplete={handleStrategyComplete} 
-            />
-          </div>
-        )}
+        {appState === AppState.STRATEGY && projectData && <div className="pt-16">
+            <StrategySteps projectUrl={projectData.projectUrl} onComplete={handleStrategyComplete} />
+          </div>}
         
-        {appState === AppState.SIGNUP && (
-          <div className="pt-20">
+        {appState === AppState.SIGNUP && <div className="pt-20">
             <div className="text-center mb-10 animate-fade-in">
               <span className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
                 FINAL STEP
@@ -133,14 +97,11 @@ const Index = () => {
             </div>
             
             <SignUpForm className="animate-fade-in" />
-          </div>
-        )}
+          </div>}
       </main>
       
       {/* Footer */}
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;

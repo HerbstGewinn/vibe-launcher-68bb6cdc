@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -32,7 +33,7 @@ const Navbar = () => {
       transition={{ duration: 0.2 }}
     >
       <div className="container relative flex items-center justify-between h-16">
-        <Link href="/" className="font-bold text-xl text-white">
+        <Link to="/" className="font-bold text-xl text-white">
           VIBELAUNCH.IO
         </Link>
         

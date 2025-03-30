@@ -50,8 +50,8 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          <Button variant="outline" size="sm">
-            Sign In
+          <Button variant="outline" size="sm" asChild>
+            <Link to="/">Sign In</Link>
           </Button>
         </div>
         
@@ -99,8 +99,8 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <Button variant="outline" size="sm">
-              Sign In
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/">Sign In</Link>
             </Button>
           </motion.div>
         )}

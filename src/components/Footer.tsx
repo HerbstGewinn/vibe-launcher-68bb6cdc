@@ -35,7 +35,7 @@ const Footer = () => {
               <h3 className="text-slate-300 font-medium mb-3">Account</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/signin" className="text-slate-400 hover:text-neon transition-colors text-sm">Sign In</Link>
+                  <Link to="/" className="text-slate-400 hover:text-neon transition-colors text-sm">Sign In</Link>
                 </li>
                 <li>
                   <Link to="/" className="text-slate-400 hover:text-neon transition-colors text-sm">Sign Up</Link>

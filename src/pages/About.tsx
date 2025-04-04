@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -194,25 +193,23 @@ const About = () => {
                 </div>
               )}
 
-              {/* Mobile layout - FIXED to ensure text isn't blocked by the number */}
+              {/* FIXED Mobile layout - Adjusted to ensure text isn't blocked by number */}
               {isMobile && (
                 <div className="relative">
                   {/* Number indicator with glow effect */}
-                  <div className="absolute left-0 top-4 z-10">
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
                     <div className="h-10 w-10 rounded-full bg-space border-2 border-neon flex items-center justify-center shadow-neon-sm">
                       <span className="text-neon font-semibold">{index + 1}</span>
                     </div>
-                    {/* Year next to number */}
-                    <div className="absolute top-0 left-12 text-neon text-sm font-bold">
-                      {item.year}
-                    </div>
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 rounded-full bg-neon/20 blur-md -z-10"></div>
                   </div>
                   
-                  {/* Content card - with padding to avoid text being blocked by number */}
-                  <div className="frost-container p-5 pt-8 bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300">
-                    <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+                  {/* Content card with enough padding to prevent overlaps */}
+                  <div className="frost-container p-5 bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300">
+                    {/* Year and title positioned for visibility */}
+                    <div className="pl-10">
+                      <h3 className="text-neon text-lg font-bold">{item.year}</h3>
+                      <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+                    </div>
                     <p className="text-slate-300 text-sm">{item.description}</p>
                   </div>
                 </div>

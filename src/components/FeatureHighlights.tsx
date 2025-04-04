@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { CheckCircle2, Shield, CreditCard, Globe, Search, Rocket, Mail, Lock } from 'lucide-react';
+import { CheckCircle2, Shield, CreditCard, Globe, Search, Rocket, Lock } from 'lucide-react';
 
 interface FeatureHighlightsProps {
   className?: string;
@@ -83,17 +83,6 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
         'Marketing integration',
         'Analytics dashboard',
         'Post-launch optimization'
-      ]
-    },
-    {
-      title: 'Customer Service',
-      description: 'Provide exceptional support to your users with integrated customer service and feedback tools.',
-      icon: <Mail className="h-8 w-8 text-neon" />,
-      benefits: [
-        'Ticketing system',
-        'Live chat integration',
-        'Knowledge base',
-        'Customer feedback collection'
       ]
     }
   ];

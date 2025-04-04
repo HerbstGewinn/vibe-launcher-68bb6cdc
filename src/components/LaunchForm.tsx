@@ -15,7 +15,6 @@ interface LaunchFormProps {
 
 const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -31,7 +30,7 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
       // Convert to the expected format for onSubmit
       onSubmit({ 
         projectUrl: email, 
-        description: name 
+        description: '' // Empty description since we removed the name field
       });
       
       setIsSubmitting(false);
@@ -41,9 +40,8 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
         description: 'We\'ll notify you when we launch.',
       });
       
-      // Clear the form fields
+      // Clear the form field
       setEmail('');
-      setName('');
     }, 800);
   };
 
@@ -53,7 +51,7 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        'relative overflow-hidden frost-container max-w-2xl mx-auto p-8 shadow-lg border border-slate-700/50', 
+        'relative overflow-hidden frost-container max-w-2xl mx-auto p-8 shadow-lg border border-slate-700/50 text-center', 
         className
       )}
     >
@@ -76,48 +74,11 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
       </div>
       
       {!hasSubmitted ? (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <Label 
-              htmlFor="name" 
-              className="flex items-center font-medium text-sm text-slate-200"
-            >
-              Your Name
-              <span className="ml-1 text-slate-400 font-normal">(optional)</span>
-            </Label>
-            <div className="relative">
-              <Input
-                id="name"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="John Doe"
-                className="w-full bg-space-light/70 h-12 pl-10 pr-4 py-3 rounded-lg border border-slate-700/70 focus:outline-none input-glow text-white placeholder:text-slate-500"
-              />
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <div className="w-5 h-5 flex items-center justify-center">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-4 w-4 text-slate-400" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+        <form onSubmit={handleSubmit} className="space-y-6 mx-auto max-w-md">
           <div className="space-y-2">
             <Label 
               htmlFor="email" 
-              className="flex items-center font-medium text-sm text-slate-200"
+              className="flex items-center justify-center font-medium text-sm text-slate-200"
             >
               Email Address
               <span className="ml-1 text-neon">*</span>
@@ -157,7 +118,7 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
-              className="w-full"
+              className="w-full max-w-xs"
             >
               <Button 
                 type="submit" 

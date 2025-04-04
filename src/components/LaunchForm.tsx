@@ -48,7 +48,7 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        'frost-container max-w-2xl mx-auto px-6 py-8 shadow-lg border border-slate-700/50', 
+        'bg-space/80 backdrop-blur-lg max-w-2xl mx-auto px-6 py-8 border border-slate-700/50 rounded-xl shadow-lg', 
         className
       )}
     >

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -7,6 +6,8 @@ import Particles from '@/components/Particles';
 import { Progress } from '@/components/ui/progress';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import { Users, Award, Lightbulb, GraduationCap } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const About = () => {
   const timeline = [
@@ -71,6 +72,9 @@ const About = () => {
       
       {/* Radial gradient background */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.05),transparent_50%)]"></div>
+      
+      {/* Navigation */}
+      <Navbar />
       
       {/* Hero section */}
       <div className="pt-20 pb-16 text-center">
@@ -237,22 +241,7 @@ const About = () => {
       </div>
       
       {/* Footer */}
-      <footer className="py-8 border-t border-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-neon font-semibold">Vibelaunch.io</p>
-              <p className="text-slate-500 text-xs">© {new Date().getFullYear()} All rights reserved.</p>
-            </div>
-            
-            <div className="flex space-x-6">
-              <a href="#" className="text-slate-300 hover:text-neon transition-colors">Terms</a>
-              <a href="#" className="text-slate-300 hover:text-neon transition-colors">Privacy</a>
-              <a href="#" className="text-slate-300 hover:text-neon transition-colors">Contact</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

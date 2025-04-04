@@ -54,7 +54,7 @@ export default function IntegrationCircles({
         className="text-center mb-20 md:mb-24" // Increased spacing here
       >
         <h2 className="text-2xl md:text-3xl font-bold mb-2">We know, it can be Confusing !</h2>
-        <p className="text-slate-300 max-w-2xl mx-auto">
+        <p className="text-slate-300 max-w-xs sm:max-w-md mx-auto px-4">
           We know, all these tools & integrations can be confusing
         </p>
       </motion.div>

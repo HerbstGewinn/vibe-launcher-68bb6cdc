@@ -78,7 +78,7 @@ const Hero = ({
               ease: "easeInOut"
             }}
           >
-            From <span className="text-neon">0</span> to <span className="text-neon">1000</span> Users
+            Vibecoding <span className="text-neon">from 0</span> to <span className="text-neon">1000</span> Users
           </motion.h1>
           <motion.p 
             className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-4 md:mb-6" 

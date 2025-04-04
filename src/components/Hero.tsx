@@ -48,14 +48,14 @@ const Hero = ({
             Our platform helps solve all your struggles, payments, auth, security and scales your app to 1000 users.
           </p>
           
-          {/* Redesigned waitlist field based on the image */}
+          {/* Email waitlist input with rounded corners */}
           <div className="max-w-md mx-auto">
             <form onSubmit={handleSubmit} className="relative">
               <Input
                 type="email"
                 placeholder="Your email"
                 className={cn(
-                  "h-12 pr-36 bg-space-light/30 border-slate-700/50 text-white text-base pl-4 transition-colors",
+                  "h-12 pr-36 bg-space-light/30 border-slate-700/50 text-white text-base pl-4 transition-colors rounded-xl",
                   isTyping && "border-neon/50 bg-space-light/50"
                 )}
                 value={email}
@@ -64,7 +64,7 @@ const Hero = ({
               />
               <Button 
                 className={cn(
-                  "absolute right-1 top-1 h-10 px-5 text-base",
+                  "absolute right-1 top-1 h-10 px-5 text-base rounded-lg",
                   isTyping ? "bg-neon text-space hover:bg-neon/90" : "bg-slate-500 text-white hover:bg-slate-600"
                 )}
                 type="submit"

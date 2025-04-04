@@ -26,17 +26,11 @@ const Footer = () => {
                 <li>
                   <Link to="/pricing" className="text-slate-400 hover:text-neon transition-colors text-sm">Pricing</Link>
                 </li>
-                <li>
-                  <Link to="/integrations" className="text-slate-400 hover:text-neon transition-colors text-sm">Integrations</Link>
-                </li>
               </ul>
             </div>
             <div>
               <h3 className="text-slate-300 font-medium mb-3">Account</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/" className="text-slate-400 hover:text-neon transition-colors text-sm">Sign In</Link>
-                </li>
                 <li>
                   <Link to="/" className="text-slate-400 hover:text-neon transition-colors text-sm">Sign Up</Link>
                 </li>

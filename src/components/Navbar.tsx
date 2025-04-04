@@ -15,8 +15,7 @@ const Navbar = () => {
   const mainMenuItems = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Integrations', href: '/integrations' }
+    { label: 'Pricing', href: '/pricing' }
   ];
 
   return (
@@ -50,9 +49,6 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          <Button variant="outline" size="sm" asChild>
-            <Link to="/">Sign In</Link>
-          </Button>
         </div>
         
         {/* Mobile Menu Button */}
@@ -99,9 +95,6 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/">Sign In</Link>
-            </Button>
           </motion.div>
         )}
       </div>

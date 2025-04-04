@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -8,8 +9,11 @@ import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/h
 import { Users, Award, Lightbulb, GraduationCap } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const About = () => {
+  const isMobile = useIsMobile();
+  
   const timeline = [
     {
       year: '2020',
@@ -87,7 +91,7 @@ const About = () => {
           Our Story
         </motion.h1>
         <motion.p 
-          className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
@@ -98,8 +102,8 @@ const About = () => {
       
       {/* Mission section */}
       <div className="container mx-auto px-4 mb-20">
-        <div className="frost-container p-8 md:p-12">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="frost-container p-6 md:p-12">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Mission</h2>
               <p className="text-slate-300 mb-4">
@@ -113,25 +117,25 @@ const About = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="frost-container p-6 bg-space-light/50 flex flex-col items-center justify-center">
-                <Users className="h-10 w-10 text-neon mb-3" />
-                <h3 className="text-xl font-semibold mb-1">10,000+</h3>
-                <p className="text-slate-400 text-sm text-center">Users Helped</p>
+              <div className="frost-container p-5 md:p-6 bg-space-light/50 flex flex-col items-center justify-center">
+                <Users className="h-8 w-8 md:h-10 md:w-10 text-neon mb-3" />
+                <h3 className="text-lg md:text-xl font-semibold mb-1">10,000+</h3>
+                <p className="text-slate-400 text-xs md:text-sm text-center">Users Helped</p>
               </div>
-              <div className="frost-container p-6 bg-space-light/50 flex flex-col items-center justify-center">
-                <Award className="h-10 w-10 text-neon mb-3" />
-                <h3 className="text-xl font-semibold mb-1">98%</h3>
-                <p className="text-slate-400 text-sm text-center">Success Rate</p>
+              <div className="frost-container p-5 md:p-6 bg-space-light/50 flex flex-col items-center justify-center">
+                <Award className="h-8 w-8 md:h-10 md:w-10 text-neon mb-3" />
+                <h3 className="text-lg md:text-xl font-semibold mb-1">98%</h3>
+                <p className="text-slate-400 text-xs md:text-sm text-center">Success Rate</p>
               </div>
-              <div className="frost-container p-6 bg-space-light/50 flex flex-col items-center justify-center">
-                <Lightbulb className="h-10 w-10 text-neon mb-3" />
-                <h3 className="text-xl font-semibold mb-1">5,000+</h3>
-                <p className="text-slate-400 text-sm text-center">Projects Launched</p>
+              <div className="frost-container p-5 md:p-6 bg-space-light/50 flex flex-col items-center justify-center">
+                <Lightbulb className="h-8 w-8 md:h-10 md:w-10 text-neon mb-3" />
+                <h3 className="text-lg md:text-xl font-semibold mb-1">5,000+</h3>
+                <p className="text-slate-400 text-xs md:text-sm text-center">Projects Launched</p>
               </div>
-              <div className="frost-container p-6 bg-space-light/50 flex flex-col items-center justify-center">
-                <GraduationCap className="h-10 w-10 text-neon mb-3" />
-                <h3 className="text-xl font-semibold mb-1">20+</h3>
-                <p className="text-slate-400 text-sm text-center">Countries</p>
+              <div className="frost-container p-5 md:p-6 bg-space-light/50 flex flex-col items-center justify-center">
+                <GraduationCap className="h-8 w-8 md:h-10 md:w-10 text-neon mb-3" />
+                <h3 className="text-lg md:text-xl font-semibold mb-1">20+</h3>
+                <p className="text-slate-400 text-xs md:text-sm text-center">Countries</p>
               </div>
             </div>
           </div>
@@ -148,33 +152,62 @@ const About = () => {
         </div>
         
         <div className="relative max-w-4xl mx-auto">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-neon/30"></div>
+          {/* Timeline line - only visible on desktop */}
+          {!isMobile && (
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-neon/30"></div>
+          )}
+          
+          {/* Mobile timeline line - only visible on mobile */}
+          {isMobile && (
+            <div className="absolute left-8 top-0 h-full w-0.5 bg-neon/30"></div>
+          )}
           
           {/* Timeline items */}
           {timeline.map((item, index) => (
             <motion.div 
               key={index}
-              className={`relative mb-12 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+              className={cn(
+                "relative mb-12",
+                isMobile ? "ml-12" : index % 2 === 0 ? "text-right" : "text-left"
+              )}
+              initial={{ opacity: 0, x: isMobile ? -20 : (index % 2 === 0 ? 50 : -50) }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
               viewport={{ once: true }}
             >
-              <div className={`flex items-center ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
-                <div className={`w-1/2 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
-                  <div className="frost-container p-6 bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300">
-                    <h3 className="text-neon text-lg font-bold mb-2">{item.year}</h3>
-                    <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
-                    <p className="text-slate-300">{item.description}</p>
+              {/* Desktop layout */}
+              {!isMobile && (
+                <div className={`flex items-center ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
+                    <div className="frost-container p-6 bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300">
+                      <h3 className="text-neon text-lg font-bold mb-2">{item.year}</h3>
+                      <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+                      <p className="text-slate-300">{item.description}</p>
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                    <div className="h-10 w-10 rounded-full bg-space border-2 border-neon flex items-center justify-center shadow-neon">
+                      <span className="text-neon font-semibold">{index + 1}</span>
+                    </div>
                   </div>
                 </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                  <div className="h-10 w-10 rounded-full bg-space border-2 border-neon flex items-center justify-center shadow-neon">
-                    <span className="text-neon font-semibold">{index + 1}</span>
+              )}
+
+              {/* Mobile layout */}
+              {isMobile && (
+                <div>
+                  <div className="absolute left-0 transform -translate-x-1/2 flex items-center justify-center">
+                    <div className="h-8 w-8 rounded-full bg-space border-2 border-neon flex items-center justify-center shadow-neon-sm">
+                      <span className="text-neon font-semibold text-sm">{index + 1}</span>
+                    </div>
+                  </div>
+                  <div className="frost-container p-5 bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300">
+                    <h3 className="text-neon text-base font-bold mb-1">{item.year}</h3>
+                    <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
+                    <p className="text-slate-300 text-sm">{item.description}</p>
                   </div>
                 </div>
-              </div>
+              )}
             </motion.div>
           ))}
         </div>
@@ -189,7 +222,7 @@ const About = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((member, index) => (
             <HoverCard key={index}>
               <HoverCardTrigger asChild>
@@ -200,7 +233,7 @@ const About = () => {
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden border-2 border-neon/30 group-hover:border-neon transition-all duration-300">
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 overflow-hidden border-2 border-neon/30 group-hover:border-neon transition-all duration-300">
                     <img src={member.avatar} alt={member.name} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
@@ -208,7 +241,7 @@ const About = () => {
                   <div className="text-sm text-slate-400">View Bio</div>
                 </motion.div>
               </HoverCardTrigger>
-              <HoverCardContent className="frost-container border border-neon/30 bg-space-light/90 backdrop-blur-lg w-80">
+              <HoverCardContent className="frost-container border border-neon/30 bg-space-light/90 backdrop-blur-lg w-80 max-w-[calc(100vw-2rem)] z-50">
                 <div className="flex flex-col">
                   <div className="flex items-center gap-4 mb-3">
                     <div className="w-12 h-12 rounded-full overflow-hidden border border-neon/30">
@@ -229,7 +262,7 @@ const About = () => {
       
       {/* CTA section */}
       <div className="container mx-auto px-4 mb-20">
-        <div className="frost-container p-8 md:p-12 text-center">
+        <div className="frost-container p-6 md:p-12 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Launch Your Product?</h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8">
             Join thousands of successful founders who have launched with Vibelaunch.io

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
 import { Input } from './ui/input';
@@ -13,7 +13,8 @@ interface HeroProps {
 const Hero = ({
   className
 }: HeroProps) => {
-  const [email, setEmail] = React.useState('');
+  const [email, setEmail] = useState('');
+  const isTyping = email.length > 0;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,14 +54,21 @@ const Hero = ({
               <Input
                 type="email"
                 placeholder="Your email"
-                className="h-12 pr-36 bg-space-light/30 border-slate-700/50 text-white text-base pl-4"
+                className={cn(
+                  "h-12 pr-36 bg-space-light/30 border-slate-700/50 text-white text-base pl-4 transition-colors",
+                  isTyping && "border-neon/50 bg-space-light/50"
+                )}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <Button 
-                className="absolute right-1 top-1 h-10 px-5 text-base"
+                className={cn(
+                  "absolute right-1 top-1 h-10 px-5 text-base",
+                  isTyping ? "bg-neon text-space hover:bg-neon/90" : "bg-slate-500 text-white hover:bg-slate-600"
+                )}
                 type="submit"
+                variant={isTyping ? "primary" : "secondary"}
               >
                 Join The Waitlist
               </Button>

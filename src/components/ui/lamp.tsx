@@ -13,7 +13,7 @@ export const LampContainer = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("relative flex min-h-[500px] md:min-h-[600px] flex-col items-center justify-center overflow-hidden bg-slate-950 w-full rounded-md z-0", className)}>
+    <div className={cn("relative flex min-h-[400px] md:min-h-[500px] flex-col items-center justify-center overflow-hidden bg-slate-950 w-full rounded-md z-0", className)}>
       <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0 ">
         <motion.div 
           initial={{
@@ -94,9 +94,10 @@ export const LampContainer = ({
         <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-slate-950"></div>
       </div>
 
-      <div className="relative z-50 flex -translate-y-16 md:-translate-y-24 lg:-translate-y-32 flex-col items-center px-5">
+      <div className="relative z-50 flex -translate-y-6 md:-translate-y-12 lg:-translate-y-16 flex-col items-center px-5">
         {children}
       </div>
     </div>
   );
 };
+

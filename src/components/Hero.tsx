@@ -27,7 +27,7 @@ const Hero = ({
   };
 
   return (
-    <section className={cn('relative min-h-[600px] md:min-h-[650px] overflow-hidden', className)}>
+    <section className={cn('relative min-h-[500px] md:min-h-[550px] overflow-hidden', className)}>
       <LampContainer className="w-full">
         <motion.div 
           initial={{
@@ -46,7 +46,7 @@ const Hero = ({
           className="relative z-10 text-center px-4 animate-fade-in"
         >
           <motion.span 
-            className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm" 
+            className="inline-block mb-2 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm" 
             initial={{
               opacity: 0,
               y: -20
@@ -63,7 +63,7 @@ const Hero = ({
             COMING SOON
           </motion.span>
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-4 tracking-tight bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent" 
+            className="text-4xl md:text-6xl font-bold mb-3 tracking-tight bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent" 
             initial={{
               opacity: 0.5,
               y: 100
@@ -81,7 +81,7 @@ const Hero = ({
             Vibecoding <span className="text-neon">from 0</span> to <span className="text-neon">1000</span> Users
           </motion.h1>
           <motion.p 
-            className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-4 md:mb-6" 
+            className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-4" 
             initial={{
               opacity: 0
             }} 

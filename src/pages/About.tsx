@@ -159,7 +159,7 @@ const About = () => {
           
           {/* Mobile timeline line - only visible on mobile */}
           {isMobile && (
-            <div className="absolute left-8 top-0 h-full w-0.5 bg-neon/30"></div>
+            <div className="absolute left-12 top-0 h-full w-0.5 bg-neon/30"></div>
           )}
           
           {/* Timeline items */}
@@ -168,7 +168,7 @@ const About = () => {
               key={index}
               className={cn(
                 "relative mb-12",
-                isMobile ? "ml-12" : index % 2 === 0 ? "text-right" : "text-left"
+                isMobile ? "pl-16" : index % 2 === 0 ? "text-right" : "text-left"
               )}
               initial={{ opacity: 0, x: isMobile ? -20 : (index % 2 === 0 ? 50 : -50) }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -193,14 +193,19 @@ const About = () => {
                 </div>
               )}
 
-              {/* Mobile layout */}
+              {/* Mobile layout - UPDATED to overlay number on content */}
               {isMobile && (
-                <div>
-                  <div className="absolute left-0 transform -translate-x-1/2 flex items-center justify-center">
-                    <div className="h-8 w-8 rounded-full bg-space border-2 border-neon flex items-center justify-center shadow-neon-sm">
-                      <span className="text-neon font-semibold text-sm">{index + 1}</span>
+                <div className="relative">
+                  {/* Number indicator with glow effect */}
+                  <div className="absolute left-0 top-4 z-10">
+                    <div className="h-10 w-10 rounded-full bg-space border-2 border-neon flex items-center justify-center shadow-neon-sm">
+                      <span className="text-neon font-semibold">{index + 1}</span>
                     </div>
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 rounded-full bg-neon/20 blur-md -z-10"></div>
                   </div>
+                  
+                  {/* Content card */}
                   <div className="frost-container p-5 bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300">
                     <h3 className="text-neon text-base font-bold mb-1">{item.year}</h3>
                     <h4 className="text-lg font-semibold mb-2">{item.title}</h4>

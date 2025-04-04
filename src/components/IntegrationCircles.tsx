@@ -22,8 +22,8 @@ const Icons = {
         </linearGradient>
       </defs>
     </svg>,
-  stripe: () => <svg width="100%" height="100%" viewBox="0 0 512 214" xmlns="http://www.w3.org/2000/svg">
-      <path d="M512 105.973c0-33.752-16.516-60.257-47.928-60.257-31.52-.01-50.52 26.486-50.52 60.113 0 39.4 22.534 59.8 54.746 59.8 15.795 0 27.71-3.514 36.665-8.47v-26.69c-8.955 4.47-19.12 7.153-32.014 7.153-12.688 0-23.975-4.42-25.33-19.784h64.234c0-1.683.147-8.47.147-11.865zM447.327 88.78c0-14.852 9.1-21.136 17.4-21.136 8.033 0 16.662 6.284 16.662 21.136h-34.062zm-79.037-43.065c-12.394 0-20.427 5.86-24.865 9.962l-1.65-7.983h-27.856v157.88l31.663-6.724.147-38.297c4.438 3.223 11.003 7.837 21.86 7.837 22.092 0 42.225-17.8 42.225-61.779-.01-38.887-20.426-60.896-41.524-60.896zm-7.3 94.105c-7.298 0-11.59-2.605-14.556-5.828l-.146-46.04c3.26-3.66 7.736-6.13 14.702-6.13 11.297 0 19.04 12.705 19.04 28.93 0 16.673-7.59 29.07-19.04 29.07zm-86.19-93.075l31.81-6.834v-26.21l-31.81 6.724v26.32zm0 11.277l31.81-6.724v126.818h-31.81V57.022zM202.14 9.12l-31.663 6.724v118.348c0 19.013 14.262 33.1 33.312 33.1 10.59 0 18.33-1.903 22.534-4.216v-26.21c-4.13 1.683-24.72 7.688-24.72-11.57V57.022h24.72v-27.9h-24.72l.538-19.995zM126.321 38.89c-13.25 0-21.86 6.267-26.592 10.686l-1.796-8.554h-27.71v126.817h31.663V67.414c6.13-5.084 14.702-6.796 23.517-6.796 2.353 0 4.853.147 7.297.586V39.168c-2.149-.277-4.13-.277-6.38-.277zm-87.458 65.9c0-10.388-8.033-14.212-20.866-17.102-10.15-2.313-15.795-4.216-15.795-9.067 0-4.737 4.585-7.062 11.883-7.062 13.543 0 27.526 4.17 36.482 7.847V51.74C41.122 47.09 29.092 44.034 14.32 44.034 5.511 44.034 0 45.57 0 45.57v.003C0 45.66 0 45.75 0 45.84c0 17.703 24.572 20.008 24.572 35.972 0 5.031-4.731 7.928-12.1 7.928-10.443 0-26.87-5.419-37.02-10.26v29.23C-12.793 114.078 0 116.1 13.65 116.1c25.77 0 38.748-10.025 38.748-28.158z" fill="#6772E5" fillRule="evenodd" />
+  vercel: () => <svg width="100%" height="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path fill="currentColor" d="M256 48l240 416H16z"/>
     </svg>,
   google: () => <svg width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -45,7 +45,7 @@ export default function IntegrationCircles({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-8"
+        className="text-center mb-6"
       >
         <h2 className="text-2xl md:text-3xl font-bold mb-3">Connect Your Entire Tech Stack</h2>
         <p className="text-slate-300 max-w-2xl mx-auto">
@@ -53,12 +53,12 @@ export default function IntegrationCircles({
         </p>
       </motion.div>
 
-      <div className="relative h-[400px] md:h-[500px] w-full flex items-center justify-center">
+      <div className="relative h-[320px] md:h-[380px] w-full flex items-center justify-center">
         <div className="relative w-full max-w-[500px] aspect-square">
           <OrbitingCircles iconSize={46} radius={180} speed={20}>
             <Icons.github />
             <Icons.supabase />
-            <Icons.stripe />
+            <Icons.vercel />
             <Icons.google />
           </OrbitingCircles>
 
@@ -66,7 +66,7 @@ export default function IntegrationCircles({
             <Icons.github />
             <Icons.supabase />
             <Icons.google />
-            <Icons.stripe />
+            <Icons.vercel />
           </OrbitingCircles>
         </div>
       </div>

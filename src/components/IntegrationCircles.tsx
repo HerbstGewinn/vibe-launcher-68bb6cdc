@@ -53,16 +53,16 @@ export default function IntegrationCircles({
         </p>
       </motion.div>
 
-      <div className="relative h-[260px] md:h-[300px] w-full flex items-center justify-center">
-        <div className="relative w-full max-w-[500px] aspect-square">
-          <OrbitingCircles iconSize={46} radius={180} speed={20}>
+      <div className="relative h-[180px] md:h-[220px] w-full flex items-center justify-center">
+        <div className="relative w-full max-w-[400px] aspect-square">
+          <OrbitingCircles iconSize={36} radius={100} speed={20}>
             <Icons.github />
             <Icons.supabase />
             <Icons.vercel />
             <Icons.google />
           </OrbitingCircles>
 
-          <OrbitingCircles iconSize={36} radius={100} reverse speed={15}>
+          <OrbitingCircles iconSize={28} radius={60} reverse speed={15}>
             <Icons.github />
             <Icons.supabase />
             <Icons.google />

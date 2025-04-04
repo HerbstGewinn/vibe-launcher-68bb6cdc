@@ -19,7 +19,12 @@ export function OrbitingCircles({
   reverse = false,
 }: OrbitingCirclesProps) {
   return (
-    <div className="relative animate-spin" style={{ animationDuration: `${speed}s`, animationDirection: reverse ? "reverse" : "normal" }}>
+    <div className="relative animate-spin" style={{ 
+      animationDuration: `${speed}s`, 
+      animationDirection: reverse ? "reverse" : "normal",
+      width: `${radius * 2}px`,
+      height: `${radius * 2}px`
+    }}>
       {children.map((icon, index) => {
         const angle = (index / children.length) * 2 * Math.PI;
         const x = radius * Math.cos(angle);

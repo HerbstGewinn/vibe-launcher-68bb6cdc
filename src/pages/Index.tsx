@@ -81,8 +81,8 @@ const Index = () => {
         {appState === AppState.INITIAL && <>
             <Hero />
             
-            {/* Integration Circles with more space */}
-            <IntegrationCircles className="mt-24 md:mt-32 mb-16 md:mb-24" />
+            {/* Reduced spacing between Hero and Integration Circles */}
+            <IntegrationCircles className="mt-12 md:mt-16 mb-16 md:mb-24" />
             
             <FeatureHighlights className="mt-0 pt-0" />
             

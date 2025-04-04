@@ -4,7 +4,7 @@ import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
 import { Input } from './ui/input';
 import Button from './Button';
-import { Send } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
 interface HeroProps {
   className?: string;
@@ -24,6 +24,15 @@ const Hero = ({
     setEmail('');
   };
 
+  // User profile data with generated avatar images
+  const users = [
+    { id: 1, name: 'Alex', image: 'https://i.pravatar.cc/150?img=1' },
+    { id: 2, name: 'Taylor', image: 'https://i.pravatar.cc/150?img=2' },
+    { id: 3, name: 'Jordan', image: 'https://i.pravatar.cc/150?img=3' },
+    { id: 4, name: 'Casey', image: 'https://i.pravatar.cc/150?img=4' },
+    { id: 5, name: 'Morgan', image: 'https://i.pravatar.cc/150?img=5' },
+  ];
+
   return (
     <section className={cn('relative min-h-[500px] md:min-h-[550px] overflow-hidden', className)}>
       <LampContainer className="w-full">
@@ -38,37 +47,40 @@ const Hero = ({
             Our platform helps solve all your struggles, payments, auth, security and scales your app to 1000 users.
           </p>
           
-          {/* New waitlist field based on the image */}
+          {/* Redesigned waitlist field based on the image */}
           <div className="max-w-md mx-auto">
             <form onSubmit={handleSubmit} className="relative">
               <Input
                 type="email"
                 placeholder="Your email"
-                className="h-12 pr-24 bg-space-light/30 border-slate-700/50 text-white"
+                className="h-12 pr-36 bg-space-light/30 border-slate-700/50 text-white text-base pl-4"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <Button 
-                className="absolute right-1 top-1 h-10"
+                className="absolute right-1 top-1 h-10 px-5 text-base"
                 type="submit"
               >
                 Join The Waitlist
               </Button>
             </form>
             
-            <div className="flex items-center justify-center mt-4 space-x-1">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div 
-                    key={i} 
-                    className="w-7 h-7 rounded-full border-2 border-background bg-slate-700 flex items-center justify-center overflow-hidden"
+            <div className="flex items-center justify-center mt-4 space-x-2">
+              <div className="flex -space-x-2">
+                {users.map((user) => (
+                  <Avatar 
+                    key={user.id} 
+                    className="w-8 h-8 border-2 border-background"
                   >
-                    <div className="w-full h-full bg-gradient-to-br from-slate-500 to-slate-700"></div>
-                  </div>
+                    <AvatarImage src={user.image} alt={user.name} />
+                    <AvatarFallback className="bg-slate-700 text-white text-xs">
+                      {user.name.substring(0, 2).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
                 ))}
               </div>
-              <span className="text-xs text-slate-400 ml-2">
+              <span className="text-xs text-slate-400 ml-1 text-right">
                 Join the <span className="font-bold text-white">100+</span> founders who have already signed up
               </span>
             </div>

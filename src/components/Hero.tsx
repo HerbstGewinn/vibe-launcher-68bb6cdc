@@ -63,12 +63,9 @@ const Hero = ({
                 required
               />
               <Button 
-                className={cn(
-                  "absolute right-1 top-1 h-10 px-5 text-base rounded-lg",
-                  isTyping ? "bg-neon text-space hover:bg-neon/90" : "bg-slate-500 text-white hover:bg-slate-600"
-                )}
+                className="absolute right-1 top-1 h-10 px-5 text-base rounded-lg bg-blue-500 text-white hover:bg-blue-600"
                 type="submit"
-                variant={isTyping ? "primary" : "secondary"}
+                variant="primary"
               >
                 Join The Waitlist
               </Button>

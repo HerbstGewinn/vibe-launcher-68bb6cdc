@@ -5,35 +5,41 @@
 
 @layer base {
   :root {
-    --background: 225 30% 4%;
-    --foreground: 210 40% 98%;
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
 
-    --card: 224 32% 8%;
-    --card-foreground: 210 40% 98%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
 
-    --popover: 224 32% 8%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 192 100% 50%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 222 47% 15%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 192 100% 50%;
+    --accent: 216 34% 17%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62% 30%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 192 100% 50%;
+    --ring: 216 34% 17%;
 
     --radius: 0.5rem;
+    
+    /* Custom colors */
+    --neon: 175 100% 50%;
+    --neon-glow: 175 100% 50%;
+    --space: 224 71% 4%;
   }
 }
 
@@ -41,65 +47,36 @@
   * {
     @apply border-border;
   }
-
-  html, body {
-    @apply h-full antialiased;
-  }
-
   body {
-    @apply bg-space text-foreground relative overflow-x-hidden;
+    @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
 
-  #root {
-    @apply h-full;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
-  }
-
-  ::-webkit-scrollbar {
-    @apply w-1.5;
-  }
-  
-  ::-webkit-scrollbar-track {
-    @apply bg-space-light rounded-full;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    @apply bg-secondary rounded-full;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary/70;
-  }
-
+@layer utilities {
   .frost-container {
-    @apply relative backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl;
+    @apply bg-white/5 backdrop-blur-sm;
+  }
+  
+  .text-neon {
+    @apply text-[#0affff];
+  }
+  
+  .bg-neon {
+    @apply bg-[#0affff];
   }
 
-  .input-glow {
-    @apply transition-all duration-300;
+  .border-neon {
+    @apply border-[#0affff];
   }
-
-  .input-glow:focus {
-    @apply shadow-neon border-neon;
+  
+  .animate-spin-reverse {
+    animation: spin-reverse 10s linear infinite;
   }
-
-  .neon-border {
-    @apply border border-neon/50 shadow-neon-sm;
-  }
-
-  .step-card {
-    @apply relative rounded-xl bg-space-light border border-slate-glow/30 p-6 backdrop-blur-sm transition-all duration-300;
-  }
-
-  .step-card:hover {
-    @apply border-neon/30 shadow-neon-sm;
-  }
-
-  .step-card.active {
-    @apply border-neon/70 shadow-neon;
+  
+  @keyframes spin-reverse {
+    to {
+      transform: rotate(-360deg);
+    }
   }
 }

@@ -11,6 +11,7 @@ import StatsSection from '@/components/StatsSection';
 import AuditSection from '@/components/AuditSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import IntegrationCircles from '@/components/IntegrationCircles';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 
@@ -84,6 +85,9 @@ const Index = () => {
             <div className="mt-0 px-4">
               <LaunchForm className="animate-fade-in" onSubmit={handleFormSubmit} />
             </div>
+            
+            {/* Integration Circles - Added here after the form */}
+            <IntegrationCircles className="mt-16 md:mt-20" />
             
             <FeatureHighlights className="mt-16 md:mt-20" />
             

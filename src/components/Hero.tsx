@@ -45,7 +45,7 @@ const Hero = ({
             Vibecoding <span className="text-neon">from 0</span> to <span className="text-neon">1000</span> Users
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-            Our platform helps solve all your struggles, payments, auth, security and scales your app to 1000 users.
+            Ditch the Dev Headaches. Scale to 1000 Users. Unlock Early Access Now!
           </p>
           
           {/* Email waitlist input with rounded corners */}

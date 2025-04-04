@@ -45,28 +45,21 @@ export default function IntegrationCircles({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-4"
+        className="text-center mb-2"
       >
         <h2 className="text-2xl md:text-3xl font-bold mb-2">Connect Your Entire Tech Stack</h2>
-        <p className="text-slate-300 max-w-2xl mx-auto">
+        <p className="text-slate-300 max-w-2xl mx-auto mb-2">
           We know, all these tools & integrations can be confusing
         </p>
       </motion.div>
 
-      <div className="relative h-[180px] md:h-[220px] w-full flex items-center justify-center">
-        <div className="relative w-full max-w-[400px] aspect-square">
+      <div className="relative h-[140px] md:h-[160px] w-full flex items-center justify-center">
+        <div className="relative w-full max-w-[340px] aspect-square">
           <OrbitingCircles iconSize={36} radius={100} speed={20}>
             <Icons.github />
             <Icons.supabase />
             <Icons.vercel />
             <Icons.google />
-          </OrbitingCircles>
-
-          <OrbitingCircles iconSize={28} radius={60} reverse speed={15}>
-            <Icons.github />
-            <Icons.supabase />
-            <Icons.google />
-            <Icons.vercel />
           </OrbitingCircles>
         </div>
       </div>

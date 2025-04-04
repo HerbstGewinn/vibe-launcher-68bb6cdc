@@ -19,7 +19,7 @@ export function OrbitingCircles({
   reverse = false,
 }: OrbitingCirclesProps) {
   return (
-    <div className="relative animate-spin" style={{ 
+    <div className="relative animate-spin mx-auto" style={{ 
       animationDuration: `${speed}s`, 
       animationDirection: reverse ? "reverse" : "normal",
       width: `${radius * 2}px`,

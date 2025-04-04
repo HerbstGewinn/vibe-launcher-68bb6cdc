@@ -86,10 +86,10 @@ const Index = () => {
               <LaunchForm className="animate-fade-in" onSubmit={handleFormSubmit} />
             </div>
             
-            {/* Integration Circles - With minimal margin */}
-            <IntegrationCircles className="mt-4 md:mt-6" />
+            {/* Integration Circles - Positioned directly between sections */}
+            <IntegrationCircles className="mt-2 md:mt-4 mb-0" />
             
-            <FeatureHighlights className="mt-0 md:mt-0 pt-0" />
+            <FeatureHighlights className="mt-2 md:mt-4 pt-0" />
             
             <AuditSection />
             

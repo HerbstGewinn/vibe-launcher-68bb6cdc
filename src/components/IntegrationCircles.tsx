@@ -51,7 +51,7 @@ export default function IntegrationCircles({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-16 md:mb-20" // Increased spacing here
+        className="text-center mb-20 md:mb-24" // Increased spacing here
       >
         <h2 className="text-2xl md:text-3xl font-bold mb-2">We know, it can be Confusing !</h2>
         <p className="text-slate-300 max-w-2xl mx-auto">
@@ -59,7 +59,7 @@ export default function IntegrationCircles({
         </p>
       </motion.div>
 
-      <div className="mt-6 relative h-[160px] md:h-[180px] w-full flex items-center justify-center">
+      <div className="mt-8 relative h-[160px] md:h-[180px] w-full flex items-center justify-center">
         <div className="relative w-full max-w-[280px] md:max-w-[320px] aspect-square">
           <OrbitingCircles iconSize={iconSize} radius={radius} speed={20}>
             <Icons.github />

@@ -200,19 +200,8 @@ const AuditSection = ({ className }: AuditSectionProps) => {
             </div>
           </motion.div>
         </div>
-
-        <motion.div 
-          className="mt-10 md:mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <Button className="bg-neon text-space hover:bg-neon/90 font-semibold px-6 py-5 md:px-8 md:py-6 h-auto text-sm md:text-base">
-            <BarChart className="mr-2 h-4 w-4 md:h-5 md:w-5" />
-            Generate Complete Site Analysis
-          </Button>
-        </motion.div>
+        
+        {/* Button removed: The "Generate Complete Site Analysis" button was here */}
       </div>
     </div>
   );

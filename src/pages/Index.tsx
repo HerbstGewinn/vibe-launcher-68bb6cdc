@@ -11,6 +11,7 @@ import AuditSection from '@/components/AuditSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import IntegrationCircles from '@/components/IntegrationCircles';
+import FAQ from '@/components/FAQ';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 
@@ -91,6 +92,9 @@ const Index = () => {
             <StatsSection />
             
             <SuccessStories />
+
+            {/* FAQ Section */}
+            <FAQ className="mt-16 md:mt-24 mb-16" />
           </>}
         
         {appState === AppState.STRATEGY && projectData && <div className="pt-16">

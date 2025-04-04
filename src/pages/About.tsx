@@ -10,6 +10,7 @@ import { Users, Award, Lightbulb, GraduationCap } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useIsMobile } from '@/hooks/use-mobile';
+import FAQ from '@/components/FAQ';
 
 const About = () => {
   const isMobile = useIsMobile();
@@ -193,7 +194,7 @@ const About = () => {
                 </div>
               )}
 
-              {/* Mobile layout - UPDATED to overlay number on content */}
+              {/* Mobile layout - FIXED to ensure text isn't blocked by the number */}
               {isMobile && (
                 <div className="relative">
                   {/* Number indicator with glow effect */}
@@ -201,13 +202,16 @@ const About = () => {
                     <div className="h-10 w-10 rounded-full bg-space border-2 border-neon flex items-center justify-center shadow-neon-sm">
                       <span className="text-neon font-semibold">{index + 1}</span>
                     </div>
+                    {/* Year next to number */}
+                    <div className="absolute top-0 left-12 text-neon text-sm font-bold">
+                      {item.year}
+                    </div>
                     {/* Glow effect */}
                     <div className="absolute inset-0 rounded-full bg-neon/20 blur-md -z-10"></div>
                   </div>
                   
-                  {/* Content card */}
-                  <div className="frost-container p-5 bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300">
-                    <h3 className="text-neon text-base font-bold mb-1">{item.year}</h3>
+                  {/* Content card - with padding to avoid text being blocked by number */}
+                  <div className="frost-container p-5 pt-8 bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300">
                     <h4 className="text-lg font-semibold mb-2">{item.title}</h4>
                     <p className="text-slate-300 text-sm">{item.description}</p>
                   </div>
@@ -277,6 +281,9 @@ const About = () => {
           </Button>
         </div>
       </div>
+      
+      {/* FAQ Section */}
+      <FAQ className="mb-20" />
       
       {/* Footer */}
       <Footer />

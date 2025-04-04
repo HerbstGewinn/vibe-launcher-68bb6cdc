@@ -86,8 +86,8 @@ const Index = () => {
               <LaunchForm className="animate-fade-in" onSubmit={handleFormSubmit} />
             </div>
             
-            {/* Integration Circles - Now with more space between text and circle */}
-            <IntegrationCircles className="mt-2 md:mt-4 mb-8" />
+            {/* Integration Circles - Now with significant more space between text and circle */}
+            <IntegrationCircles className="mt-16 md:mt-20 mb-16 md:mb-20" />
             
             <FeatureHighlights className="mt-0 pt-0" />
             

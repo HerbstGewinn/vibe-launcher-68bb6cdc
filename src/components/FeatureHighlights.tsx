@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { BarChart4, CheckCircle2, Layout, LineChart, MessagesSquare, Rocket, UserPlus, Zap } from 'lucide-react';
+import { CheckCircle2, Shield, CreditCard, Globe, Search, Rocket, Mail, Lock } from 'lucide-react';
 
 interface FeatureHighlightsProps {
   className?: string;
@@ -20,69 +20,80 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
   
   const features: Feature[] = [
     {
-      title: 'Interactive Strategy Builder',
-      description: 'Generate a personalized launch strategy with actionable steps based on your project type and goals.',
+      title: 'Authentication',
+      description: 'Secure and robust user authentication system with multiple sign-in methods and account management.',
+      icon: <Shield className="h-8 w-8 text-neon" />,
+      benefits: [
+        'Multiple auth providers',
+        'Secure token handling',
+        'Password reset flows',
+        'Role-based access control'
+      ]
+    },
+    {
+      title: 'Payment Processing',
+      description: 'Integrate seamless payment solutions with major payment processors for subscriptions and one-time purchases.',
+      icon: <CreditCard className="h-8 w-8 text-neon" />,
+      benefits: [
+        'Multiple payment gateways',
+        'Subscription management',
+        'Invoice generation',
+        'Payment analytics'
+      ]
+    },
+    {
+      title: 'Deployment',
+      description: 'One-click deployment solutions to get your product live quickly with minimal configuration.',
+      icon: <Globe className="h-8 w-8 text-neon" />,
+      benefits: [
+        'Automated CI/CD pipelines',
+        'Multi-environment setup',
+        'Version control integration',
+        'Deployment monitoring'
+      ]
+    },
+    {
+      title: 'Security',
+      description: 'Implement robust security measures to protect your application and user data from threats.',
+      icon: <Lock className="h-8 w-8 text-neon" />,
+      benefits: [
+        'Data encryption',
+        'CSRF protection',
+        'Security audit tools',
+        'Compliance assistance'
+      ]
+    },
+    {
+      title: 'SEO Optimization',
+      description: 'Boost your visibility with search engine optimization tools and best practices implementation.',
+      icon: <Search className="h-8 w-8 text-neon" />,
+      benefits: [
+        'Meta tag optimization',
+        'Sitemap generation',
+        'Performance optimization',
+        'Search ranking tracking'
+      ]
+    },
+    {
+      title: 'Launch Strategy',
+      description: 'Strategic launch planning with promotional tools and milestone tracking for maximum impact.',
       icon: <Rocket className="h-8 w-8 text-neon" />,
       benefits: [
-        'Tailored to your specific project',
-        'Step-by-step guidance',
-        'Realistic timelines',
-        'Adaptable to different industries'
+        'Launch timeline creation',
+        'Marketing integration',
+        'Analytics dashboard',
+        'Post-launch optimization'
       ]
     },
     {
-      title: 'Progress Tracking Dashboard',
-      description: 'Visualize your launch progress with interactive neon-styled progress bars and achievement tracking.',
-      icon: <BarChart4 className="h-8 w-8 text-neon" />,
+      title: 'Customer Service',
+      description: 'Provide exceptional support to your users with integrated customer service and feedback tools.',
+      icon: <Mail className="h-8 w-8 text-neon" />,
       benefits: [
-        'Visual progress indicators',
-        'Milestone achievements',
-        'Task completion tracking',
-        'Shareable progress reports'
-      ]
-    },
-    {
-      title: 'User Acquisition Tools',
-      description: 'Comprehensive toolset for attracting and converting your first 1000 users with data-driven methods.',
-      icon: <UserPlus className="h-8 w-8 text-neon" />,
-      benefits: [
-        'Multi-channel acquisition strategies',
-        'Conversion optimization tools',
-        'Audience targeting guidance',
-        'Attribution tracking'
-      ]
-    },
-    {
-      title: 'Analytics & Insights',
-      description: 'Gain valuable insights into user behavior, engagement, and conversion metrics with beautiful visualizations.',
-      icon: <LineChart className="h-8 w-8 text-neon" />,
-      benefits: [
-        'Real-time data analytics',
-        'Custom reporting dashboards',
-        'User behavior tracking',
-        'Growth metrics monitoring'
-      ]
-    },
-    {
-      title: 'Community & Feedback',
-      description: 'Connect with other founders, share experiences, and gather valuable feedback for your product.',
-      icon: <MessagesSquare className="h-8 w-8 text-neon" />,
-      benefits: [
-        'Founder community access',
-        'Expert feedback sessions',
-        'User testing coordination',
-        'Collaborative problem-solving'
-      ]
-    },
-    {
-      title: 'Landing Page Optimization',
-      description: 'Enhance your landing page with proven conversion elements and performance optimization techniques.',
-      icon: <Layout className="h-8 w-8 text-neon" />,
-      benefits: [
-        'Conversion-focused templates',
-        'A/B testing tools',
-        'Copy optimization guides',
-        'Performance analysis'
+        'Ticketing system',
+        'Live chat integration',
+        'Knowledge base',
+        'Customer feedback collection'
       ]
     }
   ];
@@ -124,12 +135,6 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
                 <div className="h-14 w-14 rounded-full bg-neon/10 border border-neon/30 flex items-center justify-center">
                   {feature.icon}
                 </div>
-                <Zap 
-                  className={cn(
-                    'h-5 w-5 transition-all duration-300 transform',
-                    activeFeature === index ? 'text-neon rotate-0' : 'text-slate-500 rotate-90'
-                  )} 
-                />
               </div>
               
               <h3 className="text-xl font-semibold mb-2 group-hover:text-neon transition-colors">

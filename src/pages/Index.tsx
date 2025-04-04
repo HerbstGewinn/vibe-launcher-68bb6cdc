@@ -8,6 +8,7 @@ import Particles from '@/components/Particles';
 import SuccessStories from '@/components/SuccessStories';
 import FeatureHighlights from '@/components/FeatureHighlights';
 import StatsSection from '@/components/StatsSection';
+import AuditSection from '@/components/AuditSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { toast } from 'sonner';
@@ -86,11 +87,11 @@ const Index = () => {
             
             <FeatureHighlights className="mt-16 md:mt-20" />
             
+            <AuditSection />
+            
             <StatsSection />
             
             <SuccessStories />
-            
-            
           </>}
         
         {appState === AppState.STRATEGY && projectData && <div className="pt-16">

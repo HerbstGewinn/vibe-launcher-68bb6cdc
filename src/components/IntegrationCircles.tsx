@@ -49,7 +49,7 @@ export default function IntegrationCircles({
       duration: 0.5
     }} className="text-center mb-20 md:mb-24" // Increased spacing here
     >
-        <h2 className="text-2xl font-bold mb-2 md:text-4xl">We know, it can be Confusing !</h2>
+        <h2 className="font-bold mb-2 md:text-4xl text-3xl">We know, it can be Confusing !</h2>
         <p className="text-slate-300 max-w-xs sm:max-w-md mx-auto px-4">
           We know, all these tools & integrations can be confusing
         </p>

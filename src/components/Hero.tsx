@@ -63,7 +63,7 @@ const Hero = ({
                 required
               />
               <Button 
-                className="absolute right-1 top-1 h-10 px-5 text-base rounded-lg bg-blue-500 text-white hover:bg-blue-600"
+                className="absolute right-1 top-1 h-10 px-5 text-base rounded-lg bg-[#0AFFFF] text-space hover:bg-[#0AFFFF]/90"
                 type="submit"
                 variant="primary"
               >

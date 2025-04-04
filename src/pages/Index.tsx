@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import Hero from '@/components/Hero';
-import LaunchForm from '@/components/LaunchForm';
 import StrategySteps from '@/components/StrategySteps';
 import SignUpForm from '@/components/SignUpForm';
 import Particles from '@/components/Particles';
@@ -82,12 +81,8 @@ const Index = () => {
         {appState === AppState.INITIAL && <>
             <Hero />
             
-            <div className="mt-0 px-4">
-              <LaunchForm className="animate-fade-in" onSubmit={handleFormSubmit} />
-            </div>
-            
             {/* Integration Circles with more space */}
-            <IntegrationCircles className="mt-16 md:mt-24 mb-16 md:mb-24" />
+            <IntegrationCircles className="mt-24 md:mt-32 mb-16 md:mb-24" />
             
             <FeatureHighlights className="mt-0 pt-0" />
             

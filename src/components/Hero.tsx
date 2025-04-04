@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
 import Button from './Button';
-import { ChevronDown } from 'lucide-react';
 
 interface HeroProps {
   className?: string;
@@ -79,7 +78,7 @@ const Hero = ({
               ease: "easeInOut"
             }}
           >
-            Join the <span className="text-neon">Waitlist</span> for <span className="text-neon">Early Access</span>
+            From <span className="text-neon">0</span> to <span className="text-neon">1000</span> Users
           </motion.h1>
           <motion.p 
             className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-4 md:mb-6" 
@@ -94,7 +93,7 @@ const Hero = ({
               duration: 0.5
             }}
           >
-            Be the first to experience our revolutionary platform. Sign up now to get early access and exclusive features.
+            Our platform helps solve all your struggles, payments, auth, security and scales your app to 1000 users.
           </motion.p>
           
           <motion.div 
@@ -125,16 +124,6 @@ const Hero = ({
             >
               Learn More
             </Button>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer hidden md:block"
-            onClick={scrollToContent}
-          >
-            <ChevronDown className="w-6 h-6 text-neon animate-bounce" />
           </motion.div>
         </motion.div>
       </LampContainer>

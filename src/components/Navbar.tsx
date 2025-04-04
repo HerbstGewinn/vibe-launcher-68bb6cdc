@@ -14,8 +14,7 @@ const Navbar = () => {
   
   const mainMenuItems = [
     { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Pricing', href: '/pricing' }
+    { label: 'About', href: '/about' }
   ];
 
   return (

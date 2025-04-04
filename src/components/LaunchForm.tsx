@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { toast } from 'sonner';
-import { Sparkles, Send, ArrowRight } from 'lucide-react';
+import { Sparkles, Send, ArrowRight, Rocket } from 'lucide-react';
 
 interface LaunchFormProps {
   className?: string;
@@ -72,9 +72,28 @@ const LaunchForm = ({ className, onSubmit }: LaunchFormProps) => {
         <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Join Our Waitlist</h2>
         <p className="text-slate-300">Be the first to know when we launch and get exclusive early access</p>
       </div>
+
+      {/* New JOIN button added here */}
+      <motion.div
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        className="mb-8"
+      >
+        <Button 
+          onClick={() => window.scrollTo({ top: document.getElementById('email-form')?.offsetTop || 0, behavior: 'smooth' })}
+          className="group relative overflow-hidden bg-gradient-to-r from-cyan-400 to-neon h-14 px-10 rounded-lg font-bold text-lg shadow-lg shadow-neon/20 hover:shadow-neon/40 transition-all duration-500"
+          glow
+        >
+          <span className="flex items-center justify-center gap-2">
+            JOIN
+            <Rocket className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-neon/10 via-cyan-300/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        </Button>
+      </motion.div>
       
       {!hasSubmitted ? (
-        <form onSubmit={handleSubmit} className="space-y-6 mx-auto max-w-md">
+        <form id="email-form" onSubmit={handleSubmit} className="space-y-6 mx-auto max-w-md">
           <div className="space-y-2">
             <Label 
               htmlFor="email" 

@@ -35,8 +35,8 @@ const Index = () => {
     setAppState(AppState.STRATEGY);
 
     // Show toast notification
-    toast.success('Strategy generated successfully!', {
-      description: 'Follow these steps to launch your project.'
+    toast.success('Thanks for joining our waitlist!', {
+      description: 'We\'ll notify you when we launch.'
     });
 
     // Scroll to top smoothly

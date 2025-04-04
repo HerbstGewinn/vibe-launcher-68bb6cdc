@@ -61,7 +61,7 @@ const Hero = ({
               duration: 0.5
             }}
           >
-            VIBELAUNCH.IO
+            COMING SOON
           </motion.span>
           <motion.h1 
             className="text-4xl md:text-6xl font-bold mb-4 tracking-tight bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent" 
@@ -79,7 +79,7 @@ const Hero = ({
               ease: "easeInOut"
             }}
           >
-            From <span className="text-neon">Vibe Coding</span> to <span className="text-neon">1000 Users</span>
+            Join the <span className="text-neon">Waitlist</span> for <span className="text-neon">Early Access</span>
           </motion.h1>
           <motion.p 
             className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-4 md:mb-6" 
@@ -94,7 +94,7 @@ const Hero = ({
               duration: 0.5
             }}
           >
-            Launch your project and transform it into a product people love. Our strategic approach helps you build traction and grow your user base.
+            Be the first to experience our revolutionary platform. Sign up now to get early access and exclusive features.
           </motion.p>
           
           <motion.div 
@@ -110,12 +110,31 @@ const Hero = ({
               delay: 1,
               duration: 0.5
             }} 
-            className="flex flex-row gap-3 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button size="lg" glow>Get Started</Button>
-            <Button variant="outline" size="lg">
+            <Button 
+              size="lg" 
+              glow 
+              onClick={scrollToContent}
+            >
+              Join Waitlist
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+            >
               Learn More
             </Button>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer hidden md:block"
+            onClick={scrollToContent}
+          >
+            <ChevronDown className="w-6 h-6 text-neon animate-bounce" />
           </motion.div>
         </motion.div>
       </LampContainer>

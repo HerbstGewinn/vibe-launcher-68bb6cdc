@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -47,7 +48,7 @@ const About = () => {
       name: 'Kristian',
       role: 'Founder & CEO',
       bio: "In the heart of Berlin's thriving tech scene, I've had the privilege of contributing to the growth of innovative startups, including leading an engineering team at a VC-funded company valued at €20 million. My journey began while studying computer science, where I founded my first startup and learned the importance of collaboration and community support. With over six years of experience in software development, I've seen firsthand how the right tools and mindset can transform projects. Now, I'm passionate about helping fellow coders tap into their creative potential and build projects that resonate with the vibe of our community.",
-      avatar: '/lovable-uploads/c143ee72-5560-4de0-bf6e-a03b09362900.png'
+      avatar: '/lovable-uploads/94dc1cc4-65d3-4581-b86f-7c0201a28ffd.png'
     },
     {
       name: 'Laurin',

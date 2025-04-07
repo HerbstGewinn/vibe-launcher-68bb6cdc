@@ -44,28 +44,16 @@ const About = () => {
   
   const team = [
     {
-      name: 'Alex Morgan',
+      name: 'Kristian',
       role: 'Founder & CEO',
-      bio: 'Former Y Combinator founder with 3 successful exits. Passionate about helping early-stage startups find product-market fit.',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80'
+      bio: "In the heart of Berlin's thriving tech scene, I've had the privilege of contributing to the growth of innovative startups, including leading an engineering team at a VC-funded company valued at €20 million. My journey began while studying computer science, where I founded my first startup and learned the importance of collaboration and community support. With over six years of experience in software development, I've seen firsthand how the right tools and mindset can transform projects. Now, I'm passionate about helping fellow coders tap into their creative potential and build projects that resonate with the vibe of our community.",
+      avatar: '/lovable-uploads/c143ee72-5560-4de0-bf6e-a03b09362900.png'
     },
     {
-      name: 'Sara Chen',
+      name: 'Laurin',
       role: 'Head of Product',
-      bio: 'Product leader with experience at Airbnb and Stripe. Specialized in creating intuitive user experiences that drive engagement.',
+      bio: 'Product visionary with experience at multiple successful startups. Specialized in creating intuitive user experiences that drive engagement and help founders achieve their goals.',
       avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80'
-    },
-    {
-      name: 'Marcus Johnson',
-      role: 'Growth Lead',
-      bio: 'Growth expert who scaled three SaaS companies from zero to 10,000+ users. Data-driven approach to user acquisition and retention.',
-      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80'
-    },
-    {
-      name: 'Priya Patel',
-      role: 'Strategy Director',
-      bio: 'Former management consultant with expertise in go-to-market strategies and user research methodologies.',
-      avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80'
     }
   ];
   
@@ -226,7 +214,7 @@ const About = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {team.map((member, index) => (
             <HoverCard key={index}>
               <HoverCardTrigger asChild>
@@ -237,7 +225,7 @@ const About = () => {
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 overflow-hidden border-2 border-neon/30 group-hover:border-neon transition-all duration-300">
+                  <div className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 overflow-hidden border-2 border-neon/30 group-hover:border-neon transition-all duration-300">
                     <img src={member.avatar} alt={member.name} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
@@ -245,10 +233,10 @@ const About = () => {
                   <div className="text-sm text-slate-400">View Bio</div>
                 </motion.div>
               </HoverCardTrigger>
-              <HoverCardContent className="frost-container border border-neon/30 bg-space-light/90 backdrop-blur-lg w-80 max-w-[calc(100vw-2rem)] z-50">
+              <HoverCardContent className="frost-container border border-neon/30 bg-space-light/90 backdrop-blur-lg w-96 max-w-[calc(100vw-2rem)] z-50">
                 <div className="flex flex-col">
                   <div className="flex items-center gap-4 mb-3">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border border-neon/30">
+                    <div className="w-16 h-16 rounded-full overflow-hidden border border-neon/30">
                       <img src={member.avatar} alt={member.name} className="w-full h-full object-cover" />
                     </div>
                     <div>

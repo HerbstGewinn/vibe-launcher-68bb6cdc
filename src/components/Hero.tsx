@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import { Input } from './ui/input';
 import Button from './Button';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface HeroProps {
   className?: string;
@@ -14,15 +16,47 @@ const Hero = ({
   className
 }: HeroProps) => {
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const isTyping = email.length > 0;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     
-    // Any submission logic here
-    console.log('Email submitted:', email);
-    setEmail('');
+    try {
+      setIsSubmitting(true);
+      
+      // Insert email into Supabase waitlist table
+      const { error } = await supabase
+        .from('waitlist')
+        .insert([{ email }]);
+        
+      if (error) {
+        if (error.code === '23505') {
+          // Unique violation - email already exists
+          toast.info("You're already on the waitlist!", {
+            description: "We'll notify you when we launch."
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        // Show success message
+        toast.success("Thank you for joining the waitlist!", {
+          description: "You will be the first one to receive an exclusive offer for the platform."
+        });
+      }
+      
+      // Clear the input field
+      setEmail('');
+    } catch (err) {
+      console.error('Error submitting to waitlist:', err);
+      toast.error("Something went wrong", {
+        description: "Please try again later."
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // User profile data with generated avatar images
@@ -61,11 +95,13 @@ const Hero = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={isSubmitting}
               />
               <Button 
                 className="absolute right-1 top-1 h-10 px-5 text-base rounded-lg bg-[#0AFFFF] text-space hover:bg-[#0AFFFF]/90"
                 type="submit"
                 variant="primary"
+                isLoading={isSubmitting}
               >
                 Join The Waitlist
               </Button>

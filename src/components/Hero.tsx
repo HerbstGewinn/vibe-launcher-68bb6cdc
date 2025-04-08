@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
@@ -39,13 +38,13 @@ const Hero = ({
       <LampContainer className="w-full">
         <div className="relative z-10 text-center px-4">
           <span className="inline-block mb-2 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
-            COMING SOON
+            LAUNCH YOUR VIBE
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent">
-            Vibecoding <span className="text-neon">from 0</span> to <span className="text-neon">1000</span> Users
+            Built Something Cool? <span className="text-neon">Now Get Users.</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-            Ditch the Dev Headaches. Scale to 1000 Users. Unlock Early Access Now!
+            Feeling lost after your build? Vibelaunch guides your project from code commit to its first <span className="text-white font-medium">1000 true fans</span>. Get the playbook.
           </p>
           
           {/* Email waitlist input with rounded corners */}
@@ -86,7 +85,7 @@ const Hero = ({
                 ))}
               </div>
               <span className="text-xs text-slate-400 ml-1 text-right">
-                Join the <span className="font-bold text-white">100+</span> founders who have already signed up
+                Join fellow <span className="font-bold text-white">vibe coders</span> already on the waitlist!
               </span>
             </div>
           </div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -17,29 +16,29 @@ const About = () => {
   
   const timeline = [
     {
-      year: '2020',
-      title: 'Foundation',
-      description: 'Vibelaunch was established with a mission to help creators build products users love.'
+      year: 'back in 2018',
+      title: 'Stack Overflow Days: The Grind',
+      description: "Remember the struggle? Piecing together solutions from scattered forums, battling cryptic errors. Building required sheer persistence."
     },
     {
-      year: '2021',
-      title: 'First 100 Clients',
-      description: 'Successfully guided 100 startups through their launch journey.'
+      year: '2022-2023',
+      title: 'AI Assistants Emerge: Faster Cycles',
+      description: "Tools like Copilot began automating the boilerplate. Development speed increased, freeing up mental energy from repetitive tasks."
     },
     {
-      year: '2022',
-      title: 'Platform Launch',
-      description: 'Launched our proprietary platform with automated strategy generation.'
+      year: '~2023',
+      title: 'Conversational Code: The Game Changer',
+      description: "ChatGPT, Cursor... suddenly, you could *talk* your code into existence. Prototyping and complex features became dramatically faster."
     },
     {
-      year: '2023',
-      title: 'International Expansion',
-      description: 'Expanded services to 20+ countries, helping global entrepreneurs.'
+      year: 'Dec 2024',
+      title: '"Vibe Coding" Arrives: Build Easy, Launch Hard',
+      description: "The ethos shifts. With modern tools, building the *what* feels almost effortless. But the *who* and *how* – finding users – becomes the glaring challenge."
     },
     {
-      year: '2024',
-      title: 'Community Milestone',
-      description: 'Built a thriving community of 10,000+ founders and creators.'
+      year: 'Present',
+      title: 'Vibelaunch: The Missing Playbook',
+      description: "We saw the gap. Building is solved, launching isn't. Vibelaunch provides the clear, actionable strategy to get your creation in front of your first 1000 users."
     }
   ];
   
@@ -53,7 +52,7 @@ const About = () => {
     {
       name: 'Laurin',
       role: 'Head of Product',
-      bio: 'Product visionary with experience at multiple successful startups. Specialized in creating intuitive user experiences that drive engagement and help founders achieve their goals.',
+      bio: 'Product visionary focused on the creator journey. Specialized in building intuitive experiences that help vibe coders connect their projects with the right audience.',
       avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80'
     }
   ];
@@ -77,7 +76,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          Our Story
+          From Code to Community
         </motion.h1>
         <motion.p 
           className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto px-4"
@@ -85,7 +84,7 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          From a simple idea to a platform that helps thousands of founders launch successful products
+          How helping fellow coders sparked a mission to bridge the gap between building and belonging.
         </motion.p>
       </div>
       
@@ -96,35 +95,33 @@ const About = () => {
             <div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Mission</h2>
               <p className="text-slate-300 mb-4">
-                At Vibelaunch.io, we believe that every great idea deserves the chance to reach its audience. 
-                Our mission is to transform the way products are launched by providing founders with the tools, 
-                strategies, and support they need to turn their vision into a thriving product with engaged users.
+                At Vibelaunch, we know the high of shipping code. But we also know the uncertainty that follows. 
+                Our mission is to empower vibe coders like you with the clarity and strategy needed to find your first users and build lasting momentum.
               </p>
               <p className="text-slate-300">
-                We're committed to democratizing product launches and helping creators navigate the challenging 
-                journey from initial concept to achieving their first 1000 users and beyond.
+                We're demystifying growth for developers, turning the daunting task of user acquisition into a clear, actionable playbook, guiding you towards your first 1000 true fans.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="frost-container p-5 md:p-6 bg-space-light/50 flex flex-col items-center justify-center">
                 <Users className="h-8 w-8 md:h-10 md:w-10 text-neon mb-3" />
-                <h3 className="text-lg md:text-xl font-semibold mb-1">10,000+</h3>
-                <p className="text-slate-400 text-xs md:text-sm text-center">Users Helped</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-1">Community</h3>
+                <p className="text-slate-400 text-xs md:text-sm text-center">For Vibe Coders</p>
               </div>
               <div className="frost-container p-5 md:p-6 bg-space-light/50 flex flex-col items-center justify-center">
                 <Award className="h-8 w-8 md:h-10 md:w-10 text-neon mb-3" />
-                <h3 className="text-lg md:text-xl font-semibold mb-1">98%</h3>
-                <p className="text-slate-400 text-xs md:text-sm text-center">Success Rate</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-1">Clarity</h3>
+                <p className="text-slate-400 text-xs md:text-sm text-center">From Build to Launch</p>
               </div>
               <div className="frost-container p-5 md:p-6 bg-space-light/50 flex flex-col items-center justify-center">
                 <Lightbulb className="h-8 w-8 md:h-10 md:w-10 text-neon mb-3" />
-                <h3 className="text-lg md:text-xl font-semibold mb-1">5,000+</h3>
-                <p className="text-slate-400 text-xs md:text-sm text-center">Projects Launched</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-1">Strategy</h3>
+                <p className="text-slate-400 text-xs md:text-sm text-center">Actionable Playbooks</p>
               </div>
               <div className="frost-container p-5 md:p-6 bg-space-light/50 flex flex-col items-center justify-center">
                 <GraduationCap className="h-8 w-8 md:h-10 md:w-10 text-neon mb-3" />
-                <h3 className="text-lg md:text-xl font-semibold mb-1">20+</h3>
-                <p className="text-slate-400 text-xs md:text-sm text-center">Countries</p>
+                <h3 className="text-lg md:text-xl font-semibold mb-1">Reach</h3>
+                <p className="text-slate-400 text-xs md:text-sm text-center">Your First 1000 Users</p>
               </div>
             </div>
           </div>
@@ -136,7 +133,7 @@ const About = () => {
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Journey</h2>
           <p className="text-slate-300 max-w-2xl mx-auto">
-            From our humble beginnings to where we are today, explore the key milestones that have shaped Vibelaunch.io
+            From late-night coding sessions and forum help threads to building a dedicated launchpad for creators like you.
           </p>
         </div>
         
@@ -209,9 +206,9 @@ const About = () => {
       {/* Team section */}
       <div className="container mx-auto px-4 mb-20">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Meet Our Team</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Meet The Crew</h2>
           <p className="text-slate-300 max-w-2xl mx-auto">
-            The passionate experts behind Vibelaunch.io dedicated to your product's success
+            We've been in your shoes. We're coders and builders passionate about helping you find your audience.
           </p>
         </div>
         
@@ -256,9 +253,9 @@ const About = () => {
       {/* CTA section */}
       <div className="container mx-auto px-4 mb-20">
         <div className="frost-container p-6 md:p-12 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Launch Your Product?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Find Your First 1000 Users?</h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8">
-            Join thousands of successful founders who have launched with Vibelaunch.io
+            Stop guessing, start growing. Get your personalized launch playbook with Vibelaunch.
           </p>
           <Button as="a" href="/" size="lg" glow>
             Get Started Today

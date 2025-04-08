@@ -27,10 +27,10 @@ const Footer = () => {
         </div>
         
         <div className="flex flex-wrap justify-center mt-8 pt-8 border-t border-slate-800/50">
-          <Link to="/" className="text-slate-400 hover:text-neon transition-colors text-xs mx-3">Terms</Link>
-          <Link to="/" className="text-slate-400 hover:text-neon transition-colors text-xs mx-3">Privacy</Link>
-          <Link to="/" className="text-slate-400 hover:text-neon transition-colors text-xs mx-3">Cookies</Link>
-          <Link to="/" className="text-slate-400 hover:text-neon transition-colors text-xs mx-3">Security</Link>
+          <Link to="/Terms" className="text-slate-400 hover:text-neon transition-colors text-xs mx-3">Terms</Link>
+          <Link to="/Privacy" className="text-slate-400 hover:text-neon transition-colors text-xs mx-3">Privacy</Link>
+          <Link to="/Cookies" className="text-slate-400 hover:text-neon transition-colors text-xs mx-3">Cookies</Link>
+          <Link to="/Disclaimer" className="text-slate-400 hover:text-neon transition-colors text-xs mx-3">Disclaimer</Link>
         </div>
       </div>
     </footer>

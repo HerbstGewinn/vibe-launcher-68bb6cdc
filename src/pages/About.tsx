@@ -52,8 +52,8 @@ const About = () => {
     },
     {
       name: 'Laurin',
-      role: 'Head of Product',
-      bio: "Hey Vibecoders, meet Laurin! A bioinformatician transitioning from biotech to the exciting world of SaaS development. With a proven track record, Laurin has successfully grown multiple apps to over 1000 users. His experience includes two successful exits, demonstrating a knack for building and scaling impactful products. Get ready to learn from a builder who understands the journey from concept to success!",
+      role: 'Founder',
+      bio: "Hey Vibecoders, I'm a bioinformatician transitioning from biotech to the exciting world of SaaS development. With a proven track record, I've successfully grown multiple apps to over 1000 users. My experience includes two successful exits, demonstrating my knack for building and scaling impactful products. I'm excited to share my journey with you and help you navigate from concept to success!",
       avatar: '/lovable-uploads/36cb8117-0eb3-4041-932d-1427be01be25.png'
     }
   ];

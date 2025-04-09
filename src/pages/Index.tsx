@@ -5,7 +5,6 @@ import SignUpForm from '@/components/SignUpForm';
 import Particles from '@/components/Particles';
 import SuccessStories from '@/components/SuccessStories';
 import FeatureHighlights from '@/components/FeatureHighlights';
-import StatsSection from '@/components/StatsSection';
 import AuditSection from '@/components/AuditSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -87,8 +86,6 @@ const Index = () => {
             <FeatureHighlights className="mt-0 pt-0" />
             
             <AuditSection className="mb-16 md:mb-24" />
-            
-            <StatsSection />
             
             <SuccessStories />
 

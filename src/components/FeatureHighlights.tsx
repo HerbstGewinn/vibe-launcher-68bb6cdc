@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -24,9 +23,8 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
       description: 'Secure and robust user authentication system with multiple sign-in methods and account management.',
       icon: <Shield className="h-8 w-8 text-neon" />,
       benefits: [
-        'Multiple auth providers',
+        'Google & Facebook auth',
         'Secure token handling',
-        'Password reset flows',
         'Role-based access control'
       ]
     },
@@ -35,10 +33,9 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
       description: 'Integrate seamless payment solutions with major payment processors for subscriptions and one-time purchases.',
       icon: <CreditCard className="h-8 w-8 text-neon" />,
       benefits: [
-        'Multiple payment gateways',
-        'Subscription management',
+        'Stripe integration',
         'Invoice generation',
-        'Payment analytics'
+        'Subscription management'
       ]
     },
     {
@@ -48,8 +45,7 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
       benefits: [
         'Automated CI/CD pipelines',
         'Multi-environment setup',
-        'Version control integration',
-        'Deployment monitoring'
+        'Version control integration'
       ]
     },
     {
@@ -59,7 +55,6 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
       benefits: [
         'Data encryption',
         'CSRF protection',
-        'Security audit tools',
         'Compliance assistance'
       ]
     },
@@ -70,8 +65,7 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
       benefits: [
         'Meta tag optimization',
         'Sitemap generation',
-        'Performance optimization',
-        'Search ranking tracking'
+        'Performance optimization'
       ]
     },
     {
@@ -80,9 +74,8 @@ const FeatureHighlights = ({ className }: FeatureHighlightsProps) => {
       icon: <Rocket className="h-8 w-8 text-neon" />,
       benefits: [
         'Launch timeline creation',
-        'Marketing integration',
-        'Analytics dashboard',
-        'Post-launch optimization'
+        'Marketing Best Practices',
+        'Community Engagement'
       ]
     }
   ];

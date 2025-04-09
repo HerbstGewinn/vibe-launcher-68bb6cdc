@@ -53,8 +53,8 @@ const About = () => {
     {
       name: 'Laurin',
       role: 'Head of Product',
-      bio: 'Product visionary with experience at multiple successful startups. Specialized in creating intuitive user experiences that drive engagement and help founders achieve their goals.',
-      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80'
+      bio: "Hey Vibecoders, meet Laurin! A bioinformatician transitioning from biotech to the exciting world of SaaS development. With a proven track record, Laurin has successfully grown multiple apps to over 1000 users. His experience includes two successful exits, demonstrating a knack for building and scaling impactful products. Get ready to learn from a builder who understands the journey from concept to success!",
+      avatar: '/lovable-uploads/36cb8117-0eb3-4041-932d-1427be01be25.png'
     }
   ];
   

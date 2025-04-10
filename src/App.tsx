@@ -8,7 +8,6 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
-import Favicon from "./components/Favicon";
 import Privacy from "./pages/Privacy";
 import Disclaimer from "./pages/Disclaimer";
 import Cookies from "./pages/Cookies";
@@ -18,7 +17,6 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Favicon />
       <Toaster />
       <Sonner />
       <BrowserRouter>

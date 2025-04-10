@@ -11,8 +11,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import IntegrationCircles from '@/components/IntegrationCircles';
 import FAQ from '@/components/FAQ';
-import Favicon from '@/components/Favicon';
-import AppleTouchIcon from '@/components/AppleTouchIcon';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 
@@ -71,10 +69,6 @@ const Index = () => {
   return <div className="relative min-h-screen">
       {/* Background particles */}
       <Particles quantity={40} className="pointer-events-none" />
-      
-      {/* Icons */}
-      <Favicon />
-      <AppleTouchIcon />
       
       {/* Radial gradient background */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.05),transparent_50%)]"></div>

@@ -51,8 +51,8 @@ const About = () => {
     },
     {
       name: 'Laurin',
-      role: 'Head of Product',
-      bio: 'Passionate about crafting meaningful digital experiences, I’ve been exploring the intersection of technology and creativity since studying informatics. Over the past four years, I’ve successfully launched four apps, each inspired by curiosity and a love for building things people enjoy. Whether it’s diving into data science, experimenting with AI, or brainstorming the next big idea, I’m always excited to push boundaries and learn from the vibrant tech community. My goal is to collaborate with like-minded vibe coders to bring innovative and lovable projects to life.',
+      role: 'Founder',
+      bio: "Hey Vibecoders, I'm a bioinformatician transitioning from biotech to the exciting world of SaaS development. With a proven track record, I've successfully grown multiple apps to over 1000 users. My experience includes two successful exits, demonstrating my knack for building and scaling impactful products. I'm excited to share my journey with you and help you navigate from concept to success!",
       avatar: 'https://media.licdn.com/dms/image/v2/D4E03AQEVQsmwa9FWIg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1687760384914?e=1749686400&v=beta&t=yyFLrZKmNHNZ4vSTSDBitx29GVv2_z0O48EiCG_pQgE'
     }
   ];

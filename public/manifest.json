@@ -1,0 +1,22 @@
+
+{
+  "name": "Vibelaunch.io - From 0 to 1000 users",
+  "short_name": "Vibelaunch",
+  "description": "Launch your product and grow from 0 to 1000 users with Vibelaunch.io",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "icons": [
+    {
+      "src": "/public/og-image.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/og-image.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

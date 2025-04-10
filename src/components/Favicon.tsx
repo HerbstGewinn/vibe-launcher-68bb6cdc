@@ -5,59 +5,97 @@ const Favicon = () => {
   const setFavicon = () => {
     // Create a canvas element to draw our favicon
     const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
+    canvas.width = 180; // Increasing size for better quality on high-resolution screens
+    canvas.height = 180;
     const ctx = canvas.getContext('2d');
     
     if (!ctx) return;
     
     // Draw background gradient
-    const gradient = ctx.createLinearGradient(0, 0, 0, 64);
+    const gradient = ctx.createLinearGradient(0, 0, 0, 180);
     gradient.addColorStop(0, '#0b0f19');
     gradient.addColorStop(1, '#161b2c');
     ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 64, 64);
+    ctx.fillRect(0, 0, 180, 180);
     
-    // Draw the "V" shape with glowing effect
+    // Draw the "V" shape with stronger glowing effect
     ctx.strokeStyle = '#0affff';
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 12;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.shadowColor = '#0affff';
-    ctx.shadowBlur = 8;
+    ctx.shadowBlur = 15;
     
-    // Draw the "V"
+    // Draw the "V" - scaled up for the larger canvas
     ctx.beginPath();
-    ctx.moveTo(18, 16);
-    ctx.lineTo(32, 48);
-    ctx.lineTo(46, 16);
+    ctx.moveTo(54, 45);
+    ctx.lineTo(90, 135);
+    ctx.lineTo(126, 45);
     ctx.stroke();
     
     // Convert to data URL and set as favicon
     const dataUrl = canvas.toDataURL('image/png');
     
-    // Find existing favicon or create a new one
+    // Set various icon types for cross-browser and device compatibility
+    setIconsForAllPlatforms(dataUrl);
+  };
+  
+  const setIconsForAllPlatforms = (iconUrl: string) => {
+    // Standard favicon
     let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
     if (!link) {
       link = document.createElement('link');
       link.rel = 'icon';
       document.head.appendChild(link);
     }
-    
-    // Set the href attribute to our generated favicon
-    link.href = dataUrl;
+    link.href = iconUrl;
     link.type = 'image/png';
     
-    // Also update apple touch icon for iOS devices
+    // Apple touch icon
     let appleIcon = document.querySelector("link[rel='apple-touch-icon']") as HTMLLinkElement;
     if (!appleIcon) {
       appleIcon = document.createElement('link');
       appleIcon.rel = 'apple-touch-icon';
       document.head.appendChild(appleIcon);
     }
-    appleIcon.href = dataUrl;
+    appleIcon.href = iconUrl;
     
-    // Update mobile web app meta tags for better mobile experience
+    // Apple touch icon precomposed (for older iOS)
+    let appleIconPrecomposed = document.querySelector("link[rel='apple-touch-icon-precomposed']") as HTMLLinkElement;
+    if (!appleIconPrecomposed) {
+      appleIconPrecomposed = document.createElement('link');
+      appleIconPrecomposed.rel = 'apple-touch-icon-precomposed';
+      document.head.appendChild(appleIconPrecomposed);
+    }
+    appleIconPrecomposed.href = iconUrl;
+    
+    // Shortcut icon (for older browsers)
+    let shortcutIcon = document.querySelector("link[rel='shortcut icon']") as HTMLLinkElement;
+    if (!shortcutIcon) {
+      shortcutIcon = document.createElement('link');
+      shortcutIcon.rel = 'shortcut icon';
+      document.head.appendChild(shortcutIcon);
+    }
+    shortcutIcon.href = iconUrl;
+    
+    // Also update manifest icon if manifest exists
+    let manifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement;
+    if (manifest) {
+      try {
+        const manifestData = {
+          icons: [
+            { src: iconUrl, sizes: '192x192', type: 'image/png' },
+            { src: iconUrl, sizes: '512x512', type: 'image/png' }
+          ]
+        };
+        const blob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+        manifest.href = URL.createObjectURL(blob);
+      } catch (e) {
+        console.error('Failed to update manifest:', e);
+      }
+    }
+    
+    // Update mobile web app meta tags
     setMobileMetaTags();
   };
   
@@ -68,7 +106,9 @@ const Favicon = () => {
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       { name: 'apple-mobile-web-app-title', content: 'Vibelaunch.io' },
       { name: 'mobile-web-app-capable', content: 'yes' },
-      { name: 'theme-color', content: '#0b0f19' }
+      { name: 'theme-color', content: '#0b0f19' },
+      { name: 'msapplication-TileColor', content: '#0b0f19' },
+      { name: 'msapplication-TileImage', content: document.querySelector("link[rel='icon']")?.getAttribute('href') || '' }
     ];
     
     metaTags.forEach(tag => {
@@ -89,8 +129,12 @@ const Favicon = () => {
     const handleFocus = () => setFavicon();
     window.addEventListener('focus', handleFocus);
     
+    // Also periodically check/update the favicon to ensure it persists (some mobile browsers clear it)
+    const intervalId = setInterval(setFavicon, 10000); // Check every 10 seconds
+    
     return () => {
       window.removeEventListener('focus', handleFocus);
+      clearInterval(intervalId);
     };
   }, []);
   

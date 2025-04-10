@@ -76,12 +76,12 @@ const Hero = ({
       )}
     >
       <LampContainer className="w-full">
-        <div className="relative z-10 text-center px-4">
+        <div className="relative z-10 text-center px-5 sm:px-4">
           <span className="inline-block mb-2 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
             COMING SOON
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight">
-            <span className="bg-gradient-to-r from-white via-slate-200 to-neon bg-clip-text text-transparent">Built something cool?</span>{" "}
+            <span className="bg-gradient-to-r from-white via-slate-200 to-neon bg-clip-text text-transparent">Built Something Cool ?</span>{" "}
             <span className="text-neon">Now get</span>{" "}
             <span className="bg-gradient-to-br from-neon to-white bg-clip-text text-transparent">Users.</span>
           </h1>

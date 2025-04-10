@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -19,33 +18,41 @@ const SuccessStories = ({ className }: SuccessStoriesProps) => {
   const stories = [
     {
       name: 'Sarah Thompson',
-      company: 'DesignMate',
+      company: 'StudyAura.app',
       quote: 'Vibelaunch transformed our launch strategy completely. We went from struggling to attract users to reaching our first 1000 users in just 2 months.',
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80',
-      metrics: { users: '1,200+', growth: '275%', timeframe: '2 months' }
+      metrics: { users: '1,200+', growth: '275%', timeframe: '2 months' },
+      url: 'https://studyaura.app'
     },
     {
       name: 'David Chen',
-      company: 'TaskFlow',
+      company: 'SmartExam.io',
       quote: 'The step-by-step guidance was exactly what we needed. We followed the Vibelaunch strategy and our conversion rates doubled almost immediately.',
       image: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      metrics: { users: '3,500+', growth: '180%', timeframe: '3 months' }
+      metrics: { users: '3,500+', growth: '180%', timeframe: '3 months' },
+      url: 'https://smartexam.io'
     },
     {
       name: 'Maya Jackson',
-      company: 'EcoTrack',
+      company: 'MyTattoo.Studio',
       quote: 'As a solo founder, I was overwhelmed by the launch process. Vibelaunch broke it down into manageable steps that made growth feel achievable and even fun!',
       image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      metrics: { users: '850+', growth: '210%', timeframe: '6 weeks' }
+      metrics: { users: '850+', growth: '210%', timeframe: '6 weeks' },
+      url: 'https://mytattoo.studio'
     },
     {
       name: 'Alex Rivera',
-      company: 'CodeSync',
+      company: 'Strandsgame.app',
       quote: 'The interactive tracking and gamified approach kept our team motivated. We hit milestones faster than expected and attracted our target users effectively.',
       image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      metrics: { users: '5,000+', growth: '320%', timeframe: '4 months' }
+      metrics: { users: '5,000+', growth: '320%', timeframe: '4 months' },
+      url: 'https://strandsgame.app'
     }
   ];
+
+  const handleCardClick = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className={cn('py-20', className)}>
@@ -68,11 +75,13 @@ const SuccessStories = ({ className }: SuccessStoriesProps) => {
             {stories.map((story, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 pl-4 md:pl-6">
                 <motion.div 
-                  className="h-full frost-container p-6 md:p-8 backdrop-blur-sm hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300"
+                  className="h-full frost-container p-6 md:p-8 backdrop-blur-sm hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300 cursor-pointer"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.02 }}
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                   viewport={{ once: true }}
+                  onClick={() => handleCardClick(story.url)}
                 >
                   <Quote className="h-8 w-8 text-neon/60 mb-4" />
                   <p className="text-slate-200 mb-6 text-lg italic">"{story.quote}"</p>

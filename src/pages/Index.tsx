@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Hero from '@/components/Hero';
 import StrategySteps from '@/components/StrategySteps';
@@ -6,7 +5,6 @@ import SignUpForm from '@/components/SignUpForm';
 import Particles from '@/components/Particles';
 import SuccessStories from '@/components/SuccessStories';
 import FeatureHighlights from '@/components/FeatureHighlights';
-import StatsSection from '@/components/StatsSection';
 import AuditSection from '@/components/AuditSection';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -89,8 +87,6 @@ const Index = () => {
             
             <AuditSection className="mb-16 md:mb-24" />
             
-            <StatsSection />
-            
             <SuccessStories />
 
             {/* FAQ Section */}
@@ -104,11 +100,11 @@ const Index = () => {
         {appState === AppState.SIGNUP && <div className="pt-20">
             <div className="text-center mb-10 animate-fade-in">
               <span className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
-                FINAL STEP
+                ALMOST THERE
               </span>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Create Your Account</h2>
               <p className="text-slate-300 max-w-md mx-auto">
-                Sign up to save your progress and continue your journey to 1000 users.
+                Save your launch playbook and join the community of vibe coders building their audience.
               </p>
             </div>
             

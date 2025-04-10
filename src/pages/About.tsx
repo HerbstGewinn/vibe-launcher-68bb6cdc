@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -58,7 +59,7 @@ const About = () => {
   ];
   
   return (
-    <div className="relative min-h-screen pb-20">
+    <div className="relative min-h-screen pb-20 overflow-x-hidden">
       {/* Background particles */}
       <Particles quantity={30} className="pointer-events-none" />
       

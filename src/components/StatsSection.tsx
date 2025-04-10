@@ -89,7 +89,7 @@ const StatsSection = ({
   }, [isVisible, stats]);
 
   return (
-    <div className={cn('py-20', className)} ref={sectionRef}>
+    <div className={cn('py-20 overflow-x-hidden', className)} ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">

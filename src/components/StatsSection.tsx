@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Progress } from '@/components/ui/progress';
-import { Award, Code, BarChart3, Globe } from 'lucide-react';
+import { Award, Code, BarChart3, Globe, Users, Lightbulb, GraduationCap } from 'lucide-react';
 
 interface StatsSectionProps {
   className?: string;
@@ -88,29 +88,36 @@ const StatsSection = ({
     return () => clearInterval(timer);
   }, [isVisible, stats]);
 
-  return <div className={cn('py-20', className)} ref={sectionRef}>
+  return (
+    <div className={cn('py-20', className)} ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
             BY THE NUMBERS
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Impact So Far</h2>
-          <p className="text-slate-300 max-w-2xl mx-auto">Vibelaunch helps you achieve your launch goals and build successful products. Years of Experience from Founders &amp; Software Devs have gone into Vibelaunch !</p>
+          <p className="text-slate-300 max-w-2xl mx-auto">Vibelaunch helps you achieve your launch goals and build successful products. Years of Experience from Founders &amp; Software Devs have gone into Vibelaunch!</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          <motion.div className="frost-container p-6 text-center backdrop-blur-sm hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300" initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.1,
-          duration: 0.5
-        }} viewport={{
-          once: true
-        }}>
+          <motion.div 
+            className="frost-container p-6 text-center backdrop-blur-sm bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300" 
+            initial={{
+              opacity: 0,
+              y: 20
+            }} 
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }} 
+            transition={{
+              delay: 0.1,
+              duration: 0.5
+            }} 
+            viewport={{
+              once: true
+            }}
+          >
             <div className="h-16 w-16 rounded-full mx-auto mb-4 bg-neon/10 border border-neon/30 flex items-center justify-center">
               <Code className="h-8 w-8 text-neon" />
             </div>
@@ -121,18 +128,24 @@ const StatsSection = ({
             </div>
           </motion.div>
 
-          <motion.div className="frost-container p-6 text-center backdrop-blur-sm hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300" initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.2,
-          duration: 0.5
-        }} viewport={{
-          once: true
-        }}>
+          <motion.div 
+            className="frost-container p-6 text-center backdrop-blur-sm bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300" 
+            initial={{
+              opacity: 0,
+              y: 20
+            }} 
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }} 
+            transition={{
+              delay: 0.2,
+              duration: 0.5
+            }} 
+            viewport={{
+              once: true
+            }}
+          >
             <div className="h-16 w-16 rounded-full mx-auto mb-4 bg-neon/10 border border-neon/30 flex items-center justify-center">
               <BarChart3 className="h-8 w-8 text-neon" />
             </div>
@@ -143,18 +156,24 @@ const StatsSection = ({
             </div>
           </motion.div>
 
-          <motion.div className="frost-container p-6 text-center backdrop-blur-sm hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300" initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.3,
-          duration: 0.5
-        }} viewport={{
-          once: true
-        }}>
+          <motion.div 
+            className="frost-container p-6 text-center backdrop-blur-sm bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300" 
+            initial={{
+              opacity: 0,
+              y: 20
+            }} 
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }} 
+            transition={{
+              delay: 0.3,
+              duration: 0.5
+            }} 
+            viewport={{
+              once: true
+            }}
+          >
             <div className="h-16 w-16 rounded-full mx-auto mb-4 bg-neon/10 border border-neon/30 flex items-center justify-center">
               <Globe className="h-8 w-8 text-neon" />
             </div>
@@ -165,18 +184,24 @@ const StatsSection = ({
             </div>
           </motion.div>
 
-          <motion.div className="frost-container p-6 text-center backdrop-blur-sm hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300" initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.4,
-          duration: 0.5
-        }} viewport={{
-          once: true
-        }}>
+          <motion.div 
+            className="frost-container p-6 text-center backdrop-blur-sm bg-space-light/50 hover:border-neon/50 hover:shadow-neon-sm transition-all duration-300" 
+            initial={{
+              opacity: 0,
+              y: 20
+            }} 
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }} 
+            transition={{
+              delay: 0.4,
+              duration: 0.5
+            }} 
+            viewport={{
+              once: true
+            }}
+          >
             <div className="h-16 w-16 rounded-full mx-auto mb-4 bg-neon/10 border border-neon/30 flex items-center justify-center">
               <Award className="h-8 w-8 text-neon" />
             </div>
@@ -188,7 +213,8 @@ const StatsSection = ({
           </motion.div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default StatsSection;

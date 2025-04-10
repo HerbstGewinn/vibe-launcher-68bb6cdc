@@ -55,7 +55,7 @@
 
 @layer utilities {
   .frost-container {
-    @apply bg-white/5 backdrop-blur-sm;
+    @apply bg-white/5 backdrop-blur-sm bg-space-light/50;
   }
   
   .text-neon {

@@ -178,7 +178,7 @@ const AuditSection = ({ className }: AuditSectionProps) => {
             </div>
 
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-4">
-              <div className="frost-container p-2 md:p-3 flex-1 flex items-center gap-2 md:gap-3 border border-white/5 rounded-lg">
+              <div className="frost-container p-2 md:p-3 flex-1 flex items-center gap-2 md:gap-3 border border-white/5 rounded-lg bg-space-light/50">
                 <div className="h-8 w-8 md:h-10 md:w-10 rounded-full bg-green-400/20 flex items-center justify-center">
                   <Check className="h-4 w-4 md:h-6 md:w-6 text-green-400" />
                 </div>
@@ -188,7 +188,7 @@ const AuditSection = ({ className }: AuditSectionProps) => {
                 </div>
               </div>
               
-              <div className="frost-container p-2 md:p-3 flex-1 flex items-center gap-2 md:gap-3 border border-white/5 rounded-lg">
+              <div className="frost-container p-2 md:p-3 flex-1 flex items-center gap-2 md:gap-3 border border-white/5 rounded-lg bg-space-light/50">
                 <div className="h-8 w-8 md:h-10 md:w-10 rounded-full bg-neon/20 flex items-center justify-center">
                   <Clock className="h-4 w-4 md:h-6 md:w-6 text-neon" />
                 </div>
@@ -200,8 +200,6 @@ const AuditSection = ({ className }: AuditSectionProps) => {
             </div>
           </motion.div>
         </div>
-        
-        {/* Button removed: The "Generate Complete Site Analysis" button was here */}
       </div>
     </div>
   );

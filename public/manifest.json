@@ -9,34 +9,14 @@
   "theme_color": "#0b0f19",
   "icons": [
     {
-      "src": "/public/appletouch.png",
+      "src": "/public/og-image.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "/public/appletouch.png",
+      "src": "/public/og-image.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/public/appletouch.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/public/appletouch.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/public/appletouch.png",
-      "sizes": "167x167",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     }
   ]
 }

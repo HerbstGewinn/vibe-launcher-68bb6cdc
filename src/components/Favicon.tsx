@@ -51,11 +51,14 @@ const Favicon = () => {
     link.href = iconUrl;
     link.type = 'image/png';
     
-    // Apple touch icons - specific sizes for different devices
-    setAppleIcon(iconUrl, '');
-    setAppleIcon(iconUrl, '152x152');
-    setAppleIcon(iconUrl, '167x167');
-    setAppleIcon(iconUrl, '180x180');
+    // Apple touch icon
+    let appleIcon = document.querySelector("link[rel='apple-touch-icon']") as HTMLLinkElement;
+    if (!appleIcon) {
+      appleIcon = document.createElement('link');
+      appleIcon.rel = 'apple-touch-icon';
+      document.head.appendChild(appleIcon);
+    }
+    appleIcon.href = iconUrl;
     
     // Apple touch icon precomposed (for older iOS)
     let appleIconPrecomposed = document.querySelector("link[rel='apple-touch-icon-precomposed']") as HTMLLinkElement;
@@ -75,74 +78,28 @@ const Favicon = () => {
     }
     shortcutIcon.href = iconUrl;
     
-    // Update manifest
-    updateWebAppManifest(iconUrl);
+    // Also update manifest icon if manifest exists
+    let manifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement;
+    if (manifest) {
+      try {
+        const manifestData = {
+          icons: [
+            { src: iconUrl, sizes: '192x192', type: 'image/png' },
+            { src: iconUrl, sizes: '512x512', type: 'image/png' }
+          ]
+        };
+        const blob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+        manifest.href = URL.createObjectURL(blob);
+      } catch (e) {
+        console.error('Failed to update manifest:', e);
+      }
+    }
     
     // Update mobile web app meta tags
-    setMobileMetaTags(iconUrl);
-  };
-
-  const setAppleIcon = (iconUrl: string, size: string) => {
-    const selector = size 
-      ? `link[rel='apple-touch-icon'][sizes='${size}']` 
-      : "link[rel='apple-touch-icon']:not([sizes])";
-      
-    let appleIcon = document.querySelector(selector) as HTMLLinkElement;
-    if (!appleIcon) {
-      appleIcon = document.createElement('link');
-      appleIcon.rel = 'apple-touch-icon';
-      if (size) appleIcon.setAttribute('sizes', size);
-      document.head.appendChild(appleIcon);
-    }
-    appleIcon.href = iconUrl;
+    setMobileMetaTags();
   };
   
-  const updateWebAppManifest = (iconUrl: string) => {
-    // Create and update web app manifest dynamically
-    const manifestData = {
-      name: "Vibelaunch.io - From 0 to 1000 users",
-      short_name: "Vibelaunch",
-      description: "Launch your product and grow from 0 to 1000 users with Vibelaunch.io",
-      start_url: "/",
-      display: "standalone",
-      background_color: "#0b0f19",
-      theme_color: "#0b0f19",
-      icons: [
-        {
-          src: iconUrl,
-          sizes: "192x192",
-          type: "image/png"
-        },
-        {
-          src: iconUrl,
-          sizes: "512x512",
-          type: "image/png"
-        },
-        {
-          src: iconUrl,
-          sizes: "180x180", // iOS recommended size
-          type: "image/png"
-        }
-      ]
-    };
-    
-    try {
-      const blob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
-      const manifestUrl = URL.createObjectURL(blob);
-      
-      let manifest = document.querySelector("link[rel='manifest']") as HTMLLinkElement;
-      if (!manifest) {
-        manifest = document.createElement('link');
-        manifest.rel = 'manifest';
-        document.head.appendChild(manifest);
-      }
-      manifest.href = manifestUrl;
-    } catch (e) {
-      console.error('Failed to update manifest:', e);
-    }
-  };
-  
-  const setMobileMetaTags = (iconUrl: string) => {
+  const setMobileMetaTags = () => {
     // Add mobile web app capability meta tags
     const metaTags = [
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
@@ -151,7 +108,7 @@ const Favicon = () => {
       { name: 'mobile-web-app-capable', content: 'yes' },
       { name: 'theme-color', content: '#0b0f19' },
       { name: 'msapplication-TileColor', content: '#0b0f19' },
-      { name: 'msapplication-TileImage', content: iconUrl }
+      { name: 'msapplication-TileImage', content: document.querySelector("link[rel='icon']")?.getAttribute('href') || '' }
     ];
     
     metaTags.forEach(tag => {
@@ -163,39 +120,20 @@ const Favicon = () => {
       }
       metaTag.setAttribute('content', tag.content);
     });
-
-    // Add specific meta tag for apple-touch-startup-image
-    let startupImage = document.querySelector("link[rel='apple-touch-startup-image']") as HTMLLinkElement;
-    if (!startupImage) {
-      startupImage = document.createElement('link');
-      startupImage.rel = 'apple-touch-startup-image';
-      document.head.appendChild(startupImage);
-    }
-    startupImage.href = iconUrl;
   };
   
-  // Set favicon when component mounts and frequently check it persists
+  // Set favicon when component mounts
   React.useEffect(() => {
-    // Set initial favicon
     setFavicon();
-    
-    // Update favicon when window is focused or becomes visible
+    // Update favicon when window is focused (in case it was changed by another site)
     const handleFocus = () => setFavicon();
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        setFavicon();
-      }
-    };
-    
     window.addEventListener('focus', handleFocus);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
     
-    // More aggressive checking on iOS - check every 2 seconds
-    const intervalId = setInterval(setFavicon, 2000);
+    // Also periodically check/update the favicon to ensure it persists (some mobile browsers clear it)
+    const intervalId = setInterval(setFavicon, 10000); // Check every 10 seconds
     
     return () => {
       window.removeEventListener('focus', handleFocus);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
       clearInterval(intervalId);
     };
   }, []);

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
@@ -79,9 +80,10 @@ const Hero = ({
           <span className="inline-block mb-2 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
             COMING SOON
           </span>
-          <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent">
-            Vibe coding <span className="text-neon">from 0</span> to{" "}
-            <span className="text-neon">1000</span> Users
+          <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight">
+            <span className="bg-gradient-to-r from-white via-slate-200 to-neon bg-clip-text text-transparent">Built something cool?</span>{" "}
+            <span className="text-neon">Now get</span>{" "}
+            <span className="bg-gradient-to-br from-neon to-white bg-clip-text text-transparent">Users.</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">
             Ditch the Dev Headaches. Scale to 1000 Users. Unlock Early Access

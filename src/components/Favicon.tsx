@@ -47,6 +47,15 @@ const Favicon = () => {
     // Set the href attribute to our generated favicon
     link.href = dataUrl;
     link.type = 'image/png';
+    
+    // Also update apple touch icon for iOS devices
+    let appleIcon = document.querySelector("link[rel='apple-touch-icon']") as HTMLLinkElement;
+    if (!appleIcon) {
+      appleIcon = document.createElement('link');
+      appleIcon.rel = 'apple-touch-icon';
+      document.head.appendChild(appleIcon);
+    }
+    appleIcon.href = dataUrl;
   };
   
   // Set favicon when component mounts

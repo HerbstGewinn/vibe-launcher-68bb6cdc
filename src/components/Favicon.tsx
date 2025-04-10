@@ -56,6 +56,30 @@ const Favicon = () => {
       document.head.appendChild(appleIcon);
     }
     appleIcon.href = dataUrl;
+    
+    // Update mobile web app meta tags for better mobile experience
+    setMobileMetaTags();
+  };
+  
+  const setMobileMetaTags = () => {
+    // Add mobile web app capability meta tags
+    const metaTags = [
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+      { name: 'apple-mobile-web-app-title', content: 'Vibelaunch.io' },
+      { name: 'mobile-web-app-capable', content: 'yes' },
+      { name: 'theme-color', content: '#0b0f19' }
+    ];
+    
+    metaTags.forEach(tag => {
+      let metaTag = document.querySelector(`meta[name='${tag.name}']`);
+      if (!metaTag) {
+        metaTag = document.createElement('meta');
+        metaTag.setAttribute('name', tag.name);
+        document.head.appendChild(metaTag);
+      }
+      metaTag.setAttribute('content', tag.content);
+    });
   };
   
   // Set favicon when component mounts

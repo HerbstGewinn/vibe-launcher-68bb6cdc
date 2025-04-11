@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Hero from '@/components/Hero';
 import StrategySteps from '@/components/StrategySteps';
@@ -93,11 +92,11 @@ const Index = () => {
             
             <AuditSection className="mb-16 md:mb-24" />
             
-            {/* About Us Section */}
-            <section className="py-20 relative overflow-hidden">
+            {/* About Us Section - Condensed */}
+            <section className="py-16 relative overflow-hidden">
               <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(10,255,255,0.08),transparent_70%)]"></div>
               <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
+                <div className="text-center mb-8">
                   <span className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
                     OUR STORY
                   </span>
@@ -108,7 +107,6 @@ const Index = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                  {/* Timeline highlight */}
                   <motion.div 
                     className="frost-container p-6 border border-white/10"
                     initial={{ opacity: 0, y: 20 }}
@@ -116,61 +114,12 @@ const Index = () => {
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <h3 className="text-xl font-semibold mb-4">Our Journey</h3>
-                    <div className="space-y-4">
-                      <div className="flex gap-3">
-                        <div className="h-8 w-8 rounded-full bg-space border border-neon flex items-center justify-center flex-shrink-0">
-                          <span className="text-neon font-semibold">1</span>
-                        </div>
-                        <div>
-                          <h4 className="font-medium">Stack Overflow Days</h4>
-                          <p className="text-sm text-slate-300">
-                            Remember the struggle? Building required sheer persistence piecing together solutions from scattered forums.
-                          </p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-3">
-                        <div className="h-8 w-8 rounded-full bg-space border border-neon flex items-center justify-center flex-shrink-0">
-                          <span className="text-neon font-semibold">3</span>
-                        </div>
-                        <div>
-                          <h4 className="font-medium">Conversational Code</h4>
-                          <p className="text-sm text-slate-300">
-                            ChatGPT, Cursor... suddenly, you could *talk* your code into existence. Prototyping became dramatically faster.
-                          </p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-3">
-                        <div className="h-8 w-8 rounded-full bg-space border border-neon flex items-center justify-center flex-shrink-0">
-                          <span className="text-neon font-semibold">5</span>
-                        </div>
-                        <div>
-                          <h4 className="font-medium">Vibelaunch: The Missing Playbook</h4>
-                          <p className="text-sm text-slate-300">
-                            Building is solved, launching isn't. Vibelaunch provides the strategy to get your creation in front of users.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                  
-                  {/* Team and mission */}
-                  <motion.div 
-                    className="frost-container p-6 border border-white/10"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    viewport={{ once: true }}
-                  >
                     <h3 className="text-xl font-semibold mb-4">Our Mission</h3>
                     <p className="text-slate-300 mb-4">
-                      At Vibelaunch, we know the high of shipping code. But we also know the uncertainty that follows. 
-                      Our mission is to empower vibe coders like you with the clarity and strategy needed to find your first users and build lasting momentum.
+                      At Vibelaunch, we empower vibe coders with the clarity and strategy needed to find your first users and build lasting momentum.
                     </p>
                     
-                    <div className="grid grid-cols-2 gap-3 mb-6">
+                    <div className="grid grid-cols-2 gap-3">
                       <div className="flex items-center gap-2">
                         <Users className="h-5 w-5 text-neon" />
                         <span className="text-sm">Community</span>
@@ -188,14 +137,49 @@ const Index = () => {
                         <span className="text-sm">Reach</span>
                       </div>
                     </div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="frost-container p-6 border border-white/10"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <h3 className="text-xl font-semibold mb-4">Our Journey</h3>
+                    <div className="space-y-4">
+                      <div className="flex gap-3">
+                        <div className="h-8 w-8 rounded-full bg-space border border-neon flex items-center justify-center flex-shrink-0">
+                          <span className="text-neon font-semibold">1</span>
+                        </div>
+                        <div>
+                          <h4 className="font-medium">Stack Overflow Days</h4>
+                          <p className="text-sm text-slate-300">
+                            Building required sheer persistence piecing together solutions from scattered forums.
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-3">
+                        <div className="h-8 w-8 rounded-full bg-space border border-neon flex items-center justify-center flex-shrink-0">
+                          <span className="text-neon font-semibold">2</span>
+                        </div>
+                        <div>
+                          <h4 className="font-medium">Vibelaunch</h4>
+                          <p className="text-sm text-slate-300">
+                            The missing playbook to get your creation in front of users.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                     
-                    <div className="flex justify-end">
+                    <div className="mt-4 flex justify-end">
                       <Button 
                         variant="outline" 
                         className="text-neon border-neon/50 hover:bg-neon/10"
                         onClick={() => navigate('/about')}
                       >
-                        Learn More About Us
+                        Learn More
                       </Button>
                     </div>
                   </motion.div>

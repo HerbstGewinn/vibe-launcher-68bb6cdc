@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Hero from '@/components/Hero';
 import StrategySteps from '@/components/StrategySteps';
@@ -12,6 +13,10 @@ import IntegrationCircles from '@/components/IntegrationCircles';
 import FAQ from '@/components/FAQ';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Users, Award, Lightbulb, GraduationCap } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 enum AppState {
   INITIAL,
@@ -85,9 +90,119 @@ const Index = () => {
             
             <FeatureHighlights className="mt-0 pt-0" />
             
-            <AuditSection className="mb-16 md:mb-24" />
-            
             <SuccessStories />
+            
+            {/* About Us Section - Added between Success Stories and Site Audit */}
+            <section className="py-20 relative overflow-hidden">
+              <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(10,255,255,0.08),transparent_70%)]"></div>
+              <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                  <span className="inline-block mb-3 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
+                    OUR STORY
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">From Code to Community</h2>
+                  <p className="text-slate-300 max-w-2xl mx-auto">
+                    How helping fellow coders sparked a mission to bridge the gap between building and belonging.
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                  {/* Timeline highlight */}
+                  <motion.div 
+                    className="frost-container p-6 border border-white/10"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <h3 className="text-xl font-semibold mb-4">Our Journey</h3>
+                    <div className="space-y-4">
+                      <div className="flex gap-3">
+                        <div className="h-8 w-8 rounded-full bg-space border border-neon flex items-center justify-center flex-shrink-0">
+                          <span className="text-neon font-semibold">1</span>
+                        </div>
+                        <div>
+                          <h4 className="font-medium">Stack Overflow Days</h4>
+                          <p className="text-sm text-slate-300">
+                            Remember the struggle? Building required sheer persistence piecing together solutions from scattered forums.
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-3">
+                        <div className="h-8 w-8 rounded-full bg-space border border-neon flex items-center justify-center flex-shrink-0">
+                          <span className="text-neon font-semibold">3</span>
+                        </div>
+                        <div>
+                          <h4 className="font-medium">Conversational Code</h4>
+                          <p className="text-sm text-slate-300">
+                            ChatGPT, Cursor... suddenly, you could *talk* your code into existence. Prototyping became dramatically faster.
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-3">
+                        <div className="h-8 w-8 rounded-full bg-space border border-neon flex items-center justify-center flex-shrink-0">
+                          <span className="text-neon font-semibold">5</span>
+                        </div>
+                        <div>
+                          <h4 className="font-medium">Vibelaunch: The Missing Playbook</h4>
+                          <p className="text-sm text-slate-300">
+                            Building is solved, launching isn't. Vibelaunch provides the strategy to get your creation in front of users.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                  
+                  {/* Team and mission */}
+                  <motion.div 
+                    className="frost-container p-6 border border-white/10"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <h3 className="text-xl font-semibold mb-4">Our Mission</h3>
+                    <p className="text-slate-300 mb-4">
+                      At Vibelaunch, we know the high of shipping code. But we also know the uncertainty that follows. 
+                      Our mission is to empower vibe coders like you with the clarity and strategy needed to find your first users and build lasting momentum.
+                    </p>
+                    
+                    <div className="grid grid-cols-2 gap-3 mb-6">
+                      <div className="flex items-center gap-2">
+                        <Users className="h-5 w-5 text-neon" />
+                        <span className="text-sm">Community</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Award className="h-5 w-5 text-neon" />
+                        <span className="text-sm">Clarity</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Lightbulb className="h-5 w-5 text-neon" />
+                        <span className="text-sm">Strategy</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <GraduationCap className="h-5 w-5 text-neon" />
+                        <span className="text-sm">Reach</span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-end">
+                      <Button 
+                        variant="outline" 
+                        className="text-neon border-neon/50 hover:bg-neon/10"
+                        onClick={() => navigate('/about')}
+                      >
+                        Learn More About Us
+                      </Button>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </section>
+            
+            <AuditSection className="mb-16 md:mb-24" />
 
             {/* FAQ Section */}
             <FAQ className="mt-16 md:mt-24 mb-16" />

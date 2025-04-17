@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Lightbulb, Palette, Code, Search, Rocket, CalendarCheck, Send, MessageSquare } from 'lucide-react';
+import { Lightbulb, Palette, Code, Search, Rocket, CalendarCheck, Send, MessageSquare, Sparkles, Wand2, BarChart3 } from 'lucide-react';
 import Button from '@/components/Button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -46,6 +46,24 @@ const Mvp = () => {
       description: "Deploy to production + guide you to first users",
       icon: Rocket,
     },
+  ];
+  
+  const noCodeBenefits = [
+    {
+      icon: BarChart3,
+      title: "10x the speed",
+      description: "No-code solutions are fast. Build and launch your MVP product within weeks, not months."
+    },
+    {
+      icon: Wand2,
+      title: "Iterate and scale on your terms",
+      description: "Pivot and adapt to your audience easily, without big back-end changes that slow you down."
+    },
+    {
+      icon: Sparkles,
+      title: "Pixel-perfect design, customized to your ideal users",
+      description: "We believe products need to look and feel beautiful - with user experience always first."
+    }
   ];
 
   const handleContactSubmit = (e: React.FormEvent) => {
@@ -105,94 +123,35 @@ const Mvp = () => {
           </div>
         </section>
 
-        {/* Contact Form Section - Replacing Why Us section */}
+        {/* Why No-Code Section - Replacing Contact Form */}
         <section className="py-16 px-4 relative">
           <div className="absolute top-1/4 left-1/3 w-1/3 h-1/3 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.05),transparent_70%)] rounded-full blur-3xl"></div>
           
           <div className="container mx-auto">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                Ready to build your <span className="text-neon">MVP?</span>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                Why no-code for your <span className="text-neon">MVP?</span>
               </h2>
-              <p className="text-slate-300">
-                Tell us about your project and we'll get back to you within 24 hours
-              </p>
             </div>
             
-            <motion.div 
-              className="max-w-2xl mx-auto bg-space-light/30 p-8 rounded-xl border border-white/10 backdrop-blur-sm"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <form onSubmit={handleContactSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-1">Your Name</label>
-                    <Input 
-                      id="name" 
-                      placeholder="John Doe" 
-                      required
-                      className="bg-space/80 border-slate-700/50 h-12 text-white placeholder:text-slate-500"
-                    />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {noCodeBenefits.map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-space-light/50 backdrop-blur-sm border border-white/10 rounded-xl p-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="mb-6">
+                    <benefit.icon className="h-7 w-7 text-white" />
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-1">Email Address</label>
-                    <Input 
-                      id="email" 
-                      type="email" 
-                      placeholder="john@example.com" 
-                      required
-                      className="bg-space/80 border-slate-700/50 h-12 text-white placeholder:text-slate-500"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="projectType" className="block text-sm font-medium text-slate-300 mb-1">Project Type</label>
-                  <select 
-                    id="projectType"
-                    className="w-full bg-space/80 border border-slate-700/50 rounded-lg px-4 py-3 text-white"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Select your project type</option>
-                    <option value="web">Web Application</option>
-                    <option value="mobile">Mobile App</option>
-                    <option value="saas">SaaS Product</option>
-                    <option value="ecommerce">E-commerce</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-1">Project Description</label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Tell us about your MVP idea..."
-                    rows={5}
-                    required
-                    className="bg-space/80 border-slate-700/50 text-white placeholder:text-slate-500"
-                  />
-                </div>
-                
-                <div className="flex justify-center">
-                  <Button 
-                    type="submit"
-                    variant="primary" 
-                    size="lg"
-                    glow={true}
-                    className="mt-4 px-10"
-                  >
-                    <MessageSquare className="mr-2 h-5 w-5" /> Get in touch
-                  </Button>
-                </div>
-                
-                <div className="text-center text-xs text-slate-400 pt-4">
-                  By submitting this form, you agree to our <a href="#" className="text-neon hover:underline">Terms</a> and <a href="#" className="text-neon hover:underline">Privacy Policy</a>
-                </div>
-              </form>
-            </motion.div>
+                  <h3 className="text-2xl font-bold mb-4">{benefit.title}</h3>
+                  <p className="text-slate-300">{benefit.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
         

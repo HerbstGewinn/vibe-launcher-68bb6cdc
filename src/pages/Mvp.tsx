@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -130,7 +129,7 @@ const Mvp = () => {
           <div className="container mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                Why no-code for your <span className="text-neon">MVP?</span>
+                Why choose us for your <span className="text-neon">MVP?</span>
               </h2>
             </div>
             

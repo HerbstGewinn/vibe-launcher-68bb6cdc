@@ -112,7 +112,7 @@ const Mvp = () => {
                   variant="primary" 
                   size="lg" 
                   glow={true}
-                  className="font-semibold text-base shadow-neon-lg px-10 py-7 hover:scale-105 transition-transform duration-300"
+                  className="font-semibold text-base shadow-neon-lg px-10 py-7"
                   as="a"
                   href="https://calendly.com/herbst-laurin/30min"
                   target="_blank"
@@ -267,7 +267,7 @@ const Mvp = () => {
                   variant="primary" 
                   size="lg" 
                   glow={true}
-                  className="font-semibold text-base shadow-neon-lg px-12 py-7 hover:scale-105 transition-transform duration-300"
+                  className="font-semibold text-base shadow-neon-lg px-12 py-7"
                   as="a"
                   href="https://calendly.com/herbst-laurin/30min"
                   target="_blank"

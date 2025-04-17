@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -30,7 +29,7 @@ const AuditSection = ({ className }: AuditSectionProps) => {
   // Security Checklist Items
   const securityItems: ChecklistItem[] = [
     { label: 'No Exposed API Keys?', completed: true },
-    { label: 'Row-Level Security (RLS) Activated?', completed: true },
+    { label: 'No Exposed API Keys?', completed: true },
     { label: 'HTTPS/SSL Certificate Active?', completed: true },
     { label: 'Dependencies Up-to-date?', completed: false },
     { label: 'Secure Authentication Enabled?', completed: true }
@@ -40,20 +39,20 @@ const AuditSection = ({ className }: AuditSectionProps) => {
     return items.filter(item => item.completed).length;
   };
 
-  const getStatusInfo = (completed: number, total: number) => {
+  const getCompletionStatus = (completed: number, total: number) => {
     const ratio = completed / total;
     
-    if (ratio === 1) return { text: 'Excellent', badge: '✅', color: 'text-green-400' };
-    if (ratio >= 0.75) return { text: 'Good', badge: '🟢', color: 'text-green-400' };
-    if (ratio >= 0.5) return { text: 'Needs Improvement', badge: '🟠', color: 'text-yellow-400' };
-    return { text: 'Poor', badge: '🔴', color: 'text-red-400' };
+    if (ratio === 1) return { text: 'Excellent', color: 'text-green-500' };
+    if (ratio >= 0.75) return { text: 'Good', color: 'text-green-400' };
+    if (ratio >= 0.5) return { text: 'Needs Improvement', color: 'text-yellow-500' };
+    return { text: 'Poor', color: 'text-red-500' };
   };
 
   const seoCompleted = getCompletedCount(seoItems);
-  const seoStatus = getStatusInfo(seoCompleted, seoItems.length);
+  const seoStatus = getCompletionStatus(seoCompleted, seoItems.length);
   
   const securityCompleted = getCompletedCount(securityItems);
-  const securityStatus = getStatusInfo(securityCompleted, securityItems.length);
+  const securityStatus = getCompletionStatus(securityCompleted, securityItems.length);
 
   return (
     <div className={cn('py-12 md:py-20 relative overflow-hidden', className)}>
@@ -105,28 +104,14 @@ const AuditSection = ({ className }: AuditSectionProps) => {
             </div>
             
             <div className="p-4 bg-space-light/30 border border-white/5 rounded-lg mt-5">
-              <div className="mb-2">
-                <h4 className="font-medium">✅ SEO Tasks Completed:</h4>
-                <p className="text-lg font-semibold">[ {seoCompleted} / {seoItems.length} ] tasks completed</p>
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-semibold text-lg">Completion Score</h4>
+                <span className={`font-bold text-2xl ${seoStatus.color}`}>
+                  {seoCompleted}/{seoItems.length}
+                </span>
               </div>
-              
-              <div className="space-y-1 mt-3">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">{seoItems.length}/{seoItems.length} →</span>
-                  <span className="font-medium">Excellent ✅</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">{Math.ceil(seoItems.length * 0.75)}/{seoItems.length} →</span>
-                  <span className="font-medium">Good 🟢</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">{Math.ceil(seoItems.length * 0.5)}/{seoItems.length} →</span>
-                  <span className="font-medium">Needs Improvement 🟠</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">0-{Math.floor(seoItems.length * 0.5 - 1)}/{seoItems.length} →</span>
-                  <span className="font-medium">Poor 🔴</span>
-                </div>
+              <div className={`text-base ${seoStatus.color}`}>
+                {seoStatus.text}
               </div>
             </div>
 
@@ -170,28 +155,14 @@ const AuditSection = ({ className }: AuditSectionProps) => {
             </div>
             
             <div className="p-4 bg-space-light/30 border border-white/5 rounded-lg mt-5">
-              <div className="mb-2">
-                <h4 className="font-medium">✅ Security Tasks Completed:</h4>
-                <p className="text-lg font-semibold">[ {securityCompleted} / {securityItems.length} ] tasks completed</p>
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-semibold text-lg">Completion Score</h4>
+                <span className={`font-bold text-2xl ${securityStatus.color}`}>
+                  {securityCompleted}/{securityItems.length}
+                </span>
               </div>
-              
-              <div className="space-y-1 mt-3">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">{securityItems.length}/{securityItems.length} →</span>
-                  <span className="font-medium">Excellent ✅</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">{Math.ceil(securityItems.length * 0.75)}/{securityItems.length} →</span>
-                  <span className="font-medium">Good 🟢</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">2-3/{securityItems.length} →</span>
-                  <span className="font-medium">Needs Improvement 🟠</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">0-1/{securityItems.length} →</span>
-                  <span className="font-medium">Poor 🔴</span>
-                </div>
+              <div className={`text-base ${securityStatus.color}`}>
+                {securityStatus.text}
               </div>
             </div>
 

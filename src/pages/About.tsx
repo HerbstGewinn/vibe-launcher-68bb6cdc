@@ -241,7 +241,13 @@ const About = () => {
           <p className="text-slate-300 max-w-2xl mx-auto mb-8">
             Stop guessing, start growing. Get your personalized launch playbook with Vibelaunch.
           </p>
-          <Button as="a" href="/" size="lg" glow>
+          <Button 
+            as="a" 
+            href="/" 
+            size="lg" 
+            variant="neon"  // Updated variant to match site's neon design
+            glow
+          >
             Get Started Today
           </Button>
         </div>

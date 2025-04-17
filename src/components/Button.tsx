@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -43,7 +42,7 @@ const Button = (props: ButtonProps) => {
     outline: 'border border-neon/50 bg-transparent hover:bg-neon/10 text-neon transition-all',
     ghost: 'bg-transparent hover:bg-secondary/80 text-primary-foreground transition-all',
     link: 'bg-transparent text-neon underline-offset-4 hover:underline transition-all p-0',
-    neon: 'relative bg-transparent text-neon border border-neon/30 overflow-hidden group',
+    neon: 'bg-gradient-to-r from-[#0AFFFF] to-[#0FA0CE] text-space border border-neon/30 hover:border-neon/50 transition-all', // New neon variant
   };
 
   const sizes = {
@@ -61,10 +60,10 @@ const Button = (props: ButtonProps) => {
     sizes[size],
     widthClass,
     glowEffect,
-    'transform transition-all duration-300 hover:scale-105', // Added subtle scale effect
-    'flex', // Ensure flex display
-    'text-base', // Consistent text size
-    'tracking-wider', // Slightly wider letter spacing
+    'transform transition-all duration-300 hover:scale-105',
+    'flex',
+    'text-base',
+    'tracking-wider',
     isLoading && 'opacity-70 cursor-not-allowed',
     className
   );

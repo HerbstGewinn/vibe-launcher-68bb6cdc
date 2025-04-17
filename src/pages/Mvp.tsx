@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Lightbulb, Palette, Code, Search, Rocket, CalendarCheck, Send, MessageSquare, Sparkles, Wand2, BarChart3, Brain, FolderOpen, GraduationCap, Instagram, Gamepad } from 'lucide-react';
@@ -13,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const Mvp = () => {
   const isMobile = useIsMobile();
@@ -142,18 +142,17 @@ const Mvp = () => {
     },
   ];
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     toast.success('Message sent!', {
       description: "We'll get back to you within 24 hours",
     });
-  };
+  }, []);
 
   return (
     <>
       <Navbar />
       <main className="min-h-screen bg-space overflow-hidden">
-        {/* Hero Section */}
         <section className="relative py-24 md:py-32 px-4 overflow-hidden">
           {/* Background Elements */}
           <div className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.1),transparent_70%)] rounded-full blur-3xl"></div>
@@ -204,8 +203,6 @@ const Mvp = () => {
             </div>
           </div>
         </section>
-
-        {/* Why No-Code Section - Replacing Contact Form */}
         <section className="py-16 px-4 relative">
           <div className="absolute top-1/4 left-1/3 w-1/3 h-1/3 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.05),transparent_70%)] rounded-full blur-3xl"></div>
           
@@ -236,8 +233,6 @@ const Mvp = () => {
             </div>
           </div>
         </section>
-
-        {/* Categories Section with Tabs */}
         <section className="py-20 md:py-28 px-4 relative">
           <div className="absolute top-1/3 right-1/4 w-1/4 h-1/3 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.07),transparent_70%)] rounded-full blur-3xl"></div>
           
@@ -266,20 +261,26 @@ const Mvp = () => {
 
             <div className="max-w-6xl mx-auto">
               <Tabs defaultValue="ai" className="w-full" onValueChange={setActiveCategory}>
-                <TabsList className="flex justify-center border-b border-white/10 bg-transparent h-auto mb-12 w-full overflow-x-auto">
-                  {categoryTabs.map((tab) => (
-                    <TabsTrigger 
-                      key={tab.id} 
-                      value={tab.id}
-                      className={cn(
-                        "pb-4 rounded-none border-b-2 border-transparent data-[state=active]:border-neon data-[state=active]:text-neon text-lg font-medium px-6",
-                        "bg-transparent hover:text-neon transition-colors duration-200"
-                      )}
-                    >
-                      {tab.label}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+                {/* UPDATED: Made TabsList responsive with ScrollArea for mobile */}
+                <div className="relative w-full">
+                  <ScrollArea className="w-full pb-4">
+                    <TabsList className="flex justify-start md:justify-center border-b border-white/10 bg-transparent h-auto mb-12 w-max min-w-full px-2">
+                      {categoryTabs.map((tab) => (
+                        <TabsTrigger 
+                          key={tab.id} 
+                          value={tab.id}
+                          className={cn(
+                            "pb-4 rounded-none border-b-2 border-transparent data-[state=active]:border-neon data-[state=active]:text-neon text-base md:text-lg font-medium px-3 md:px-6 whitespace-nowrap",
+                            "bg-transparent hover:text-neon transition-colors duration-200"
+                          )}
+                        >
+                          <tab.icon className="md:mr-2 h-4 w-4 md:inline-block" />
+                          <span className="hidden md:inline">{tab.label}</span>
+                        </TabsTrigger>
+                      ))}
+                    </TabsList>
+                  </ScrollArea>
+                </div>
                 
                 {categoryTabs.map((tab) => (
                   <TabsContent 
@@ -336,6 +337,7 @@ const Mvp = () => {
                             src={tab.content.image} 
                             alt={tab.content.title}
                             className="h-full w-full object-cover"
+                            loading="lazy"
                           />
                         </div>
                         
@@ -351,8 +353,6 @@ const Mvp = () => {
             </div>
           </div>
         </section>
-        
-        {/* 5-Step MVP Process */}
         <section className="py-20 md:py-28 px-4 relative">
           <div className="absolute top-1/3 left-0 w-1/3 h-1/2 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.05),transparent_70%)] rounded-full blur-3xl"></div>
           
@@ -402,8 +402,6 @@ const Mvp = () => {
             </div>
           </div>
         </section>
-        
-        {/* Testimonial Section */}
         <section className="py-20 md:py-28 px-4 relative">
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto bg-space-light/30 p-8 md:p-10 rounded-xl border border-white/10 backdrop-blur-sm">
@@ -434,8 +432,6 @@ const Mvp = () => {
             </div>
           </div>
         </section>
-        
-        {/* CTA Bottom Section */}
         <section className="py-20 md:py-28 px-4 relative">
           <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.1),transparent_70%)] rounded-full blur-3xl"></div>
           

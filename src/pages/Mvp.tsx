@@ -90,37 +90,42 @@ const Mvp = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Turn Your Idea Into an MVP in <span className="text-neon">3 Weeks</span>
-              </motion.h1>
-              
-              <motion.p 
-                className="text-lg md:text-xl text-slate-300 mb-12"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+          <motion.h1>
+            Turn Your Idea Into an MVP in <span className="text-neon">3 Weeks</span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-lg md:text-xl text-slate-300 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            From concept to market-ready product – including Authentication, 
+            <br className="hidden md:block" /> Payments, SEO, and Security. Launch with confidence.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <a 
+              href="https://calendly.com/herbst-laurin/30min" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Button 
+                variant="primary" 
+                size="lg" 
+                glow={true}
+                className="font-semibold text-base shadow-neon-lg px-10 py-7 hover:scale-105 transition-transform duration-300"
               >
-                From concept to market-ready product – including Authentication, 
-                <br className="hidden md:block" /> Payments, SEO, and Security. Launch with confidence.
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <Button 
-                  variant="primary" 
-                  size="lg" 
-                  glow={true}
-                  className="font-semibold text-base shadow-neon-lg px-10 py-7 hover:scale-105 transition-transform duration-300"
-                >
-                  <CalendarCheck className="mr-2 h-5 w-5" />
-                  Book a Meeting
-                </Button>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+                <CalendarCheck className="mr-2 h-5 w-5" />
+                Book a Meeting
+              </Button>
+            </a>
+          </motion.div>
+
 
         {/* Why No-Code Section - Replacing Contact Form */}
         <section className="py-16 px-4 relative">

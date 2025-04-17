@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -14,7 +13,8 @@ const Navbar = () => {
   
   const mainMenuItems = [
     { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' }
+    { label: 'About', href: '/about' },
+    { label: 'MVP', href: '/mvp' }
   ];
 
   return (

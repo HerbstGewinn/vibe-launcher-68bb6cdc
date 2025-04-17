@@ -1,8 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Lightbulb, Palette, Code, Search, Rocket, CalendarCheck, Send, MessageSquare, Sparkles, Wand2, BarChart3 } from 'lucide-react';
+import { Lightbulb, Palette, Code, Search, Rocket, CalendarCheck, Send, MessageSquare, Sparkles, Wand2, BarChart3, Brain, FolderOpen, GraduationCap, Instagram, Gamepad } from 'lucide-react';
 import Button from '@/components/Button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -11,9 +11,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Separator } from '@/components/ui/separator';
 
 const Mvp = () => {
   const isMobile = useIsMobile();
+  const [activeCategory, setActiveCategory] = useState('ai');
   
   const steps = [
     {
@@ -64,6 +67,79 @@ const Mvp = () => {
       title: "Pixel-perfect design, customized to your ideal users",
       description: "We believe products need to look and feel beautiful - with user experience always first."
     }
+  ];
+
+  const categoryTabs = [
+    { id: 'ai', label: 'AI', icon: Brain, 
+      content: {
+        title: 'AI and machine learning apps',
+        description: 'We design and develop intelligent applications with AI capabilities and machine learning models within weeks.',
+        features: [
+          'Natural language processing',
+          'Predictive analytics',
+          'Smart automation',
+          'Computer vision integration',
+          'Personalized recommendations'
+        ],
+        image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b'
+      }
+    },
+    { id: 'directory', label: 'Directory', icon: FolderOpen,
+      content: {
+        title: 'Directory and listing apps',
+        description: 'Build powerful directories and listing platforms for any industry with advanced search and filtering capabilities.',
+        features: [
+          'Custom taxonomies',
+          'Advanced filtering',
+          'Location-based search',
+          'Vendor dashboards',
+          'Membership levels'
+        ],
+        image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6'
+      }
+    },
+    { id: 'education', label: 'Education', icon: GraduationCap,
+      content: {
+        title: 'Education and e-learning apps',
+        description: 'Create engaging educational platforms for online courses, student management, and interactive learning experiences.',
+        features: [
+          'Course management',
+          'Progress tracking',
+          'Interactive assignments',
+          'Live virtual classrooms',
+          'Student assessments'
+        ],
+        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158'
+      }
+    },
+    { id: 'social', label: 'Social Media', icon: Instagram,
+      content: {
+        title: 'Social media and community apps',
+        description: 'Develop engaging social platforms that connect users and create vibrant online communities with powerful features.',
+        features: [
+          'User profiles',
+          'Activity feeds',
+          'Direct messaging',
+          'Content sharing',
+          'Moderation tools'
+        ],
+        image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868'
+      }
+    },
+    { id: 'games', label: 'Web Games', icon: Gamepad,
+      content: {
+        title: 'Web games and interactive apps',
+        description: 'Build engaging browser-based games and interactive applications that captivate and entertain users.',
+        features: [
+          'Multi-player support',
+          'Real-time interactions',
+          'Leaderboards',
+          'Achievement systems',
+          'In-game economies'
+        ],
+        image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d'
+      }
+    },
   ];
 
   const handleContactSubmit = (e: React.FormEvent) => {
@@ -157,6 +233,121 @@ const Mvp = () => {
                   <p className="text-slate-300">{benefit.description}</p>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Categories Section with Tabs */}
+        <section className="py-20 md:py-28 px-4 relative">
+          <div className="absolute top-1/3 right-1/4 w-1/4 h-1/3 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.07),transparent_70%)] rounded-full blur-3xl"></div>
+          
+          <div className="container mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <motion.h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Build your MVP <span className="text-neon">faster than ever</span>
+              </motion.h2>
+              <motion.p
+                className="text-lg text-slate-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                Coding from scratch is slow, clunky, and costly. We use the power of no-code to 
+                develop product MVPs in a fraction of time, no limits.
+              </motion.p>
+            </div>
+
+            <div className="max-w-6xl mx-auto">
+              <Tabs defaultValue="ai" className="w-full" onValueChange={setActiveCategory}>
+                <TabsList className="flex justify-center border-b border-white/10 bg-transparent h-auto mb-12 w-full overflow-x-auto">
+                  {categoryTabs.map((tab) => (
+                    <TabsTrigger 
+                      key={tab.id} 
+                      value={tab.id}
+                      className={cn(
+                        "pb-4 rounded-none border-b-2 border-transparent data-[state=active]:border-neon data-[state=active]:text-neon text-lg font-medium px-6",
+                        "bg-transparent hover:text-neon transition-colors duration-200"
+                      )}
+                    >
+                      {tab.label}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                
+                {categoryTabs.map((tab) => (
+                  <TabsContent 
+                    key={tab.id} 
+                    value={tab.id}
+                    className="mt-0 animate-fade-in"
+                  >
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <h3 className="text-3xl font-bold mb-4">{tab.content.title}</h3>
+                        <p className="text-slate-300 mb-8">{tab.content.description}</p>
+                        
+                        <h4 className="text-xl font-semibold mb-4 text-neon">Common features</h4>
+                        <ul className="space-y-3">
+                          {tab.content.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start">
+                              <span className="mr-3 mt-1 text-neon">•</span>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        
+                        <div className="mt-12">
+                          <a 
+                            href="https://calendly.com/herbst-laurin/30min" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
+                            <Button 
+                              variant="primary"
+                              size="md"
+                              glow={true}
+                              className="font-medium"
+                            >
+                              <CalendarCheck className="mr-2 h-4 w-4" />
+                              Schedule a consultation
+                            </Button>
+                          </a>
+                        </div>
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="relative h-full min-h-[300px] lg:min-h-[400px]"
+                      >
+                        <div className="rounded-lg overflow-hidden h-full w-full border border-white/10">
+                          <img 
+                            src={tab.content.image} 
+                            alt={tab.content.title}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                        
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent rounded-lg"></div>
+                        <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10">
+                          <tab.icon className="h-6 w-6 text-neon" />
+                        </div>
+                      </motion.div>
+                    </div>
+                  </TabsContent>
+                ))}
+              </Tabs>
             </div>
           </div>
         </section>

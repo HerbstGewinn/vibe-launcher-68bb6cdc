@@ -1,66 +1,59 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Check, Shield, Search, AlertCircle, FileCheck, Clock, BarChart } from 'lucide-react';
-import { Progress } from '@/components/ui/progress';
+import { Check, Shield, Search, AlertCircle, FileCheck, Clock, BarChart, CheckCircle2, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Badge } from '@/components/ui/badge';
 
 interface AuditSectionProps {
   className?: string;
 }
 
-interface AuditItem {
+interface ChecklistItem {
   label: string;
-  value: number;
-  status: 'good' | 'warning' | 'critical';
+  completed: boolean;
 }
 
 const AuditSection = ({ className }: AuditSectionProps) => {
   const isMobile = useIsMobile();
   
-  const seoItems: AuditItem[] = [
-    { label: 'Page Load Speed', value: 85, status: 'good' },
-    { label: 'Meta Tags', value: 100, status: 'good' },
-    { label: 'Mobile Optimization', value: 90, status: 'good' },
-    { label: 'Content Structure', value: 75, status: 'warning' },
-    { label: 'Backlinks', value: 40, status: 'warning' }
+  // SEO Checklist Items
+  const seoItems: ChecklistItem[] = [
+    { label: 'Sitemap Submitted?', completed: true },
+    { label: 'Robots.txt Available?', completed: true },
+    { label: 'Meta Tags Added?', completed: true },
+    { label: 'Title Optimized?', completed: false }
   ];
 
-  const securityItems: AuditItem[] = [
-    { label: 'SSL Certificate', value: 100, status: 'good' },
-    { label: 'XSS Protection', value: 95, status: 'good' },
-    { label: 'CSRF Protection', value: 100, status: 'good' },
-    { label: 'Password Policy', value: 60, status: 'warning' },
-    { label: 'Data Encryption', value: 90, status: 'good' }
+  // Security Checklist Items
+  const securityItems: ChecklistItem[] = [
+    { label: 'No Exposed API Keys?', completed: true },
+    { label: 'Row-Level Security (RLS) Activated?', completed: true },
+    { label: 'HTTPS/SSL Certificate Active?', completed: true },
+    { label: 'Dependencies Up-to-date?', completed: false },
+    { label: 'Secure Authentication Enabled?', completed: true }
   ];
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'good':
-        return 'text-green-400';
-      case 'warning':
-        return 'text-yellow-400';
-      case 'critical':
-        return 'text-red-400';
-      default:
-        return 'text-neon';
-    }
+  const getCompletedCount = (items: ChecklistItem[]) => {
+    return items.filter(item => item.completed).length;
   };
 
-  const getProgressColor = (status: string) => {
-    switch (status) {
-      case 'good':
-        return 'bg-green-400';
-      case 'warning':
-        return 'bg-yellow-400';
-      case 'critical':
-        return 'bg-red-400';
-      default:
-        return 'bg-neon';
-    }
+  const getStatusInfo = (completed: number, total: number) => {
+    const ratio = completed / total;
+    
+    if (ratio === 1) return { text: 'Excellent', badge: '✅', color: 'text-green-400' };
+    if (ratio >= 0.75) return { text: 'Good', badge: '🟢', color: 'text-green-400' };
+    if (ratio >= 0.5) return { text: 'Needs Improvement', badge: '🟠', color: 'text-yellow-400' };
+    return { text: 'Poor', badge: '🔴', color: 'text-red-400' };
   };
+
+  const seoCompleted = getCompletedCount(seoItems);
+  const seoStatus = getStatusInfo(seoCompleted, seoItems.length);
+  
+  const securityCompleted = getCompletedCount(securityItems);
+  const securityStatus = getStatusInfo(securityCompleted, securityItems.length);
 
   return (
     <div className={cn('py-12 md:py-20 relative overflow-hidden', className)}>
@@ -98,41 +91,46 @@ const AuditSection = ({ className }: AuditSectionProps) => {
               </div>
             </div>
 
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-3 md:space-y-4 mb-5">
+              <h4 className="font-medium text-base md:text-lg">SEO Checklist</h4>
               {seoItems.map((item, index) => (
-                <div key={index}>
-                  <div className="flex justify-between mb-1 md:mb-2 text-sm md:text-base">
-                    <span className="text-slate-300">{item.label}</span>
-                    <span className={cn('font-semibold', getStatusColor(item.status))}>
-                      {item.value}%
-                    </span>
-                  </div>
-                  <div className="relative h-1.5 md:h-2 bg-slate-700 rounded-full overflow-hidden">
-                    <Progress 
-                      value={item.value} 
-                      className={cn('h-full', getProgressColor(item.status))} 
-                    />
-                  </div>
+                <div key={index} className="flex items-center gap-2">
+                  {item.completed ? 
+                    <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0" /> : 
+                    <XCircle className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                  }
+                  <span className="text-slate-300">{item.label}</span>
                 </div>
               ))}
             </div>
-
-            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-              <div className="flex flex-wrap gap-3 md:gap-4">
-                <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  <span className="text-xs text-slate-300">Good</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                  <span className="text-xs text-slate-300">Needs Improvement</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                  <span className="text-xs text-slate-300">Critical</span>
-                </div>
+            
+            <div className="p-4 bg-space-light/30 border border-white/5 rounded-lg mt-5">
+              <div className="mb-2">
+                <h4 className="font-medium">✅ SEO Tasks Completed:</h4>
+                <p className="text-lg font-semibold">[ {seoCompleted} / {seoItems.length} ] tasks completed</p>
               </div>
               
+              <div className="space-y-1 mt-3">
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">{seoItems.length}/{seoItems.length} →</span>
+                  <span className="font-medium">Excellent ✅</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">{Math.ceil(seoItems.length * 0.75)}/{seoItems.length} →</span>
+                  <span className="font-medium">Good 🟢</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">{Math.ceil(seoItems.length * 0.5)}/{seoItems.length} →</span>
+                  <span className="font-medium">Needs Improvement 🟠</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">0-{Math.floor(seoItems.length * 0.5 - 1)}/{seoItems.length} →</span>
+                  <span className="font-medium">Poor 🔴</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 flex justify-end">
               <Button variant="outline" size={isMobile ? "sm" : "default"} className="text-neon border-neon/50 hover:bg-neon/10">
                 <FileCheck className="mr-2 h-4 w-4" />
                 Full Report
@@ -158,45 +156,50 @@ const AuditSection = ({ className }: AuditSectionProps) => {
               </div>
             </div>
 
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-3 md:space-y-4 mb-5">
+              <h4 className="font-medium text-base md:text-lg">🔒 Security Checklist</h4>
               {securityItems.map((item, index) => (
-                <div key={index}>
-                  <div className="flex justify-between mb-1 md:mb-2 text-sm md:text-base">
-                    <span className="text-slate-300">{item.label}</span>
-                    <span className={cn('font-semibold', getStatusColor(item.status))}>
-                      {item.value}%
-                    </span>
-                  </div>
-                  <div className="relative h-1.5 md:h-2 bg-slate-700 rounded-full overflow-hidden">
-                    <Progress 
-                      value={item.value} 
-                      className={cn('h-full', getProgressColor(item.status))} 
-                    />
-                  </div>
+                <div key={index} className="flex items-center gap-2">
+                  {item.completed ? 
+                    <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0" /> : 
+                    <XCircle className="h-5 w-5 text-slate-400 flex-shrink-0" />
+                  }
+                  <span className="text-slate-300">{item.label}</span>
                 </div>
               ))}
             </div>
-
-            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-4">
-              <div className="frost-container p-2 md:p-3 flex-1 flex items-center gap-2 md:gap-3 border border-white/5 rounded-lg bg-space-light/50">
-                <div className="h-8 w-8 md:h-10 md:w-10 rounded-full bg-green-400/20 flex items-center justify-center">
-                  <Check className="h-4 w-4 md:h-6 md:w-6 text-green-400" />
-                </div>
-                <div>
-                  <h4 className="text-xs md:text-sm font-medium">Vulnerability Scan</h4>
-                  <p className="text-xs text-slate-400">Last run: 2 days ago</p>
-                </div>
+            
+            <div className="p-4 bg-space-light/30 border border-white/5 rounded-lg mt-5">
+              <div className="mb-2">
+                <h4 className="font-medium">✅ Security Tasks Completed:</h4>
+                <p className="text-lg font-semibold">[ {securityCompleted} / {securityItems.length} ] tasks completed</p>
               </div>
               
-              <div className="frost-container p-2 md:p-3 flex-1 flex items-center gap-2 md:gap-3 border border-white/5 rounded-lg bg-space-light/50">
-                <div className="h-8 w-8 md:h-10 md:w-10 rounded-full bg-neon/20 flex items-center justify-center">
-                  <Clock className="h-4 w-4 md:h-6 md:w-6 text-neon" />
+              <div className="space-y-1 mt-3">
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">{securityItems.length}/{securityItems.length} →</span>
+                  <span className="font-medium">Excellent ✅</span>
                 </div>
-                <div>
-                  <h4 className="text-xs md:text-sm font-medium">Real-time Monitoring</h4>
-                  <p className="text-xs text-slate-400">Active protection</p>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">{Math.ceil(securityItems.length * 0.75)}/{securityItems.length} →</span>
+                  <span className="font-medium">Good 🟢</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">2-3/{securityItems.length} →</span>
+                  <span className="font-medium">Needs Improvement 🟠</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">0-1/{securityItems.length} →</span>
+                  <span className="font-medium">Poor 🔴</span>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-6 flex justify-end">
+              <Button variant="outline" size={isMobile ? "sm" : "default"} className="text-neon border-neon/50 hover:bg-neon/10">
+                <Shield className="mr-2 h-4 w-4" />
+                Full Report
+              </Button>
             </div>
           </motion.div>
         </div>

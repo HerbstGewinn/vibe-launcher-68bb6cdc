@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 type ButtonBaseProps = {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'neon';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   fullWidth?: boolean;
@@ -42,6 +43,7 @@ const Button = (props: ButtonProps) => {
     outline: 'border border-neon/50 bg-transparent hover:bg-neon/10 text-neon transition-all',
     ghost: 'bg-transparent hover:bg-secondary/80 text-primary-foreground transition-all',
     link: 'bg-transparent text-neon underline-offset-4 hover:underline transition-all p-0',
+    neon: 'relative bg-transparent text-neon border border-neon/30 overflow-hidden group',
   };
 
   const sizes = {
@@ -53,12 +55,17 @@ const Button = (props: ButtonProps) => {
   const glowEffect = glow ? 'shadow-neon hover:shadow-neon-lg transition-shadow duration-300' : '';
   const widthClass = fullWidth ? 'w-full' : '';
 
+  const neonVariantClasses = variant === 'neon' 
+    ? 'before:absolute before:inset-0 before:bg-neon/10 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity' 
+    : '';
+
   const baseClasses = cn(
     'inline-flex items-center justify-center font-medium relative overflow-hidden',
     variants[variant],
     sizes[size],
     widthClass,
     glowEffect,
+    neonVariantClasses,
     isLoading && 'opacity-70 cursor-not-allowed',
     className
   );
@@ -83,6 +90,17 @@ const Button = (props: ButtonProps) => {
     </span>
   );
 
+  const buttonContent = (
+    <motion.span
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className={cn(isLoading && 'opacity-0')}
+    >
+      {children}
+    </motion.span>
+  );
+
   if ('as' in props && props.as === 'a') {
     const { as, ...anchorProps } = props;
     return (
@@ -91,9 +109,7 @@ const Button = (props: ButtonProps) => {
         {...anchorProps as React.AnchorHTMLAttributes<HTMLAnchorElement>}
       >
         {isLoading && <LoadingSpinner />}
-        <span className={cn(isLoading && 'opacity-0')}>
-          {children}
-        </span>
+        {buttonContent}
       </a>
     );
   }
@@ -106,9 +122,7 @@ const Button = (props: ButtonProps) => {
       {...buttonProps as React.ButtonHTMLAttributes<HTMLButtonElement>}
     >
       {isLoading && <LoadingSpinner />}
-      <span className={cn(isLoading && 'opacity-0')}>
-        {children}
-      </span>
+      {buttonContent}
     </button>
   );
 };

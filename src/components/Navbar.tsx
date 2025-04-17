@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -41,8 +42,12 @@ const Navbar = () => {
               key={item.label}
               to={item.href}
               className={cn(
-                'text-sm font-medium hover:text-neon transition-colors',
-                location.pathname === item.href ? 'text-neon' : 'text-white'
+                'text-sm font-medium transition-colors relative px-2 py-1',
+                location.pathname === item.href 
+                  ? 'text-neon' 
+                  : 'text-white hover:text-white/80',
+                location.pathname === item.href && 
+                  'after:content-[""] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-neon'
               )}
             >
               {item.label}
@@ -87,8 +92,8 @@ const Navbar = () => {
                 key={item.label}
                 to={item.href}
                 className={cn(
-                  'text-sm font-medium hover:text-neon transition-colors',
-                  location.pathname === item.href ? 'text-neon' : 'text-white'
+                  'text-sm font-medium transition-colors',
+                  location.pathname === item.href ? 'text-neon' : 'text-white hover:text-neon'
                 )}
               >
                 {item.label}

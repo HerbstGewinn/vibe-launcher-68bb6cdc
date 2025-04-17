@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Lightbulb, Palette, Code, Search, Rocket, CalendarCheck, Send, MessageSquare, Sparkles, Wand2, BarChart3, Brain, FolderOpen, GraduationCap, Instagram, Gamepad } from 'lucide-react';
@@ -149,6 +149,14 @@ const Mvp = () => {
     });
   };
 
+  // Memoize the calendar URL to prevent unnecessary re-renders
+  const calendlyUrl = "https://calendly.com/herbst-laurin/30min";
+
+  // Optimized button click handler
+  const handleCalendlyClick = useCallback(() => {
+    window.open(calendlyUrl, "_blank", "noopener,noreferrer");
+  }, [calendlyUrl]);
+
   return (
     <>
       <Navbar />
@@ -185,27 +193,25 @@ const Mvp = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <a 
-                  href="https://calendly.com/herbst-laurin/30min" 
-                  target="_blank" 
+                <Button 
+                  as="a"
+                  href={calendlyUrl}
+                  variant="primary" 
+                  size="lg" 
+                  glow={true}
+                  className="font-semibold text-base shadow-neon-lg px-10 py-7 hover:scale-105 transition-transform duration-300"
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button 
-                    variant="primary" 
-                    size="lg" 
-                    glow={true}
-                    className="font-semibold text-base shadow-neon-lg px-10 py-7 hover:scale-105 transition-transform duration-300"
-                  >
-                    <CalendarCheck className="mr-2 h-5 w-5" />
-                    Book a Meeting
-                  </Button>
-                </a>
+                  <CalendarCheck className="mr-2 h-5 w-5" />
+                  Book a Meeting
+                </Button>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Why No-Code Section - Replacing Contact Form */}
+        {/* Why No-Code Section */}
         <section className="py-16 px-4 relative">
           <div className="absolute top-1/4 left-1/3 w-1/3 h-1/3 bg-[radial-gradient(ellipse_at_center,rgba(10,255,255,0.05),transparent_70%)] rounded-full blur-3xl"></div>
           
@@ -307,21 +313,19 @@ const Mvp = () => {
                         </ul>
                         
                         <div className="mt-12">
-                          <a 
-                            href="https://calendly.com/herbst-laurin/30min" 
-                            target="_blank" 
+                          <Button 
+                            as="a"
+                            href={calendlyUrl}
+                            variant="primary"
+                            size="md"
+                            glow={true}
+                            className="font-medium"
+                            target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <Button 
-                              variant="primary"
-                              size="md"
-                              glow={true}
-                              className="font-medium"
-                            >
-                              <CalendarCheck className="mr-2 h-4 w-4" />
-                              Schedule a consultation
-                            </Button>
-                          </a>
+                            <CalendarCheck className="mr-2 h-4 w-4" />
+                            Schedule a consultation
+                          </Button>
                         </div>
                       </motion.div>
                       
@@ -336,6 +340,7 @@ const Mvp = () => {
                             src={tab.content.image} 
                             alt={tab.content.title}
                             className="h-full w-full object-cover"
+                            loading="lazy"
                           />
                         </div>
                         
@@ -458,21 +463,19 @@ const Mvp = () => {
                 viewport={{ once: true }}
                 className="inline-block"
               >
-                <a 
-                  href="https://calendly.com/herbst-laurin/30min" 
-                  target="_blank" 
+                <Button 
+                  as="a"
+                  href={calendlyUrl}
+                  variant="primary" 
+                  size="lg" 
+                  glow={true}
+                  className="font-semibold text-base shadow-neon-lg px-12 py-7 hover:scale-105 transition-transform duration-300"
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button 
-                    variant="primary" 
-                    size="lg" 
-                    glow={true}
-                    className="font-semibold text-base shadow-neon-lg px-12 py-7 hover:scale-105 transition-transform duration-300"
-                  >
-                    <CalendarCheck className="mr-2 h-5 w-5" />
-                    Book a Meeting
-                  </Button>
-                </a>
+                  <CalendarCheck className="mr-2 h-5 w-5" />
+                  Book a Meeting
+                </Button>
               </motion.div>
             </div>
           </div>

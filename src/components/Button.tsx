@@ -104,10 +104,11 @@ const Button = (props: ButtonProps) => {
   );
 
   if ('as' in props && props.as === 'a') {
-    const { as, ...anchorProps } = props;
+    const { as, href, ...anchorProps } = props;
     return (
       <a
         className={baseClasses}
+        href={href}
         {...anchorProps as React.AnchorHTMLAttributes<HTMLAnchorElement>}
       >
         {isLoading && <LoadingSpinner />}
@@ -116,7 +117,7 @@ const Button = (props: ButtonProps) => {
     );
   }
 
-  const { as, ...buttonProps } = props;
+  const { as, ...buttonProps } = rest;
   return (
     <button
       className={baseClasses}

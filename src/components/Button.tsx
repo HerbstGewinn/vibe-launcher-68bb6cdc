@@ -38,7 +38,7 @@ const Button = (props: ButtonProps) => {
   } = props;
 
   const variants = {
-    primary: 'bg-neon text-space font-medium hover:bg-neon/90 transition-all',
+    primary: 'bg-gradient-to-r from-[#FF5E5E] to-[#FF22B2] text-white', // Updated gradient similar to the image
     secondary: 'bg-secondary text-primary-foreground hover:bg-secondary/80 transition-all',
     outline: 'border border-neon/50 bg-transparent hover:bg-neon/10 text-neon transition-all',
     ghost: 'bg-transparent hover:bg-secondary/80 text-primary-foreground transition-all',
@@ -47,25 +47,24 @@ const Button = (props: ButtonProps) => {
   };
 
   const sizes = {
-    sm: 'h-9 px-3 text-sm rounded-md',
-    md: 'h-11 px-8 rounded-md',
-    lg: 'h-12 px-10 rounded-lg',
+    sm: 'h-9 px-3 text-sm rounded-full', // Changed to fully rounded
+    md: 'h-12 px-8 rounded-full', // Increased height, fully rounded
+    lg: 'h-14 px-10 rounded-full', // Even larger option
   };
 
   const glowEffect = glow ? 'shadow-neon hover:shadow-neon-lg transition-shadow duration-300' : '';
-  const widthClass = fullWidth ? 'w-full' : '';
-
-  const neonVariantClasses = variant === 'neon' 
-    ? 'before:absolute before:inset-0 before:bg-neon/10 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity' 
-    : '';
+  const widthClass = fullWidth ? 'w-full' : 'inline-flex justify-center';
 
   const baseClasses = cn(
-    'inline-flex items-center justify-center font-medium relative overflow-hidden',
+    'items-center justify-center font-medium relative overflow-hidden',
     variants[variant],
     sizes[size],
     widthClass,
     glowEffect,
-    neonVariantClasses,
+    'transform transition-all duration-300 hover:scale-105', // Added subtle scale effect
+    'flex', // Ensure flex display
+    'text-base', // Consistent text size
+    'tracking-wider', // Slightly wider letter spacing
     isLoading && 'opacity-70 cursor-not-allowed',
     className
   );
@@ -95,7 +94,10 @@ const Button = (props: ButtonProps) => {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className={cn(isLoading && 'opacity-0')}
+      className={cn(
+        'flex items-center justify-center', 
+        isLoading && 'opacity-0'
+      )}
     >
       {children}
     </motion.span>

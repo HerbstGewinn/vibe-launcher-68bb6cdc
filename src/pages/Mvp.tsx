@@ -123,7 +123,7 @@ const Mvp = () => {
           'Content sharing',
           'Moderation tools'
         ],
-        image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868'
+        image: '/lovable-uploads/6c2864ef-af77-4c5e-87a7-0abbf9b53965.png'
       }
     },
     { id: 'games', label: 'Web Games', icon: Gamepad,

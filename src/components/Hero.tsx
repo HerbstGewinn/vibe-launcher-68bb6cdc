@@ -81,9 +81,9 @@ const Hero = ({
             COMING SOON
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight">
-            <span className="bg-gradient-to-r from-white via-slate-200 to-neon bg-clip-text text-transparent">Built Something Cool ?</span>{" "}
-            <span className="text-neon">Now get</span>{" "}
-            <span className="bg-gradient-to-br from-neon to-white bg-clip-text text-transparent">Users.</span>
+            <span className="bg-gradient-to-r from-white via-slate-200 to-neon bg-clip-text text-transparent">Build Lovable Apps</span>{" "}
+            <span className="text-neon">That</span>{" "}
+            <span className="bg-gradient-to-br from-neon to-white bg-clip-text text-transparent">Sell!</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">
             Ditch the Dev Headaches. Scale to 1000 Users. Unlock Early Access

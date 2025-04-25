@@ -2,11 +2,13 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Button from './Button';
-import { BadgePercent, Receipt } from 'lucide-react';
+import { BadgePercent, Receipt, Lock, Rocket, Code } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
+
 interface PricingSectionProps {
   className?: string;
 }
+
 const PricingSection = ({
   className
 }: PricingSectionProps) => {
@@ -71,47 +73,64 @@ const PricingSection = ({
         }} viewport={{
           once: true
         }}>
-            <Card className="relative overflow-hidden frost-container border-neon/30">
-              {/* Early Access Badge */}
-              <div className="absolute -rotate-45 text-xs font-bold text-space bg-neon px-8 py-1 -left-6 top-6">
-                EARLY ACCESS
+          <Card className="relative overflow-hidden frost-container border-neon/30">
+            {/* Early Access Badge */}
+            <div className="absolute -rotate-45 text-xs font-bold text-space bg-neon px-8 py-1 -left-6 top-6">
+              EARLY ACCESS
+            </div>
+
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-center">Launch Package</CardTitle>
+              <CardDescription className="text-center text-slate-300">Everything you need to launch your Lovable app</CardDescription>
+            </CardHeader>
+
+            <CardContent>
+              <div className="flex justify-center items-baseline mb-8">
+                <span className="text-4xl font-bold text-neon">$29</span>
+                <span className="text-slate-400 ml-2 line-through">$49</span>
+                <span className="text-sm text-slate-300 ml-2">one-time</span>
               </div>
 
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-center">Launch Package</CardTitle>
-                <CardDescription className="text-center text-slate-300">Everything you need to launch your Lovable app</CardDescription>
-              </CardHeader>
+              <ul className="space-y-4 mb-8">
+                {[
+                  {
+                    icon: Receipt,
+                    text: "Complete Launch Strategy"
+                  },
+                  {
+                    icon: Lock,
+                    text: "Lovable Auth, Payment, SEO, Deployment & Security Guide"
+                  },
+                  {
+                    icon: BadgePercent,
+                    text: "Early Access Benefits"
+                  },
+                  {
+                    icon: Rocket,
+                    text: "Launch Readiness Checklist"
+                  },
+                  {
+                    icon: Code,
+                    text: "Personalized Technical Consultation"
+                  }
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <feature.icon className="h-5 w-5 text-neon flex-shrink-0" />
+                    <span className="text-slate-200">{feature.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+            
+            <CardFooter>
+              <Button variant="neon" size="lg" className="w-full shadow-xl hover:shadow-neon/20 transition-all duration-300" glow>
+                Get Early Access Now
+              </Button>
+            </CardFooter>
+          </Card>
+        </motion.div>
 
-              <CardContent>
-                <div className="flex justify-center items-baseline mb-8">
-                  <span className="text-4xl font-bold text-neon">$29</span>
-                  <span className="text-slate-400 ml-2 line-through">$49</span>
-                  <span className="text-sm text-slate-300 ml-2">one-time</span>
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  {[{
-                  icon: Receipt,
-                  text: "Complete Launch Strategy"
-                }, {
-                  icon: BadgePercent,
-                  text: "Early Access Benefits"
-                }].map((feature, index) => <li key={index} className="flex items-center gap-3">
-                      <feature.icon className="h-5 w-5 text-neon flex-shrink-0" />
-                      <span className="text-slate-200">{feature.text}</span>
-                    </li>)}
-                </ul>
-              </CardContent>
-              
-              <CardFooter>
-                <Button variant="neon" size="lg" className="w-full shadow-xl hover:shadow-neon/20 transition-all duration-300" glow>
-                  Get Early Access Now
-                </Button>
-              </CardFooter>
-            </Card>
-          </motion.div>
-
-          <motion.p className="text-center text-sm text-slate-400 mt-4" initial={{
+        <motion.p className="text-center text-sm text-slate-400 mt-4" initial={{
           opacity: 0
         }} whileInView={{
           opacity: 1
@@ -126,4 +145,5 @@ const PricingSection = ({
       </div>
     </section>;
 };
+
 export default PricingSection;

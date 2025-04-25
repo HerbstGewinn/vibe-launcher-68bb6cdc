@@ -88,7 +88,7 @@ const Hero = ({
             <span className="text-neon">That</span>{" "}
             <span className="bg-gradient-to-br from-neon to-white bg-clip-text text-transparent">Sell !</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">Auth, Payments, SEO that ranks - Done in Lovable. Get revenue-ready today - Claim Early Access !</p>
+          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">Auth, Payments, SEO that ranks - Done in Lovable. Get revenue-ready today - Early Access Now !</p>
 
           {/* Email waitlist input with rounded corners */}
           <div className="max-w-md mx-auto">

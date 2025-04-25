@@ -16,6 +16,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Users, Award, Lightbulb, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import PricingSection from '@/components/PricingSection';
 
 enum AppState {
   INITIAL,
@@ -83,16 +84,11 @@ const Index = () => {
       <main className="relative pb-20 pt-16 md:pt-20">
         {appState === AppState.INITIAL && <>
             <Hero />
-            
-            {/* Reduced spacing between Hero and Integration Circles */}
             <IntegrationCircles className="mt-12 md:mt-16 mb-16 md:mb-24" />
-            
-            {/* New Section Order */}
             <FeatureHighlights className="mt-0 pt-0" />
-            
             <AuditSection className="mb-16 md:mb-24" />
             
-            {/* About Us Section - Condensed */}
+            {/* About Us Section */}
             <section className="py-16 relative overflow-hidden">
               <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(10,255,255,0.08),transparent_70%)]"></div>
               <div className="container mx-auto px-4">
@@ -188,6 +184,9 @@ const Index = () => {
             </section>
             
             <SuccessStories />
+            
+            {/* Add PricingSection here, right before FAQ */}
+            <PricingSection className="mb-16 md:mb-24" />
             
             {/* FAQ Section */}
             <FAQ className="mt-16 md:mt-24 mb-16" />

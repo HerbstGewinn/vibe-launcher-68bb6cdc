@@ -10,8 +10,7 @@
   "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
   "build:prerender": "node prerender",
   "preview": "vite preview"
-}
-
+},
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",

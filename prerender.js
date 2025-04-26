@@ -9,6 +9,9 @@ const toAbsolute = (p) => path.resolve(__dirname, p)
 const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
 const { render } = await import('./dist/server/entry-server.js')
 
+// Generate sitemap first
+await import('./scripts/generate-sitemap.js')
+
 const routesToPrerender = fs
   .readdirSync(toAbsolute('src/pages'))
   .map((file) => {
@@ -25,4 +28,11 @@ const routesToPrerender = fs
     fs.writeFileSync(toAbsolute(filePath), html)
     console.log('pre-rendered:', filePath)
   }
+
+  // Copy sitemap to dist directory
+  fs.copyFileSync(
+    toAbsolute('public/sitemap.xml'),
+    toAbsolute('dist/sitemap.xml')
+  )
+  console.log('Copied sitemap.xml to dist directory')
 })()

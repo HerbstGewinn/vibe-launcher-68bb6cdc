@@ -39,7 +39,7 @@ const Hero = ({
       <LampContainer className="w-full">
         <div className="relative z-10 text-center px-6 pb-4 pt-10 sm:pt-2 sm:px-4">
           <span className="inline-block mb-2 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
-            COMING SOON
+            EARLY ACCESS NOW
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight">
             <span className="bg-gradient-to-r from-white via-slate-200 to-neon bg-clip-text text-transparent">Build Lovable Apps</span>{" "}

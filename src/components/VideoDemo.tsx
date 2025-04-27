@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward } from 'lucide-react';
 
 const VideoDemo = () => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -14,6 +14,12 @@ const VideoDemo = () => {
         videoRef.current.play();
       }
       setIsPlaying(!isPlaying);
+    }
+  };
+
+  const skipTime = (seconds: number) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime += seconds;
     }
   };
 
@@ -35,13 +41,29 @@ const VideoDemo = () => {
           />
           Your browser does not support the video tag.
         </video>
-        <button 
-          onClick={togglePlayPause}
-          className="absolute bottom-4 left-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors text-white"
-          aria-label={isPlaying ? 'Pause video' : 'Play video'}
-        >
-          {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-        </button>
+        <div className="absolute bottom-4 left-4 flex gap-2">
+          <button 
+            onClick={() => skipTime(-10)}
+            className="p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors text-white"
+            aria-label="Skip backward 10 seconds"
+          >
+            <SkipBack className="w-6 h-6" />
+          </button>
+          <button 
+            onClick={togglePlayPause}
+            className="p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors text-white"
+            aria-label={isPlaying ? 'Pause video' : 'Play video'}
+          >
+            {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+          </button>
+          <button 
+            onClick={() => skipTime(10)}
+            className="p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors text-white"
+            aria-label="Skip forward 10 seconds"
+          >
+            <SkipForward className="w-6 h-6" />
+          </button>
+        </div>
       </div>
     </section>
   );

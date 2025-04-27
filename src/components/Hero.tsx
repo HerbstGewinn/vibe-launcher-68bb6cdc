@@ -1,60 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
-import { Input } from './ui/input';
 import Button from './Button';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
-import { supabase } from '@/integrations/supabase/client';
-import { toast } from 'sonner';
+
 interface HeroProps {
   className?: string;
 }
+
 const Hero = ({
   className
 }: HeroProps) => {
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const isTyping = email.length > 0;
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    try {
-      setIsSubmitting(true);
-
-      // Insert email into Supabase waitlist table
-      const {
-        error
-      } = await supabase.from('waitlist').insert([{
-        email
-      }]);
-      if (error) {
-        if (error.code === '23505') {
-          // Unique violation - email already exists
-          toast.info("You're already on the waitlist!", {
-            description: "We'll notify you when we launch."
-          });
-        } else {
-          throw error;
-        }
-      } else {
-        // Show success message
-        toast.success("Thank you for joining the waitlist!", {
-          description: "You will be the first one to receive an exclusive offer for the platform."
-        });
-      }
-
-      // Clear the input field
-      setEmail('');
-    } catch (err) {
-      console.error('Error submitting to waitlist:', err);
-      toast.error("Something went wrong", {
-        description: "Please try again later."
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   // User profile data with generated avatar images
   const users = [{
     id: 1,
@@ -77,6 +33,7 @@ const Hero = ({
     name: "Morgan",
     image: "https://i.pravatar.cc/150?img=5"
   }];
+
   return <section className={cn("relative min-h-[500px] md:min-h-[550px] overflow-hidden", className)}>
       <LampContainer className="w-full">
         <div className="relative z-10 text-center px-6 pb-4 pt-10 sm:pt-2 sm:px-4">
@@ -90,14 +47,28 @@ const Hero = ({
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">Auth, Payments, SEO that ranks - Done in Lovable. Get revenue-ready today - Early Access Now !</p>
 
-          {/* Email waitlist input with rounded corners */}
+          {/* Replace email input with two buttons */}
           <div className="max-w-md mx-auto">
-            <form onSubmit={handleSubmit} className="relative">
-              <Input type="email" placeholder="Your email" className={cn("h-12 pr-36 bg-space-light/30 border-slate-700/50 text-white text-base pl-4 transition-colors rounded-xl", isTyping && "border-neon/50 bg-space-light/50")} value={email} onChange={e => setEmail(e.target.value)} required disabled={isSubmitting} />
-              <Button className="absolute right-1 top-1 h-10 px-5 text-base rounded-lg bg-[#0AFFFF] text-space hover:bg-[#0AFFFF]/90" type="submit" variant="primary" isLoading={isSubmitting}>
-                Join The Waitlist
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button 
+                as="a"
+                href="https://launch.vibelaunch.io/"
+                variant="neon"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                Claim Now
               </Button>
-            </form>
+              <Button 
+                as="a"
+                href="/#pricing"
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                Learn More
+              </Button>
+            </div>
 
             <div className="flex items-center justify-center mt-4 space-x-2">
               <div className="flex -space-x-2">
@@ -119,4 +90,5 @@ const Hero = ({
       <div id="content-section"></div>
     </section>;
 };
+
 export default Hero;

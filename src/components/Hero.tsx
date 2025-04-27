@@ -47,26 +47,22 @@ const Hero = ({
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">Auth, Payments, SEO that ranks - Done in Lovable. Get revenue-ready today - Early Access Now !</p>
 
-          {/* Replace email input with two buttons */}
+          {/* Single CTA with enhanced design */}
           <div className="max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex justify-center">
               <Button 
                 as="a"
                 href="https://launch.vibelaunch.io/"
                 variant="neon"
                 size="lg"
-                className="w-full sm:w-auto"
+                glow={true}
+                className="group relative overflow-hidden px-12 py-4 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
               >
-                Claim Now
-              </Button>
-              <Button 
-                as="a"
-                href="/#pricing"
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                Learn More
+                <span className="relative z-10 text-lg font-medium tracking-wider">
+                  Claim Now
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0AFFFF] to-[#0FA0CE] opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(10,255,255,0.4)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </Button>
             </div>
 

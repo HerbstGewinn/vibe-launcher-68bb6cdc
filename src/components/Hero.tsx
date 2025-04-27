@@ -1,14 +1,11 @@
-
 import React from 'react';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
-
 interface HeroProps {
   className?: string;
 }
-
 const Hero = ({
   className
 }: HeroProps) => {
@@ -34,13 +31,10 @@ const Hero = ({
     name: "Morgan",
     image: "https://i.pravatar.cc/150?img=5"
   }];
-
   return <section className={cn("relative min-h-[500px] md:min-h-[550px] overflow-hidden", className)}>
       <LampContainer className="w-full">
         <div className="relative z-10 text-center px-6 pb-4 pt-10 sm:pt-2 sm:px-4">
-          <span className="inline-block mb-2 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">
-            EARLY ACCESS NOW
-          </span>
+          <span className="inline-block mb-2 px-3 py-1 text-xs font-medium text-neon rounded-full border border-neon/30 backdrop-blur-sm">30- DAY MONEY BACK GUARANTEE !</span>
           <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight">
             <span className="bg-gradient-to-r from-white via-slate-200 to-neon bg-clip-text text-transparent">Build Lovable Apps</span>{" "}
             <span className="text-neon">That</span>{" "}
@@ -50,14 +44,12 @@ const Hero = ({
 
           <div className="max-w-md mx-auto">
             <div className="flex justify-center">
-              <motion.a
-                href="https://launch.vibelaunch.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -2, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="relative group inline-flex items-center justify-center"
-              >
+              <motion.a href="https://launch.vibelaunch.io/" target="_blank" rel="noopener noreferrer" whileHover={{
+              y: -2,
+              scale: 1.02
+            }} whileTap={{
+              scale: 0.98
+            }} className="relative group inline-flex items-center justify-center">
                 <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-[#00FFFF] via-[#00FFFF] to-[#0FA0CE] opacity-70 blur-lg group-hover:opacity-100 transition-all duration-500 group-hover:duration-200" />
                 <div className="relative rounded-xl bg-gradient-to-r from-cyan-500 to-[#0FA0CE] px-8 py-4 text-white text-lg font-semibold leading-none">
                   <span className="relative inline-flex items-center gap-2">
@@ -72,14 +64,12 @@ const Hero = ({
 
             <div className="flex items-center justify-center mt-4 space-x-2">
               <div className="flex -space-x-2">
-                {users.map(user => (
-                  <Avatar key={user.id} className="w-8 h-8 border-2 border-background">
+                {users.map(user => <Avatar key={user.id} className="w-8 h-8 border-2 border-background">
                     <AvatarImage src={user.image} alt={user.name} />
                     <AvatarFallback className="bg-slate-700 text-white text-xs">
                       {user.name.substring(0, 2).toUpperCase()}
                     </AvatarFallback>
-                  </Avatar>
-                ))}
+                  </Avatar>)}
               </div>
               <span className="text-xs text-slate-400 ml-1 text-right">
                 Join the <span className="font-bold text-white">100+</span>{" "}
@@ -92,5 +82,4 @@ const Hero = ({
       <div id="content-section"></div>
     </section>;
 };
-
 export default Hero;

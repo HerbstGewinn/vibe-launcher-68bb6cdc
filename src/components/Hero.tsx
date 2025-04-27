@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
@@ -48,7 +47,6 @@ const Hero = ({
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">Auth, Payments, SEO that ranks - Done in Lovable. Get revenue-ready today - Early Access Now !</p>
 
-          {/* Enhanced CTA Button */}
           <div className="max-w-md mx-auto">
             <div className="flex justify-center">
               <motion.a

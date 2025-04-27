@@ -37,7 +37,7 @@ const VideoDemo = () => {
         </video>
         <button 
           onClick={togglePlayPause}
-          className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors text-white"
+          className="absolute bottom-4 left-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors text-white"
           aria-label={isPlaying ? 'Pause video' : 'Play video'}
         >
           {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}

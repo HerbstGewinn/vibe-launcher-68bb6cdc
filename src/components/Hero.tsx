@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { LampContainer } from '@/components/ui/lamp';
 import { cn } from '@/lib/utils';
@@ -51,6 +52,8 @@ const Hero = ({
             <div className="flex justify-center">
               <motion.a
                 href="https://launch.vibelaunch.io/"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative group inline-flex items-center justify-center"

@@ -125,6 +125,10 @@ const PricingSection = ({
               
               <CardFooter className="p-6 sm:p-8 pt-0">
                 <Button 
+                  as="a"
+                  href="https://launch.vibelaunch.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variant="neon" 
                   size="lg" 
                   className="w-full shadow-xl hover:shadow-neon/20 transition-all duration-300 bg-gradient-to-r from-[#0AFFFF] to-[#0FA0CE] hover:scale-105 font-semibold text-space" 

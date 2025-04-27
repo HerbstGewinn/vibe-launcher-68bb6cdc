@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Hero from '@/components/Hero';
+import VideoDemo from '@/components/VideoDemo';
 import StrategySteps from '@/components/StrategySteps';
 import SignUpForm from '@/components/SignUpForm';
 import Particles from '@/components/Particles';
@@ -84,6 +85,7 @@ const Index = () => {
       <main className="relative pb-20 pt-16 md:pt-20">
         {appState === AppState.INITIAL && <>
             <Hero />
+            <VideoDemo />
             <IntegrationCircles className="mt-12 md:mt-16 mb-16 md:mb-24" />
             <FeatureHighlights className="mt-0 pt-0" />
             <AuditSection className="mb-16 md:mb-24" />

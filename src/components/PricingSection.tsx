@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Button from './Button';
-import { BadgePercent, Receipt, Lock, Rocket, Code } from 'lucide-react';
+import { BadgePercent, Receipt, Lock, Rocket, Code, Video } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 
 interface PricingSectionProps {
@@ -101,6 +100,10 @@ const PricingSection = ({
                     {
                       icon: Lock,
                       text: "Lovable Auth, Payment, SEO, Deployment & Security Guide"
+                    },
+                    {
+                      icon: Video,
+                      text: "Videos and Proven Prompts"
                     },
                     {
                       icon: BadgePercent,

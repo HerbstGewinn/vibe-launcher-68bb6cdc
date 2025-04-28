@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Button from './Button';
-import { BadgePercent, Receipt, Lock, Rocket, Code, Video } from 'lucide-react';
+import { BadgePercent, Receipt, Lock, Rocket, Code, Video, List } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 
 interface PricingSectionProps {
@@ -104,6 +104,10 @@ const PricingSection = ({
                     {
                       icon: Video,
                       text: "Videos and Proven Prompts"
+                    },
+                    {
+                      icon: List,
+                      text: "Launch List of Subreddits, Directories & Discord Groups"
                     },
                     {
                       icon: BadgePercent,

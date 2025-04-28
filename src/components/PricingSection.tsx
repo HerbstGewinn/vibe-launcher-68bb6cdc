@@ -12,7 +12,7 @@ interface PricingSectionProps {
 const PricingSection = ({
   className
 }: PricingSectionProps) => {
-  return <section className={cn("py-16 relative overflow-hidden", className)}>
+  return <section id="pricing-section" className={cn("py-16 relative overflow-hidden", className)}>
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(10,255,255,0.15),transparent_50%)]" />
       

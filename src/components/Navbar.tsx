@@ -53,10 +53,42 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
+          
+          {/* Sign In Button */}
+          <a 
+            href="https://launch.vibelaunch.io/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="ml-4"
+          >
+            <Button 
+              variant="neon" 
+              size="sm" 
+              className="font-medium"
+            >
+              Sign In
+            </Button>
+          </a>
         </div>
         
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
+          {/* Mobile Sign In Button */}
+          <a 
+            href="https://launch.vibelaunch.io/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="mr-4"
+          >
+            <Button 
+              variant="neon" 
+              size="sm" 
+              className="font-medium"
+            >
+              Sign In
+            </Button>
+          </a>
+          
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-white focus:outline-none"

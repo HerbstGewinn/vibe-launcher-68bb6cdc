@@ -34,9 +34,8 @@ const Hero = ({
     image: "https://i.pravatar.cc/150?img=5"
   }];
 
-  const scrollToPricing = () => {
-    const pricingSection = document.querySelector('#pricing-section');
-    pricingSection?.scrollIntoView({ behavior: 'smooth' });
+  const navigateToPlaybook = () => {
+    window.location.href = 'https://launch.vibelaunch.io/';
   };
 
   return <section className={cn("relative min-h-[500px] md:min-h-[550px] overflow-hidden", className)}>
@@ -53,7 +52,7 @@ const Hero = ({
           <div className="max-w-md mx-auto">
             <div className="flex justify-center">
               <motion.button
-                onClick={scrollToPricing}
+                onClick={navigateToPlaybook}
                 whileHover={{
                   y: -2,
                   scale: 1.02

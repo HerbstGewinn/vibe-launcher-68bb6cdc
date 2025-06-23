@@ -57,7 +57,7 @@ const PricingSection = ({
         }} viewport={{
           once: true
         }}>
-            Join our early access program and save 40% on your launch journey
+            Join our early access program and save 100% on your launch journey
           </motion.p>
         </div>
 
@@ -141,7 +141,7 @@ const PricingSection = ({
                   className="w-full shadow-xl hover:shadow-neon/20 transition-all duration-300 bg-gradient-to-r from-[#0AFFFF] to-[#0FA0CE] hover:scale-105 font-semibold text-space" 
                   glow
                 >
-                  Get Early Access Now
+                  Claim for Free now
                 </Button>
               </CardFooter>
             </Card>
@@ -156,7 +156,7 @@ const PricingSection = ({
           }} viewport={{
             once: true
           }}>
-            ⚡️ Limited time offer • 40% discount
+            ⚡️ Limited time offer • 100% discount
           </motion.p>
         </div>
       </div>

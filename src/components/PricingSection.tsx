@@ -87,7 +87,7 @@ const PricingSection = ({
               <CardContent className="p-6 sm:p-8">
                 <div className="flex justify-center items-baseline mb-8">
                   <span className="text-4xl sm:text-5xl font-bold text-neon">$0</span>
-                  <span className="text-slate-400 ml-2 line-through">$99</span>
+                  <span className="text-slate-400 ml-2 line-through">$29</span>
                   <span className="text-sm text-slate-300 ml-2">one-time</span>
                 </div>
 

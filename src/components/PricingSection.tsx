@@ -29,7 +29,7 @@ const PricingSection = ({
         }} viewport={{
           once: true
         }}>
-            EARLY ACCESS PRICING
+            7-DAY OFFER
           </motion.span>
           <motion.h2 className="text-3xl md:text-4xl font-bold mb-4" initial={{
           opacity: 0,
@@ -76,7 +76,7 @@ const PricingSection = ({
             <Card className="relative overflow-hidden frost-container border-neon/30">
               {/* Early Access Badge - Adjusted for better mobile display */}
               <div className="absolute -rotate-45 text-xs font-bold text-space bg-neon px-6 py-1 -left-8 top-4 sm:-left-6 sm:top-6 sm:px-8">
-                EARLY ACCESS
+                7-DAY OFFER
               </div>
 
               <CardHeader className="p-6 sm:p-8">
@@ -86,8 +86,8 @@ const PricingSection = ({
 
               <CardContent className="p-6 sm:p-8">
                 <div className="flex justify-center items-baseline mb-8">
-                  <span className="text-4xl sm:text-5xl font-bold text-neon">$29</span>
-                  <span className="text-slate-400 ml-2 line-through">$49</span>
+                  <span className="text-4xl sm:text-5xl font-bold text-neon">$0</span>
+                  <span className="text-slate-400 ml-2 line-through">$99</span>
                   <span className="text-sm text-slate-300 ml-2">one-time</span>
                 </div>
 
@@ -119,7 +119,7 @@ const PricingSection = ({
                     },
                     {
                       icon: Code,
-                      text: "Personalized Technical Consultation"
+                      text: "Technical Guidance"
                     }
                   ].map((feature, index) => (
                     <li key={index} className="flex items-start gap-3 text-sm sm:text-base">
